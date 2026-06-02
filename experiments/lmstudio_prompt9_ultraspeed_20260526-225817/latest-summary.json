@@ -1,0 +1,21 @@
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 5,
+    "rate": 100.0
+  },
+  "phase2_exec_acc": {
+    "passed": 5,
+    "rate": 100.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.32,
+    "official_speedup_vs_upstream_golden": 0.32,
+    "local_speedup_vs_same_gpu_pytorch": 0.99,
+    "raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1467\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.205\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7686\ntanh.json: 0.1437\n[0.1467, 0.205, 0.7686, 0.1437]\n\nperf_results\nspeed up: 0.32\n================================================================================================================================================================\n",
+    "official_raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1467\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.205\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7686\ntanh.json: 0.1437\n[0.1467, 0.205, 0.7686, 0.1437]\n\nperf_results\nspeed up: 0.32\n================================================================================================================================================================\n",
+    "local_raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.9992\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.952\nsigmoid_conv2d.json: 1.037\nsolve_multiple_lu.json: 0.9792\ntanh.json: 0.9805\n[0.9992, 0.952, 1.037, 0.9792, 0.9805]\n\nlocal_ref_results\nspeed up: 0.99\n================================================================================================================================================================"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt9_ultraspeed"
+}

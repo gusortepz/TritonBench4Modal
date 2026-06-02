@@ -1,0 +1,182 @@
+✓ Initialized. View run at https://modal.com/apps/gusortepz/main/ap-QzXmXbdrg2eM7gaDP2a9SK
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app_lmstudio.py
+├── 🔨 Created mount PythonPackage:modal_app
+├── 🔨 Created function fetch_alpaca_items.
+└── 🔨 Created function evaluate_predictions.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+using prompt header: prompt-9-ultraspeed.txt
+generating 5 missing predictions locally with qwen/qwen3.6-35b-a3b via native at http://localhost:1234/v1
+  5/5 generated
+uploading local-predictions/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-204903.jsonl -> volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-204903.jsonl
+
+evaluating: volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-204903.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+W0527 02:51:19.114000 27 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+W0527 02:51:38.617000 143 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_prompt9_ultraspeed/call_acc/tanh.py", line 72, in <module>
+    test_results = test_tanh()
+                   ^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt9_ultraspeed/call_acc/tanh.py", line 56, in test_tanh
+    results["test_case_1"] = tanh(input_tensor_1)
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt9_ultraspeed/call_acc/tanh.py", line 36, in tanh
+    _tanh_kernel[grid](x_c, out_t, n, BLOCK_SIZE=1024)
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 240, in compile
+    key = f"{triton_key()}-{src.hash()}-{backend.hash()}-{options.hash()}-{str(sorted(env_vars.items()))}"
+                            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 109, in hash
+    key = f"{self.fn.cache_key}-{self.attrs.hash()}-{sorted_sig}-{sorted_constants}"
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 758, in cache_key
+    dependencies_finder.visit(self.parse())
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 167, in visit_FunctionDef
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 221, in visit_Assign
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 417, in generic_visit
+    self.visit(value)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 127, in visit_Call
+    func = self.visit(node.func)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 117, in visit_Attribute
+    return getattr(lhs, node.attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'triton.language' has no attribute 'tanh'. Did you mean: 'trans'?
+
+Deleted tanh.py
+
+Correct execution rate: 80.00%
+['fused_bmm_rmsnorm_gelu_dropout_sub.py', 'div.py', 'sigmoid_conv2d.py', 'solve_multiple_lu.py']
+Above is call test for lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-204903
+================================================================================================================================================================
+
+call_acc survivors: 4 / 5
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+Correct execution rate: 100.00% = 4 / 4
+above is the compare execution for /data/results/lmstudio_prompt9_ultraspeed/call_acc
+================================================================================================================================================================================================================================================
+
+exe_acc survivors: 4 / 5
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+[1AProcess:   0%|                                            | 0/4 [00:00<?, ?it/s]
+[1AProcess:  25%|█████████                           | 1/4 [00:27<01:22, 27.48s/it]
+[1AProcess:  50%|██████████████████                  | 2/4 [01:52<02:03, 61.52s/it]
+[1AProcess:  75%|███████████████████████████         | 3/4 [02:15<00:43, 43.98s/it]
+✅ finished 1/4: div_perf.py
+✅ finished 2/4: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 3/4: sigmoid_conv2d_perf.py
+✅ finished 4/4: solve_multiple_lu_perf.py
+[1AProcess: 100%|████████████████████████████████████| 4/4 [02:27<00:00, 31.19s/it]Process: 100%|████████████████████████████████████| 4/4 [02:27<00:00, 36.88s/it]
+
+=== Final summary ===
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 4,
+    "rate": 80.0
+  },
+  "phase2_exec_acc": {
+    "passed": 4,
+    "rate": 80.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.37,
+    "raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1468\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2022\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7659\n[0.1468, 0.2022, 0.7659]\n\nperf_results\nspeed up: 0.37\n================================================================================================================================================================\n"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt9_ultraspeed"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/gusortepz/main/ap-QzXmXbdrg2eM7gaDP2a9SK

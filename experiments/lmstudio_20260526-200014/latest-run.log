@@ -1,0 +1,127 @@
+✓ Initialized. View run at https://modal.com/apps/gusortepz/main/ap-H360pRQNiKJLtTNQlBgvAn
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app_lmstudio.py
+├── 🔨 Created mount PythonPackage:modal_app
+├── 🔨 Created function fetch_alpaca_items.
+└── 🔨 Created function evaluate_predictions.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+using prompt header: prompt-7.txt
+generating 5 missing predictions locally with qwen/qwen3.6-35b-a3b via native at http://localhost:1234/v1
+  5/5 generated
+uploading local-predictions/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-195432.jsonl -> volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-195432.jsonl
+
+evaluating: volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-195432.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+
+
+Correct execution rate: 100.00%
+['fused_bmm_rmsnorm_gelu_dropout_sub.py', 'div.py', 'sigmoid_conv2d.py', 'solve_multiple_lu.py', 'tanh.py']
+Above is call test for lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-195432
+================================================================================================================================================================
+
+call_acc survivors: 5 / 5
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+Correct execution rate: 100.00% = 5 / 5
+above is the compare execution for /data/results/lmstudio_6a/call_acc
+================================================================================================================================================================================================================================================
+
+exe_acc survivors: 5 / 5
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+[1AProcess:   0%|                                            | 0/5 [00:00<?, ?it/s]
+[1AProcess:  20%|███████▏                            | 1/5 [00:27<01:51, 27.94s/it]
+[1AProcess:  40%|██████████████▍                     | 2/5 [01:38<02:38, 52.84s/it]
+[1AProcess:  60%|█████████████████████▌              | 3/5 [01:51<01:09, 34.94s/it]
+[1AProcess:  80%|████████████████████████████▊       | 4/5 [02:03<00:25, 25.56s/it]
+✅ finished 1/5: div_perf.py
+✅ finished 2/5: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 3/5: sigmoid_conv2d_perf.py
+✅ finished 4/5: solve_multiple_lu_perf.py
+✅ finished 5/5: tanh_perf.py
+[1AProcess: 100%|████████████████████████████████████| 5/5 [02:26<00:00, 24.85s/it]
+[1AProcess: 100%|████████████████████████████████████| 5/5 [02:26<00:00, 29.32s/it]
+
+=== Final summary ===
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 5,
+    "rate": 100.0
+  },
+  "phase2_exec_acc": {
+    "passed": 5,
+    "rate": 100.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.32,
+    "raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1467\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2068\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7687\ntanh.json: 0.1466\n[0.1467, 0.2068, 0.7687, 0.1466]\n\nperf_results\nspeed up: 0.32\n================================================================================================================================================================\n"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_6a"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/gusortepz/main/ap-H360pRQNiKJLtTNQlBgvAn

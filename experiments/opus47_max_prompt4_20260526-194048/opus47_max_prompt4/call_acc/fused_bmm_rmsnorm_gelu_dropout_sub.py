@@ -1,0 +1,108 @@
+import torch
+import torch.nn.functional as F
+import triton
+import triton.language as tl
+from typing import Optional, Tuple, Union, List
+
+
+def fused_bmm_rmsnorm_gelu_dropout_sub(
+    input1,
+    input2,
+    other,
+    normalized_shape,
+    dropout_p=0.5,
+    training=True,
+    approximate='none',
+    eps=1e-5,
+    *,
+    out=None,
+):
+    """
+    Fused operation: bmm -> rms_norm -> gelu -> dropout -> subtract.
+
+    Args:
+        input1: Tensor of shape (B, N, M)
+        input2: Tensor of shape (B, M, P)
+        other: Tensor broadcastable to (B, N, P)
+        normalized_shape: int or list/tuple/torch.Size - shape for RMS norm
+        dropout_p: dropout probability
+        training: apply dropout if True
+        approximate: 'none' or 'tanh' for GELU
+        eps: epsilon for RMS normalization
+        out: optional output tensor
+
+    Returns:
+        Tensor of shape (B, N, P)
+    """
+    # 1. Batch matrix multiplication: (B, N, M) @ (B, M, P) -> (B, N, P)
+    x = torch.bmm(input1, input2)
+
+    # 2. Handle normalized_shape (could be int, list, tuple, or torch.Size)
+    if isinstance(normalized_shape, int):
+        normalized_shape_tuple = (normalized_shape,)
+    else:
+        normalized_shape_tuple = tuple(normalized_shape)
+
+    # 3. RMS normalization over the last len(normalized_shape) dims
+    norm_dims = tuple(range(-len(normalized_shape_tuple), 0))
+
+    # Try F.rms_norm if available (PyTorch 2.4+), otherwise compute manually
+    if hasattr(F, 'rms_norm'):
+        try:
+            x = F.rms_norm(x, normalized_shape_tuple, weight=None, eps=eps)
+        except Exception:
+            # Manual fallback
+            mean_sq = x.pow(2).mean(dim=norm_dims, keepdim=True)
+            x = x * torch.rsqrt(mean_sq + eps)
+    else:
+        # Manual RMS normalization
+        mean_sq = x.pow(2).mean(dim=norm_dims, keepdim=True)
+        x = x * torch.rsqrt(mean_sq + eps)
+
+    # 4. GELU activation
+    x = F.gelu(x, approximate=approximate)
+
+    # 5. Dropout
+    x = F.dropout(x, p=dropout_p, training=training)
+
+    # 6. Subtract `other`
+    result = x - other
+
+    # 7. Handle `out` parameter
+    if out is not None:
+        out.copy_(result)
+        return out
+    return result
+
+##################################################################################################################################################
+
+
+
+import torch
+import torch.nn.functional as F
+
+def test_fused_bmm_rmsnorm_gelu_dropout_sub():
+    results = {}
+
+    # Test case 1: Basic test with default parameters
+    input1 = torch.randn(2, 3, 4, device='cuda')
+    input2 = torch.randn(2, 4, 5, device='cuda')
+    other = torch.randn(2, 3, 5, device='cuda')
+    normalized_shape = 5
+    results["test_case_1"] = fused_bmm_rmsnorm_gelu_dropout_sub(input1, input2, other, normalized_shape)
+
+    # Test case 2: Test with different dropout probability
+    dropout_p = 0.3
+    results["test_case_2"] = fused_bmm_rmsnorm_gelu_dropout_sub(input1, input2, other, normalized_shape, dropout_p=dropout_p)
+
+    # Test case 3: Test with training set to False
+    training = False
+    results["test_case_3"] = fused_bmm_rmsnorm_gelu_dropout_sub(input1, input2, other, normalized_shape, training=training)
+
+    # Test case 4: Test with approximate GELU
+    approximate = 'tanh'
+    results["test_case_4"] = fused_bmm_rmsnorm_gelu_dropout_sub(input1, input2, other, normalized_shape, approximate=approximate)
+
+    return results
+
+test_results = test_fused_bmm_rmsnorm_gelu_dropout_sub()

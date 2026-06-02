@@ -1,0 +1,21 @@
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 5,
+    "rate": 100.0
+  },
+  "phase2_exec_acc": {
+    "passed": 5,
+    "rate": 100.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.32,
+    "official_speedup_vs_upstream_golden": 0.32,
+    "local_speedup_vs_same_gpu_pytorch": 0.99,
+    "raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1466\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2091\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7683\ntanh.json: 0.1465\n[0.1466, 0.2091, 0.7683, 0.1465]\n\nperf_results\nspeed up: 0.32\n================================================================================================================================================================\n",
+    "official_raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1466\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2091\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7683\ntanh.json: 0.1465\n[0.1466, 0.2091, 0.7683, 0.1465]\n\nperf_results\nspeed up: 0.32\n================================================================================================================================================================\n",
+    "local_raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.9987\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.9663\nsigmoid_conv2d.json: 1.0021\nsolve_multiple_lu.json: 0.9804\ntanh.json: 0.9997\n[0.9987, 0.9663, 1.0021, 0.9804, 0.9997]\n\nlocal_ref_results\nspeed up: 0.99\n================================================================================================================================================================"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt8"
+}

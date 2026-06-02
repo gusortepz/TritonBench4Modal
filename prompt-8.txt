@@ -1,0 +1,335 @@
+PROMPT_HEADER = """
+You are generating one Python module for one TritonBench-T PyTorch-to-Triton task. Your goals are, in order:
+1. call accuracy: the exact public function exists and runs;
+2. execution accuracy: outputs match the intended PyTorch semantics;
+3. efficiency: avoid slow handmade kernels and use Triton only when it has a concrete reason to beat PyTorch.
+
+Correctness comes before speed. A correct fast PyTorch wrapper is better than a custom Triton kernel that is slower, fragile, or semantically incomplete.
+
+CORE PERFORMANCE MODEL
+
+Triton is not magic. Triton is faster only when it reduces expensive global-memory traffic, avoids intermediate tensors, removes multiple kernel launches, or keeps a row/tile in on-chip memory.
+
+Triton usually loses to PyTorch for:
+- one standalone elementwise op;
+- plain add/sub/mul/div/pow with broadcasting or type promotion;
+- cuDNN/cuBLAS/cuSOLVER-backed operations such as conv2d, pooling, matmul, bmm, linear, solve, LU, QR, SVD, eig, Cholesky;
+- stochastic or training-sensitive functions such as dropout and optimizers;
+- special functions that Triton does not implement accurately;
+- any operation whose semantics depend on dtype promotion, complex tensors, integer rounding, broadcasting, or unusual out= behavior.
+
+Names like fused_*, *_conv2d, *_bmm, or *_norm are descriptions, not permission to write a fused Triton kernel. If the function contains bmm/matmul/conv/norm/dropout/solver, PyTorch is normally the right implementation.
+
+PYTORCH-FIRST POLICY
+
+Do not write Triton by default.
+
+Use direct torch / torch.nn.functional calls when the operation is any of:
+- single elementwise: tanh, sigmoid, relu, gelu, silu, sqrt, rsqrt, exp, log, log1p, abs, floor, trunc, erf, cos, etc.;
+- div, true_divide, floor_divide, remainder, fmod, pow, reciprocal;
+- convolution, pooling, grid_sample, pixel_shuffle;
+- matmul, bmm, mm, mv, addmm, linear;
+- batch_norm, layer_norm, group_norm, rms_norm, softmax/log_softmax unless a safe row-wise Triton reduction is obvious;
+- dropout, rand/random, SGD, Adam, autocast, quantization;
+- gather, scatter, index_select, masked_select, masked_fill, embedding, hstack, repeat_interleave, ifftshift;
+- linear algebra/decompositions/solvers/FFT: solve, lu, lu_solve, svd, qr, eig, cholesky, lstsq, det, inverse, pinverse, fftn;
+- special functions: gammaln, digamma, polygamma, bessel_j*, airy_ai, zeta, i0, erfc, chebyshev_polynomial_t.
+
+A simple PyTorch chain is acceptable when it preserves semantics. Do not add slow defensive copies, unnecessary .contiguous() calls, device transfers, or Python try/except in the hot path unless needed for correctness.
+
+STRICT TRITON ALLOWLIST
+
+Only write @triton.jit when one of these allowlisted cases applies.
+
+ALLOWLIST A: pure same-shape elementwise chain
+- The operation is deterministic and contains at least two simple elementwise steps that would otherwise materialize an intermediate tensor.
+- Examples: relu then sqrt, sqrt then tanh, sqrt then exp, log then tanh, add then gelu, mul then sub, cos then signbit only if dtype semantics are simple.
+- All tensor fast-path inputs have exactly the same shape.
+- Fast-path tensors are CUDA floating tensors, non-complex, contiguous or made contiguous safely.
+- There is no reduction, normalization, matmul, bmm, convolution, pooling, dropout, randomness, solver, gather/scatter/indexing, special function approximation, or dtype-promotion complexity.
+- There is an exact PyTorch fallback for CPU, complex, integer/bool, broadcasting, scalar-only, non-contiguous out, or any uncertain case.
+
+ALLOWLIST B: simple row-wise reduction where the full row fits in one block
+- The reduction axis is explicitly the last dimension.
+- The input is 2D or can be flattened to rows x cols without changing semantics.
+- The row length is modest enough for one Triton block after next_power_of_2 padding.
+- The function is deterministic: no dropout/randomness/training mode.
+- Examples: softmax/log_softmax/logsumexp/mean over the last dimension when dim is explicit and simple.
+- If dim is None, negative but ambiguous, multiple axes, dtype=, keepdim/out= complexity, or arbitrary broadcasting appears, use PyTorch.
+
+ALLOWLIST C: post-structural epilogue only when it saves at least two pointwise passes
+- Do the structural op in PyTorch: F.conv2d, torch.bmm, torch.matmul, F.linear.
+- Use Triton only for a deterministic same-shape pointwise tail with at least two simple steps.
+- Do not use Triton for only sigmoid/relu/tanh after conv or matmul. One extra activation kernel is usually not worth a handmade Triton launch.
+- Do not use Triton for dropout, normalization, softmax, reductions, or randomness after the structural op.
+
+If a case is not clearly allowlisted, use PyTorch only.
+
+NON-NEGOTIABLE OUTPUT CONTRACT
+
+Output a single, self-contained Python module containing:
+1. imports;
+2. optional helper functions or Triton kernels only when allowlisted;
+3. the exact public wrapper function requested by the benchmark.
+
+Wrap the entire module in one ```python ... ``` fenced code block.
+
+Do NOT include:
+- test code;
+- example calls;
+- explanations outside the code block;
+- placeholders, pass, TODO, NotImplementedError;
+- multiple code blocks.
+
+Always include these imports unless absolutely impossible:
+
+import torch
+import torch.nn.functional as F
+import triton
+import triton.language as tl
+from typing import Optional, Tuple, Union
+
+NAME AND SIGNATURE CONTRACT
+
+- Define the exact public function name at top-level.
+- Preserve parameter order, keyword-only markers, default values, case, underscores, and trailing underscores.
+- If a Python signature appears in the prompt, copy it exactly.
+- If the function name shadows a Python built-in (max, min, sum, abs, pow, div), still define it explicitly.
+- Never import the target function. Never write `from <target_name> import <target_name>`.
+- Never rename the wrapper to solution, main, triton_*, *_wrapper, custom_*, optimized_*, or kernel_*.
+- Never return only kernels or helpers. The benchmark calls the public wrapper function directly.
+
+FAST PYTORCH WRAPPER PATTERN
+
+Use direct PyTorch equivalents and keep the hot path short:
+
+```
+def name(..., out=None):
+    y = torch_or_F_equivalent(...)
+    if out is not None:
+        out.copy_(y)
+        return out
+    return y
+```
+
+If PyTorch natively accepts out= with the exact requested semantics, passing out= directly is acceptable. If unsure, compute y first, then copy into out.
+
+Do not call .contiguous() on PyTorch outputs unless a later operation requires it. Do not move tensors between devices. Do not convert dtype unless the PyTorch semantics require it.
+
+SAFE BASELINES FOR COMMON TRITONBENCH-T TASKS
+
+Use torch.div for div. Never use Triton for div:
+
+```
+def div(input, other, *, rounding_mode=None, out=None):
+    return torch.div(input, other, rounding_mode=rounding_mode, out=out)
+```
+
+Use torch.tanh for tanh. Never use a standalone Triton tanh kernel:
+
+```
+def tanh(input, *, out=None):
+    return torch.tanh(input, out=out)
+```
+
+Keep convolution in PyTorch. For conv plus one activation, use PyTorch:
+
+```
+def sigmoid_conv2d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1, out=None):
+    y = torch.sigmoid(F.conv2d(input, weight, bias=bias, stride=stride, padding=padding, dilation=dilation, groups=groups))
+    if out is not None:
+        out.copy_(y)
+        return out
+    return y
+```
+
+Use PyTorch linear algebra helpers. Never unpack torch.linalg.lu into two values:
+
+```
+def solve_multiple_lu(A, Bs, *, pivot=True, out=None):
+    if pivot:
+        LU, pivots = torch.linalg.lu_factor(A, pivot=True)
+        y = torch.linalg.lu_solve(LU, pivots, Bs)
+    else:
+        y = torch.linalg.solve(A, Bs)
+    if out is not None:
+        out.copy_(y)
+        return out
+    return y
+```
+
+For bmm + rms_norm + gelu + dropout + subtraction, use PyTorch. Dropout and RMSNorm make this a poor generic Triton target:
+
+```
+def fused_bmm_rmsnorm_gelu_dropout_sub(input1, input2, other, normalized_shape, dropout_p=0.5, training=True, approximate='none', eps=1e-5, *, out=None):
+    z = torch.bmm(input1, input2)
+    if isinstance(normalized_shape, int):
+        normalized_shape_tuple = (normalized_shape,)
+    else:
+        normalized_shape_tuple = tuple(normalized_shape)
+    y = F.rms_norm(z, normalized_shape_tuple, weight=None, eps=eps)
+    y = F.gelu(y, approximate=approximate)
+    y = F.dropout(y, p=dropout_p, training=training)
+    y = y - other
+    if out is not None:
+        out.copy_(y)
+        return out
+    return y
+```
+
+For neural-network ops, prefer torch.nn.functional:
+F.conv2d, F.batch_norm, F.layer_norm, F.group_norm, F.rms_norm,
+F.relu, F.gelu, F.silu, F.softmax, F.log_softmax, F.cross_entropy,
+F.dropout, F.max_pool2d, F.avg_pool2d, F.adaptive_avg_pool2d.
+
+RUN-SPECIFIC CORRECTNESS RULES
+
+1. normalized_shape may be an int. Never write tuple(normalized_shape) unless you first check that it is iterable.
+
+Correct pattern:
+
+```
+if isinstance(normalized_shape, int):
+    normalized_shape_tuple = (normalized_shape,)
+    norm_dims = (-1,)
+else:
+    normalized_shape_tuple = tuple(normalized_shape)
+    norm_dims = tuple(range(-len(normalized_shape_tuple), 0))
+```
+
+For RMS normalization, prefer:
+
+```
+F.rms_norm(x, normalized_shape_tuple, weight=None, eps=eps)
+```
+
+If manual RMS is needed:
+
+```
+var = x.float().pow(2).mean(dim=norm_dims, keepdim=True)
+y = (x.float() * torch.rsqrt(var + eps)).to(x.dtype)
+```
+
+2. torch.linalg.lu returns three values: P, L, U. Do not write `LU, pivots = torch.linalg.lu(...)`.
+
+3. torch.linalg.lu_solve does not accept pivot=. Never call `lu_solve(..., pivot=pivot)`.
+
+4. For out=, write into out and return out. If shape/dtype/device of out is incompatible, let PyTorch raise naturally or compute y and use out.copy_(y).
+
+5. For in-place functions ending in _, mutate the requested tensor and return it.
+
+SAFE TRITON ELEMENTWISE TEMPLATE
+
+Use this pattern only for allowlisted pure same-shape CUDA floating elementwise chains. Adapt the expression, but keep the safety checks.
+
+```
+@triton.jit
+def _fused_kernel(x_ptr, y_ptr, out_ptr, n, BLOCK_SIZE: tl.constexpr):
+    pid = tl.program_id(0)
+    offs = pid * BLOCK_SIZE + tl.arange(0, BLOCK_SIZE)
+    mask = offs < n
+    x = tl.load(x_ptr + offs, mask=mask, other=0.0)
+    y = tl.load(y_ptr + offs, mask=mask, other=0.0)
+    z = <pure tl expression>
+    tl.store(out_ptr + offs, z, mask=mask)
+
+def fused_name(x, y, ..., out=None):
+    def ref():
+        result = torch_equivalent(x, y, ...)
+        if out is not None:
+            out.copy_(result)
+            return out
+        return result
+
+    if not isinstance(x, torch.Tensor) or not isinstance(y, torch.Tensor):
+        return ref()
+    if (not x.is_cuda) or (not y.is_cuda) or x.is_complex() or y.is_complex():
+        return ref()
+    if (not x.is_floating_point()) or (not y.is_floating_point()) or x.shape != y.shape:
+        return ref()
+    if out is not None and (not isinstance(out, torch.Tensor) or not out.is_cuda or out.shape != x.shape or out.dtype != x.dtype or not out.is_contiguous()):
+        return ref()
+
+    x_c = x.contiguous()
+    y_c = y.contiguous()
+    out_t = out if out is not None else torch.empty_like(x_c)
+    n = x_c.numel()
+    grid = lambda meta: (triton.cdiv(n, meta["BLOCK_SIZE"]),)
+    _fused_kernel[grid](x_c, y_c, out_t, n, BLOCK_SIZE=1024)
+    return out_t
+```
+
+SAFE TRITON EXPRESSIONS
+
+tanh:        2.0 * tl.sigmoid(2.0 * x) - 1.0
+sigmoid:     tl.sigmoid(x)
+relu:        tl.maximum(x, 0.0)
+gelu exact:  0.5 * x * (1.0 + tl.erf(x * 0.7071067811865476))
+gelu tanh:   0.5 * x * (1.0 + (2.0 * tl.sigmoid(2.0 * (x + 0.044715 * x*x*x) * 0.7978845608) - 1.0))
+silu:        x * tl.sigmoid(x)
+sqrt:        tl.sqrt(x)
+rsqrt:       tl.rsqrt(x)
+exp:         tl.exp(x)
+log:         tl.log(x)
+log1p:       tl.log(1.0 + x)
+expm1:       tl.exp(x) - 1.0
+abs:         tl.abs(x)
+neg:         -x
+softplus:    tl.where(x > 20.0, x, tl.log(1.0 + tl.exp(x)))
+
+TRITON API RULES IF TRITON IS USED
+
+- Every meta argument like BLOCK_SIZE must appear in the @triton.jit signature as tl.constexpr.
+- Pass tensors to kernels, not .data_ptr().
+- Do not call torch.* or math.* inside @triton.jit kernels.
+- Do not use tl.math or tl.libdevice.
+- Use masks for boundary loads/stores.
+- Use coalesced contiguous loads/stores in the fast path.
+- Fallback to PyTorch when device, dtype, shape, stride, out, or semantics are uncertain.
+
+COMMON FAILURE MODES TO PREVENT
+
+Before returning code, internally verify none of these will happen:
+1. target function missing or renamed;
+2. missing torch/F/triton/tl imports;
+3. invalid PyTorch keyword arguments;
+4. tuple(int_value) or len(int_value) bugs;
+5. torch.linalg.lu unpacked into two values;
+6. pivot= passed to torch.linalg.lu_solve;
+7. Triton constexpr mismatch;
+8. CPU tensors or .data_ptr() passed to Triton;
+9. tl.math, tl.libdevice, torch.*, or math.* inside @triton.jit;
+10. broken out= or in-place semantics;
+11. custom Triton written for a non-allowlisted operation.
+
+FINAL CHECKLIST
+
+Before emitting code, verify:
+- exact public wrapper defined at top-level;
+- exact requested signature preserved;
+- torch, F, triton, tl imports present;
+- exactly one Python fenced code block;
+- no tests or `if __name__ == "__main__":`;
+- no pass / TODO / NotImplementedError;
+- no `from <target> import <target>`;
+- no invalid PyTorch keyword arguments;
+- no tuple(int_value) or len(int_value) bugs;
+- no custom Triton unless it satisfies an allowlist case;
+- PyTorch fallback is exact for every unsupported Triton case;
+- out is respected when provided.
+
+PRIORITY ORDER
+
+1. Do not crash.
+2. Define the exact function and signature.
+3. Match PyTorch semantics.
+4. Avoid slow generated Triton kernels.
+5. Use Triton only with a clear memory-traffic or launch-reduction reason.
+6. Prefer simple fast PyTorch over speculative Triton.
+
+Original task instruction:
+
+You are an expert in Triton programming, capable of writing Triton kernels and wrapper functions based on functional descriptions and function parameters. The wrapper function must fully match the provided function signature.
+
+Output a single, self-contained Python module containing: (a) the necessary imports (torch, triton, triton.language as tl), (b) the Triton kernel(s), and (c) the wrapper function that the description specifies. Wrap the entire module in one ```python ... ``` fenced code block. Do NOT include any test code or example calls — tests will be appended separately.
+""".strip()

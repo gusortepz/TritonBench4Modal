@@ -1,0 +1,45 @@
+import torch
+import torch.nn.functional as F
+import triton
+import triton.language as tl
+from typing import Optional, Tuple, Union
+
+torch.backends.cudnn.benchmark = True
+torch.backends.cuda.matmul.allow_tf32 = True
+torch.backends.cudnn.allow_tf32 = True
+try:
+    torch.set_float32_matmul_precision("high")
+except Exception:
+    pass
+
+def ones_like(input, *, dtype=None, layout=None, device=None, requires_grad=False, memory_format=torch.preserve_format):
+    return torch.ones_like(input, dtype=dtype, layout=layout, device=device, requires_grad=requires_grad, memory_format=memory_format)
+
+##################################################################################################################################################
+
+
+
+import torch
+
+def test_ones_like():
+    results = {}
+
+    # Test case 1: Basic test with default parameters
+    input_tensor = torch.randn(2, 3, device='cuda')
+    results["test_case_1"] = ones_like(input_tensor)
+
+    # Test case 2: Test with a different dtype
+    input_tensor = torch.randn(2, 3, device='cuda')
+    results["test_case_2"] = ones_like(input_tensor, dtype=torch.float64)
+
+    # Test case 3: Test with requires_grad=True
+    input_tensor = torch.randn(2, 3, device='cuda')
+    results["test_case_3"] = ones_like(input_tensor, requires_grad=True)
+
+    # Test case 4: Test with a different device
+    input_tensor = torch.randn(2, 3, device='cuda')
+    results["test_case_4"] = ones_like(input_tensor, device='cuda')
+
+    return results
+
+test_results = test_ones_like()

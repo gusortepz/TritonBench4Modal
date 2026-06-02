@@ -1,0 +1,4 @@
+results/lmstudio_prompt8/call_acc
+results/lmstudio_prompt8/perf_results
+results/lmstudio_prompt8/local_ref_ops
+results/lmstudio_prompt8/local_ref_results

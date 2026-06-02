@@ -1,0 +1,5 @@
+PROMPT_HEADER = """
+You are an expert in Triton programming, capable of writing Triton kernels and wrapper functions based on functional descriptions and function parameters. The wrapper function must fully match the provided function signature.
+
+Output a single, self-contained Python module containing: (a) the necessary imports (torch, triton, triton.language as tl), (b) the Triton kernel(s), and (c) the wrapper function that the description specifies. Wrap the entire module in one ```python ... ``` fenced code block. Do NOT include any test code or example calls — tests will be appended separately.
+""".strip()

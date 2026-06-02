@@ -1,0 +1,21 @@
+{
+  "total_predictions": 20,
+  "phase1_call_acc": {
+    "passed": 18,
+    "rate": 90.0
+  },
+  "phase2_exec_acc": {
+    "passed": 18,
+    "rate": 90.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.39,
+    "official_speedup_vs_upstream_golden": 0.39,
+    "local_speedup_vs_same_gpu_pytorch": 1.36,
+    "raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1465\nargmax.json: 0.2523\ndiv.json: 0.1469\ndropout_relu_batch_norm_conv2d.json: 0.6637\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2082\nfused_index_select_eq.json: 0.2876\nfused_lu_solve.json: 1.5182\nfused_mv_logsoftmax_dropout.json failed\ngrid_sample.json failed\nrelu_sqrt.json: 0.2779\nrsqrt.json: 0.5959\nsigmoid_argmax.json: 0.155\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7614\nsqrt.json: 0.1467\nsub.json: 0.1429\ntanh.json: 0.1467\n[0.1465, 0.2523, 0.1469, 0.6637, 0.2082, 0.2876, 1.5182, 0.2779, 0.5959, 0.155, 0.7614, 0.1467, 0.1429, 0.1467]\n\nperf_results\nspeed up: 0.39\n================================================================================================================================================================\n",
+    "official_raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1465\nargmax.json: 0.2523\ndiv.json: 0.1469\ndropout_relu_batch_norm_conv2d.json: 0.6637\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2082\nfused_index_select_eq.json: 0.2876\nfused_lu_solve.json: 1.5182\nfused_mv_logsoftmax_dropout.json failed\ngrid_sample.json failed\nrelu_sqrt.json: 0.2779\nrsqrt.json: 0.5959\nsigmoid_argmax.json: 0.155\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7614\nsqrt.json: 0.1467\nsub.json: 0.1429\ntanh.json: 0.1467\n[0.1465, 0.2523, 0.1469, 0.6637, 0.2082, 0.2876, 1.5182, 0.2779, 0.5959, 0.155, 0.7614, 0.1467, 0.1429, 0.1467]\n\nperf_results\nspeed up: 0.39\n================================================================================================================================================================\n",
+    "local_raw_output_tail": "================================================================================================================================================================\nadd.json: 0.9994\nargmax.json: 1.0022\ndiv.json: 0.9995\ndropout_relu_batch_norm_conv2d.json: 2.5703\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.9573\nfused_index_select_eq.json: 1.0003\nfused_lu_solve.json: 2.8014\nfused_mv_logsoftmax_dropout.json: 0.206\ngrid_sample.json: 1.0\nrelu_sqrt.json: 1.9581\nrsqrt.json: 3.6874\nsigmoid_argmax.json: 0.9999\nsigmoid_conv2d.json: 1.0478\nsolve_multiple_lu.json: 0.9734\nsqrt.json: 0.9992\nsub.json: 1.0\ntanh.json: 0.9996\n[0.9994, 1.0022, 0.9995, 2.5703, 0.9573, 1.0003, 2.8014, 0.206, 1.0, 1.9581, 3.6874, 0.9999, 1.0478, 0.9734, 0.9992, 1.0, 0.9996]\n\nlocal_ref_results\nspeed up: 1.36\n================================================================================================================================================================"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt10_selective_20260527-183147"
+}

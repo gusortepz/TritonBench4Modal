@@ -1,0 +1,17 @@
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 4,
+    "rate": 80.0
+  },
+  "phase2_exec_acc": {
+    "passed": 4,
+    "rate": 80.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.35,
+    "raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1469\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7533\ntanh.json: 0.1438\n[0.1469, 0.7533, 0.1438]\n\nperf_results\nspeed up: 0.35\n================================================================================================================================================================\n"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio"
+}

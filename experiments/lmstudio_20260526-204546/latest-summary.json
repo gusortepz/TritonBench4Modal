@@ -1,0 +1,17 @@
+{
+  "total_predictions": 20,
+  "phase1_call_acc": {
+    "passed": 19,
+    "rate": 95.0
+  },
+  "phase2_exec_acc": {
+    "passed": 19,
+    "rate": 95.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.39,
+    "raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1466\nargmax.json: 0.2524\ndiv.json: 0.1469\ndropout_relu_batch_norm_conv2d.json: 0.6401\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.208\nfused_index_select_eq.json failed\nfused_lu_solve.json: 1.5502\nfused_mv_logsoftmax_dropout.json: 0.1454\ngrid_sample.json failed\ni0.json: 0.248\nrelu_sqrt.json: 0.2778\nrsqrt.json: 0.6057\nsigmoid_argmax.json: 0.5018\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7617\nsqrt.json: 0.1466\nsub.json: 0.1427\ntanh.json: 0.1465\n[0.1466, 0.2524, 0.1469, 0.6401, 0.208, 1.5502, 0.1454, 0.248, 0.2778, 0.6057, 0.5018, 0.7617, 0.1466, 0.1427, 0.1465]\n\nperf_results\nspeed up: 0.39\n================================================================================================================================================================\n"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt9_speed"
+}

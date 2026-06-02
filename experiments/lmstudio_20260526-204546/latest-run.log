@@ -1,0 +1,230 @@
+✓ Initialized. View run at https://modal.com/apps/gusortepz/main/ap-BRAI7VxdFbyhEHI4epuLdr
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app_lmstudio.py
+├── 🔨 Created mount PythonPackage:modal_app
+├── 🔨 Created function fetch_alpaca_items.
+└── 🔨 Created function evaluate_predictions.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+using prompt header: prompt-9-speed.txt
+generating 20 missing predictions locally with qwen/qwen3.6-35b-a3b via native at http://localhost:1234/v1
+  5/20 generated
+  10/20 generated
+  15/20 generated
+  20/20 generated
+uploading local-predictions/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260526-202102.jsonl -> volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260526-202102.jsonl
+
+evaluating: volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260526-202102.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+W0527 02:29:51.659000 27 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+W0527 02:30:09.811000 143 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+
+=== Output for relu_sqrt.py on GPU 0 ===
+
+=== Errors for relu_sqrt.py on GPU 0 ===
+
+=== Output for sqrt.py on GPU 0 ===
+
+=== Errors for sqrt.py on GPU 0 ===
+
+=== Output for sigmoid_argmax.py on GPU 0 ===
+
+=== Errors for sigmoid_argmax.py on GPU 0 ===
+
+=== Output for sub.py on GPU 0 ===
+
+=== Errors for sub.py on GPU 0 ===
+
+=== Output for grid_sample.py on GPU 0 ===
+
+=== Errors for grid_sample.py on GPU 0 ===
+
+=== Output for svd.py on GPU 0 ===
+
+=== Errors for svd.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_prompt9_speed/call_acc/svd.py", line 48, in <module>
+    test_results = test_svd()
+                   ^^^^^^^^^^
+  File "/data/results/lmstudio_prompt9_speed/call_acc/svd.py", line 28, in test_svd
+    U1, S1, Vh1 = svd(A1, full_matrices=True)
+                  ^^^
+NameError: name 'svd' is not defined
+
+=== Output for i0.py on GPU 0 ===
+
+=== Errors for i0.py on GPU 0 ===
+
+=== Output for rsqrt.py on GPU 0 ===
+
+=== Errors for rsqrt.py on GPU 0 ===
+
+=== Output for dropout_relu_batch_norm_conv2d.py on GPU 0 ===
+
+=== Errors for dropout_relu_batch_norm_conv2d.py on GPU 0 ===
+W0527 02:31:10.347000 315 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for fused_mv_logsoftmax_dropout.py on GPU 0 ===
+
+=== Errors for fused_mv_logsoftmax_dropout.py on GPU 0 ===
+
+=== Output for add.py on GPU 0 ===
+
+=== Errors for add.py on GPU 0 ===
+
+=== Output for fused_silu_layer_norm_conv2d.py on GPU 0 ===
+
+=== Errors for fused_silu_layer_norm_conv2d.py on GPU 0 ===
+W0527 02:31:51.459000 538 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for fused_index_select_eq.py on GPU 0 ===
+
+=== Errors for fused_index_select_eq.py on GPU 0 ===
+
+=== Output for argmax.py on GPU 0 ===
+
+=== Errors for argmax.py on GPU 0 ===
+
+=== Output for fused_lu_solve.py on GPU 0 ===
+
+=== Errors for fused_lu_solve.py on GPU 0 ===
+
+Deleted svd.py
+
+Correct execution rate: 95.00%
+['fused_bmm_rmsnorm_gelu_dropout_sub.py', 'div.py', 'sigmoid_conv2d.py', 'solve_multiple_lu.py', 'tanh.py', 'relu_sqrt.py', 'sqrt.py', 'sigmoid_argmax.py', 'sub.py', 'grid_sample.py', 'i0.py', 'rsqrt.py', 'dropout_relu_batch_norm_conv2d.py', 'fused_mv_logsoftmax_dropout.py', 'add.py', 'fused_silu_layer_norm_conv2d.py', 'fused_index_select_eq.py', 'argmax.py', 'fused_lu_solve.py']
+Above is call test for lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260526-202102
+================================================================================================================================================================
+
+call_acc survivors: 19 / 20
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+Correct execution rate: 100.00% = 19 / 19
+above is the compare execution for /data/results/lmstudio_prompt9_speed/call_acc
+================================================================================================================================================================================================================================================
+
+exe_acc survivors: 19 / 20
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+[1AProcess:   0%|                                           | 0/19 [00:00<?, ?it/s]
+[1AProcess:   5%|█▊                                 | 1/19 [00:26<07:55, 26.40s/it]
+[1AProcess:  11%|███▋                               | 2/19 [01:01<08:55, 31.49s/it]
+[1AProcess:  16%|█████▌                             | 3/19 [01:29<07:56, 29.76s/it]
+[1AProcess:  21%|███████▎                           | 4/19 [01:59<07:27, 29.81s/it]
+[1AProcess:  26%|█████████▏                         | 5/19 [03:19<11:11, 47.95s/it]
+[1AProcess:  32%|███████████                        | 6/19 [04:01<09:58, 46.01s/it]
+[1AProcess:  37%|████████████▉                      | 7/19 [04:11<06:52, 34.36s/it]
+[1AProcess:  42%|██████████████▋                    | 8/19 [04:40<05:59, 32.72s/it]
+[1AProcess:  47%|████████████████▌                  | 9/19 [05:03<04:54, 29.49s/it]
+[1AProcess:  53%|█████████████████▉                | 10/19 [05:16<03:38, 24.32s/it]
+[1AProcess:  58%|███████████████████▋              | 11/19 [05:39<03:13, 24.14s/it]
+[1AProcess:  63%|█████████████████████▍            | 12/19 [06:05<02:52, 24.70s/it]
+[1AProcess:  68%|███████████████████████▎          | 13/19 [06:30<02:28, 24.79s/it]
+[1AProcess:  74%|█████████████████████████         | 14/19 [06:58<02:08, 25.79s/it]
+[1AProcess:  79%|██████████████████████████▊       | 15/19 [07:22<01:40, 25.13s/it]
+[1AProcess:  84%|████████████████████████████▋     | 16/19 [07:33<01:03, 21.01s/it]
+[1AProcess:  89%|██████████████████████████████▍   | 17/19 [07:57<00:43, 21.83s/it]
+[1AProcess:  95%|████████████████████████████████▏ | 18/19 [08:23<00:23, 23.08s/it]
+✅ finished 1/19: add_perf.py
+✅ finished 2/19: argmax_perf.py
+✅ finished 3/19: div_perf.py
+✅ finished 4/19: dropout_relu_batch_norm_conv2d_perf.py
+✅ finished 5/19: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 6/19: fused_index_select_eq_perf.py
+✅ finished 7/19: fused_lu_solve_perf.py
+✅ finished 8/19: fused_mv_logsoftmax_dropout_perf.py
+✅ finished 9/19: fused_silu_layer_norm_conv2d_perf.py
+✅ finished 10/19: grid_sample_perf.py
+✅ finished 11/19: i0_perf.py
+✅ finished 12/19: relu_sqrt_perf.py
+✅ finished 13/19: rsqrt_perf.py
+✅ finished 14/19: sigmoid_argmax_perf.py
+✅ finished 15/19: sigmoid_conv2d_perf.py
+✅ finished 16/19: solve_multiple_lu_perf.py
+✅ finished 17/19: sqrt_perf.py
+✅ finished 18/19: sub_perf.py
+✅ finished 19/19: tanh_perf.py
+[1AProcess: 100%|██████████████████████████████████| 19/19 [08:47<00:00, 23.29s/it]Process: 100%|██████████████████████████████████| 19/19 [08:47<00:00, 27.76s/it]
+
+=== Final summary ===
+{
+  "total_predictions": 20,
+  "phase1_call_acc": {
+    "passed": 19,
+    "rate": 95.0
+  },
+  "phase2_exec_acc": {
+    "passed": 19,
+    "rate": 95.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.39,
+    "raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1466\nargmax.json: 0.2524\ndiv.json: 0.1469\ndropout_relu_batch_norm_conv2d.json: 0.6401\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.208\nfused_index_select_eq.json failed\nfused_lu_solve.json: 1.5502\nfused_mv_logsoftmax_dropout.json: 0.1454\ngrid_sample.json failed\ni0.json: 0.248\nrelu_sqrt.json: 0.2778\nrsqrt.json: 0.6057\nsigmoid_argmax.json: 0.5018\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7617\nsqrt.json: 0.1466\nsub.json: 0.1427\ntanh.json: 0.1465\n[0.1466, 0.2524, 0.1469, 0.6401, 0.208, 1.5502, 0.1454, 0.248, 0.2778, 0.6057, 0.5018, 0.7617, 0.1466, 0.1427, 0.1465]\n\nperf_results\nspeed up: 0.39\n================================================================================================================================================================\n"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt9_speed"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/gusortepz/main/ap-BRAI7VxdFbyhEHI4epuLdr

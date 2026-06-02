@@ -1,0 +1,468 @@
+✓ Initialized. View run at https://modal.com/apps/a01637220/main/ap-h6ZLbr5NWKCVO96c9bkEiz
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app_lmstudio.py
+├── 🔨 Created mount PythonPackage:modal_app
+├── 🔨 Created function fetch_alpaca_items.
+└── 🔨 Created function evaluate_predictions.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+using prompt header: prompt-11-router.txt
+generating 20 missing predictions locally with qwen/qwen3.6-35b-a3b via native at http://localhost:1234/v1
+  5/20 generated
+  10/20 generated
+  15/20 generated
+  20/20 generated
+uploading local-predictions/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260527-194844.jsonl -> volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260527-194844.jsonl
+
+evaluating: volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260527-194844.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+W0528 01:59:53.600000 27 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+W0528 02:00:29.427000 143 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+
+=== Output for relu_sqrt.py on GPU 0 ===
+
+=== Errors for relu_sqrt.py on GPU 0 ===
+
+=== Output for sqrt.py on GPU 0 ===
+
+=== Errors for sqrt.py on GPU 0 ===
+
+=== Output for sigmoid_argmax.py on GPU 0 ===
+
+=== Errors for sigmoid_argmax.py on GPU 0 ===
+
+=== Output for sub.py on GPU 0 ===
+
+=== Errors for sub.py on GPU 0 ===
+
+=== Output for grid_sample.py on GPU 0 ===
+
+=== Errors for grid_sample.py on GPU 0 ===
+
+=== Output for svd.py on GPU 0 ===
+
+=== Errors for svd.py on GPU 0 ===
+
+=== Output for i0.py on GPU 0 ===
+
+=== Errors for i0.py on GPU 0 ===
+
+=== Output for rsqrt.py on GPU 0 ===
+
+=== Errors for rsqrt.py on GPU 0 ===
+
+=== Output for dropout_relu_batch_norm_conv2d.py on GPU 0 ===
+
+=== Errors for dropout_relu_batch_norm_conv2d.py on GPU 0 ===
+W0528 02:02:04.308000 320 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for fused_mv_logsoftmax_dropout.py on GPU 0 ===
+
+=== Errors for fused_mv_logsoftmax_dropout.py on GPU 0 ===
+
+=== Output for add.py on GPU 0 ===
+
+=== Errors for add.py on GPU 0 ===
+
+=== Output for fused_silu_layer_norm_conv2d.py on GPU 0 ===
+
+=== Errors for fused_silu_layer_norm_conv2d.py on GPU 0 ===
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] WON'T CONVERT _fused_silu_layer_norm_conv2d_impl /data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py line 20 
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] due to: 
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] Traceback (most recent call last):
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1064, in __call__
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     result = self._inner_convert(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 526, in __call__
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return _compile(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 952, in _compile
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     raise InternalTorchDynamoError(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 924, in _compile
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     guarded_code = compile_inner(code, one_graph, hooks, transform)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 666, in compile_inner
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return _compile_inner(code, one_graph, hooks, transform)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_utils_internal.py", line 87, in wrapper_function
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return function(*args, **kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 699, in _compile_inner
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     out_code = transform_code_object(code, transform)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/bytecode_transformation.py", line 1322, in transform_code_object
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     transformations(instructions, code_options)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 219, in _fn
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return fn(*args, **kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 634, in transform
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     tracer.run()
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 2796, in run
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     super().run()
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 983, in run
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     while self.step():
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]           ^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 895, in step
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     self.dispatch_table[inst.opcode](self, inst)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1744, in LOAD_ATTR
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     self._load_attr(inst)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1734, in _load_attr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     result = BuiltinVariable(getattr).call_function(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 967, in call_function
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return handler(tx, args, kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 711, in <lambda>
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return lambda tx, args, kwargs: obj.call_function(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]                                     ^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 967, in call_function
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return handler(tx, args, kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 848, in builtin_dispatch
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     rv = fn(tx, args, kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]          ^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 766, in call_self_handler
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     result = self_handler(tx, *args, **kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 1727, in call_getattr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return obj.var_getattr(tx, name)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/base.py", line 244, in var_getattr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     value = self.const_getattr(tx, name)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/constant.py", line 130, in const_getattr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     member = getattr(self.value, name)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] torch._dynamo.exc.InternalTorchDynamoError: AttributeError: 'NoneType' object has no attribute 'shape'
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] 
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] from user code:
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]    File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 22, in _fused_silu_layer_norm_conv2d_impl
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     y = F.layer_norm(y, normalized_shape=(weight.shape[0],), eps=ln_eps)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] 
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] 
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] Traceback (most recent call last):
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1064, in __call__
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     result = self._inner_convert(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 526, in __call__
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return _compile(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 952, in _compile
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     raise InternalTorchDynamoError(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 924, in _compile
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     guarded_code = compile_inner(code, one_graph, hooks, transform)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 666, in compile_inner
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return _compile_inner(code, one_graph, hooks, transform)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_utils_internal.py", line 87, in wrapper_function
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return function(*args, **kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 699, in _compile_inner
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     out_code = transform_code_object(code, transform)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/bytecode_transformation.py", line 1322, in transform_code_object
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     transformations(instructions, code_options)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 219, in _fn
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return fn(*args, **kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 634, in transform
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     tracer.run()
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 2796, in run
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     super().run()
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 983, in run
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     while self.step():
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]           ^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 895, in step
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     self.dispatch_table[inst.opcode](self, inst)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1744, in LOAD_ATTR
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     self._load_attr(inst)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 1734, in _load_attr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     result = BuiltinVariable(getattr).call_function(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 967, in call_function
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return handler(tx, args, kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 711, in <lambda>
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return lambda tx, args, kwargs: obj.call_function(
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]                                     ^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 967, in call_function
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return handler(tx, args, kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 848, in builtin_dispatch
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     rv = fn(tx, args, kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]          ^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 766, in call_self_handler
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     result = self_handler(tx, *args, **kwargs)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/builtin.py", line 1727, in call_getattr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     return obj.var_getattr(tx, name)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/base.py", line 244, in var_getattr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     value = self.const_getattr(tx, name)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]   File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/variables/constant.py", line 130, in const_getattr
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     member = getattr(self.value, name)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]              ^^^^^^^^^^^^^^^^^^^^^^^^^
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] torch._dynamo.exc.InternalTorchDynamoError: AttributeError: 'NoneType' object has no attribute 'shape'
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] 
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] from user code:
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]    File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 22, in _fused_silu_layer_norm_conv2d_impl
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125]     y = F.layer_norm(y, normalized_shape=(weight.shape[0],), eps=ln_eps)
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] 
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+W0528 02:02:44.460000 464 site-packages/torch/_dynamo/convert_frame.py:1125] 
+Traceback (most recent call last):
+  File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 33, in fused_silu_layer_norm_conv2d
+    y = _fused_silu_layer_norm_conv2d_fast(x, weight, conv_weight, conv_bias, conv_stride, conv_padding, conv_dilation, conv_groups, ln_eps)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 465, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 22, in _fused_silu_layer_norm_conv2d_impl
+    y = F.layer_norm(y, normalized_shape=(weight.shape[0],), eps=ln_eps)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 71, in <module>
+    test_results = test_fused_silu_layer_norm_conv2d()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 57, in test_fused_silu_layer_norm_conv2d
+    results['test_case_1'] = fused_silu_layer_norm_conv2d(x, None, conv_weight)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 35, in fused_silu_layer_norm_conv2d
+    y = _fused_silu_layer_norm_conv2d_impl(x, weight, conv_weight, conv_bias, conv_stride, conv_padding, conv_dilation, conv_groups, ln_eps)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt11_router_20260527-194836/call_acc/fused_silu_layer_norm_conv2d.py", line 22, in _fused_silu_layer_norm_conv2d_impl
+    y = F.layer_norm(y, normalized_shape=(weight.shape[0],), eps=ln_eps)
+                                          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'shape'
+
+=== Output for fused_index_select_eq.py on GPU 0 ===
+
+=== Errors for fused_index_select_eq.py on GPU 0 ===
+
+=== Output for argmax.py on GPU 0 ===
+
+=== Errors for argmax.py on GPU 0 ===
+
+=== Output for fused_lu_solve.py on GPU 0 ===
+
+=== Errors for fused_lu_solve.py on GPU 0 ===
+
+Deleted fused_silu_layer_norm_conv2d.py
+
+Correct execution rate: 95.00%
+['fused_bmm_rmsnorm_gelu_dropout_sub.py', 'div.py', 'sigmoid_conv2d.py', 'solve_multiple_lu.py', 'tanh.py', 'relu_sqrt.py', 'sqrt.py', 'sigmoid_argmax.py', 'sub.py', 'grid_sample.py', 'svd.py', 'i0.py', 'rsqrt.py', 'dropout_relu_batch_norm_conv2d.py', 'fused_mv_logsoftmax_dropout.py', 'add.py', 'fused_index_select_eq.py', 'argmax.py', 'fused_lu_solve.py']
+Above is call test for lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260527-194844
+================================================================================================================================================================
+
+call_acc survivors: 19 / 20
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+Correct execution rate: 100.00% = 19 / 19
+above is the compare execution for /data/results/lmstudio_prompt11_router_20260527-194836/call_acc
+================================================================================================================================================================================================================================================
+
+exe_acc survivors: 19 / 20
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+[1AProcess:   0%|                                           | 0/19 [00:00<?, ?it/s]
+[1AProcess:   5%|█▊                                 | 1/19 [00:28<08:35, 28.64s/it]
+[1AProcess:  11%|███▋                               | 2/19 [01:07<09:50, 34.76s/it]
+[1AProcess:  16%|█████▌                             | 3/19 [01:37<08:42, 32.65s/it]
+[1AProcess:  21%|███████▎                           | 4/19 [02:14<08:32, 34.17s/it]
+[1AProcess:  26%|█████████▏                         | 5/19 [03:51<13:17, 56.96s/it]
+[1AProcess:  32%|███████████                        | 6/19 [04:36<11:27, 52.91s/it]
+[1AProcess:  37%|████████████▉                      | 7/19 [04:48<07:52, 39.41s/it]
+[1AProcess:  42%|██████████████▋                    | 8/19 [05:29<07:19, 39.92s/it]
+[1AProcess:  47%|████████████████▌                  | 9/19 [05:43<05:19, 31.93s/it]
+[1AProcess:  53%|█████████████████▉                | 10/19 [06:09<04:29, 29.98s/it]
+[1AProcess:  58%|███████████████████▋              | 11/19 [06:37<03:56, 29.57s/it]
+[1AProcess:  63%|█████████████████████▍            | 12/19 [07:04<03:20, 28.68s/it]
+[1AProcess:  68%|███████████████████████▎          | 13/19 [07:32<02:50, 28.46s/it]
+[1AProcess:  74%|█████████████████████████         | 14/19 [08:02<02:24, 28.88s/it]
+[1AProcess:  79%|██████████████████████████▊       | 15/19 [08:16<01:38, 24.50s/it]
+[1AProcess:  84%|████████████████████████████▋     | 16/19 [08:41<01:13, 24.55s/it]
+[1AProcess:  89%|██████████████████████████████▍   | 17/19 [09:08<00:50, 25.23s/it]
+[1AProcess:  95%|████████████████████████████████▏ | 18/19 [09:19<00:21, 21.13s/it]
+✅ finished 1/19: add_perf.py
+✅ finished 2/19: argmax_perf.py
+✅ finished 3/19: div_perf.py
+✅ finished 4/19: dropout_relu_batch_norm_conv2d_perf.py
+✅ finished 5/19: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 6/19: fused_index_select_eq_perf.py
+✅ finished 7/19: fused_lu_solve_perf.py
+✅ finished 8/19: fused_mv_logsoftmax_dropout_perf.py
+✅ finished 9/19: grid_sample_perf.py
+✅ finished 10/19: i0_perf.py
+✅ finished 11/19: relu_sqrt_perf.py
+✅ finished 12/19: rsqrt_perf.py
+✅ finished 13/19: sigmoid_argmax_perf.py
+✅ finished 14/19: sigmoid_conv2d_perf.py
+✅ finished 15/19: solve_multiple_lu_perf.py
+✅ finished 16/19: sqrt_perf.py
+✅ finished 17/19: sub_perf.py
+✅ finished 18/19: svd_perf.py
+✅ finished 19/19: tanh_perf.py
+[1AProcess: 100%|██████████████████████████████████| 19/19 [09:44<00:00, 22.22s/it]
+[1AProcess: 100%|██████████████████████████████████| 19/19 [09:44<00:00, 30.77s/it]
+
+[1AProcess:   0%|                                           | 0/19 [00:00<?, ?it/s]
+[1AProcess:   5%|█▊                                 | 1/19 [00:29<08:42, 29.01s/it]
+[1AProcess:  11%|███▋                               | 2/19 [01:05<09:28, 33.47s/it]
+[1AProcess:  16%|█████▌                             | 3/19 [01:34<08:22, 31.43s/it]
+[1AProcess:  21%|███████▎                           | 4/19 [01:46<05:57, 23.84s/it]
+[1AProcess:  26%|█████████▏                         | 5/19 [03:04<10:05, 43.27s/it]
+[1AProcess:  32%|███████████                        | 6/19 [03:44<09:09, 42.24s/it]
+[1AProcess:  37%|████████████▉                      | 7/19 [03:55<06:24, 32.00s/it]
+[1AProcess:  42%|██████████████▋                    | 8/19 [04:34<06:16, 34.19s/it]
+[1AProcess:  47%|████████████████▌                  | 9/19 [04:47<04:36, 27.63s/it]
+[1AProcess:  53%|█████████████████▉                | 10/19 [05:13<04:02, 27.00s/it]
+[1AProcess:  58%|███████████████████▋              | 11/19 [05:38<03:30, 26.36s/it]
+[1AProcess:  63%|█████████████████████▍            | 12/19 [06:06<03:09, 27.05s/it]
+[1AProcess:  68%|███████████████████████▎          | 13/19 [06:35<02:45, 27.67s/it]
+[1AProcess:  74%|█████████████████████████         | 14/19 [06:49<01:57, 23.42s/it]
+[1AProcess:  79%|██████████████████████████▊       | 15/19 [07:01<01:20, 20.05s/it]
+[1AProcess:  84%|████████████████████████████▋     | 16/19 [07:26<01:04, 21.43s/it]
+[1AProcess:  89%|██████████████████████████████▍   | 17/19 [07:52<00:45, 22.90s/it]
+[1AProcess:  95%|████████████████████████████████▏ | 18/19 [08:04<00:19, 19.62s/it]
+✅ finished 1/19: add_perf.py
+✅ finished 2/19: argmax_perf.py
+✅ finished 3/19: div_perf.py
+✅ finished 4/19: dropout_relu_batch_norm_conv2d_perf.py
+✅ finished 5/19: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 6/19: fused_index_select_eq_perf.py
+✅ finished 7/19: fused_lu_solve_perf.py
+✅ finished 8/19: fused_mv_logsoftmax_dropout_perf.py
+✅ finished 9/19: grid_sample_perf.py
+✅ finished 10/19: i0_perf.py
+✅ finished 11/19: relu_sqrt_perf.py
+✅ finished 12/19: rsqrt_perf.py
+✅ finished 13/19: sigmoid_argmax_perf.py
+✅ finished 14/19: sigmoid_conv2d_perf.py
+✅ finished 15/19: solve_multiple_lu_perf.py
+✅ finished 16/19: sqrt_perf.py
+✅ finished 17/19: sub_perf.py
+✅ finished 18/19: svd_perf.py
+✅ finished 19/19: tanh_perf.py
+[1AProcess: 100%|██████████████████████████████████| 19/19 [08:29<00:00, 21.22s/it]
+[1AProcess: 100%|██████████████████████████████████| 19/19 [08:29<00:00, 26.83s/it]
+
+=== Same-GPU PyTorch reference speedup ===
+================================================================================================================================================================
+add.json: 0.9994
+argmax.json: 1.001
+div.json: 0.9996
+dropout_relu_batch_norm_conv2d.json: 2.5286
+fused_bmm_rmsnorm_gelu_dropout_sub.json: 0.9617
+fused_index_select_eq.json: 1.0001
+fused_lu_solve.json: 2.7646
+fused_mv_logsoftmax_dropout.json: 0.9978
+grid_sample.json: 1.0005
+i0.json: 0.9999
+relu_sqrt.json: 1.9587
+rsqrt.json: 3.7329
+sigmoid_argmax.json: 0.9999
+sigmoid_conv2d.json: 1.0349
+solve_multiple_lu.json: 0.9822
+sqrt.json: 0.9994
+sub.json: 1.6907
+svd.json: 1.0011
+tanh.json: 0.9998
+[0.9994, 1.001, 0.9996, 2.5286, 0.9617, 1.0001, 2.7646, 0.9978, 1.0005, 0.9999, 1.9587, 3.7329, 0.9999, 1.0349, 0.9822, 0.9994, 1.6907, 1.0011, 0.9998]
+
+local_ref_results
+speed up: 1.4
+================================================================================================================================================================
+
+=== Final summary ===
+{
+  "total_predictions": 20,
+  "phase1_call_acc": {
+    "passed": 19,
+    "rate": 95.0
+  },
+  "phase2_exec_acc": {
+    "passed": 19,
+    "rate": 95.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.43,
+    "official_speedup_vs_upstream_golden": 0.43,
+    "local_speedup_vs_same_gpu_pytorch": 1.4,
+    "raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1465\nargmax.json: 0.2526\ndiv.json: 0.1469\ndropout_relu_batch_norm_conv2d.json: 0.6527\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2052\nfused_index_select_eq.json: 0.2869\nfused_lu_solve.json: 1.5062\nfused_mv_logsoftmax_dropout.json: 0.455\ngrid_sample.json failed\ni0.json: 0.2482\nrelu_sqrt.json: 0.278\nrsqrt.json: 0.6061\nsigmoid_argmax.json: 0.1551\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7622\nsqrt.json: 0.1467\nsub.json: 0.2416\nsvd.json: 1.0598\ntanh.json: 0.1466\n[0.1465, 0.2526, 0.1469, 0.6527, 0.2052, 0.2869, 1.5062, 0.455, 0.2482, 0.278, 0.6061, 0.1551, 0.7622, 0.1467, 0.2416, 1.0598, 0.1466]\n\nperf_results\nspeed up: 0.43\n================================================================================================================================================================\n",
+    "official_raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1465\nargmax.json: 0.2526\ndiv.json: 0.1469\ndropout_relu_batch_norm_conv2d.json: 0.6527\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2052\nfused_index_select_eq.json: 0.2869\nfused_lu_solve.json: 1.5062\nfused_mv_logsoftmax_dropout.json: 0.455\ngrid_sample.json failed\ni0.json: 0.2482\nrelu_sqrt.json: 0.278\nrsqrt.json: 0.6061\nsigmoid_argmax.json: 0.1551\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7622\nsqrt.json: 0.1467\nsub.json: 0.2416\nsvd.json: 1.0598\ntanh.json: 0.1466\n[0.1465, 0.2526, 0.1469, 0.6527, 0.2052, 0.2869, 1.5062, 0.455, 0.2482, 0.278, 0.6061, 0.1551, 0.7622, 0.1467, 0.2416, 1.0598, 0.1466]\n\nperf_results\nspeed up: 0.43\n================================================================================================================================================================\n",
+    "local_raw_output_tail": "================================================================================================================================================================\nadd.json: 0.9994\nargmax.json: 1.001\ndiv.json: 0.9996\ndropout_relu_batch_norm_conv2d.json: 2.5286\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.9617\nfused_index_select_eq.json: 1.0001\nfused_lu_solve.json: 2.7646\nfused_mv_logsoftmax_dropout.json: 0.9978\ngrid_sample.json: 1.0005\ni0.json: 0.9999\nrelu_sqrt.json: 1.9587\nrsqrt.json: 3.7329\nsigmoid_argmax.json: 0.9999\nsigmoid_conv2d.json: 1.0349\nsolve_multiple_lu.json: 0.9822\nsqrt.json: 0.9994\nsub.json: 1.6907\nsvd.json: 1.0011\ntanh.json: 0.9998\n[0.9994, 1.001, 0.9996, 2.5286, 0.9617, 1.0001, 2.7646, 0.9978, 1.0005, 0.9999, 1.9587, 3.7329, 0.9999, 1.0349, 0.9822, 0.9994, 1.6907, 1.0011, 0.9998]\n\nlocal_ref_results\nspeed up: 1.4\n================================================================================================================================================================"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt11_router_20260527-194836"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/a01637220/main/ap-h6ZLbr5NWKCVO96c9bkEiz

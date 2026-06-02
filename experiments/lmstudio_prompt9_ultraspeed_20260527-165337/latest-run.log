@@ -1,0 +1,256 @@
+✓ Initialized. View run at https://modal.com/apps/a01637220/main/ap-28hT7iuYgPStMzg7OUziTe
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app_lmstudio.py
+├── 🔨 Created mount PythonPackage:modal_app
+├── 🔨 Created function fetch_alpaca_items.
+└── 🔨 Created function evaluate_predictions.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+using prompt header: prompt-9-ultraspeed.txt
+generating 10 missing predictions locally with qwen/qwen3-coder-30b via native at http://localhost:1234/v1
+  5/10 generated
+  10/10 generated
+uploading local-predictions/lmstudio_qwen_qwen3-coder-30b_simp_limit10_20260527-164111.jsonl -> volume://uploads/lmstudio_qwen_qwen3-coder-30b_simp_limit10_20260527-164111.jsonl
+
+evaluating: volume://uploads/lmstudio_qwen_qwen3-coder-30b_simp_limit10_20260527-164111.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+W0527 22:42:52.616000 27 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+W0527 22:43:13.970000 164 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+
+=== Output for relu_sqrt.py on GPU 0 ===
+
+=== Errors for relu_sqrt.py on GPU 0 ===
+
+=== Output for sqrt.py on GPU 0 ===
+
+=== Errors for sqrt.py on GPU 0 ===
+
+=== Output for sigmoid_argmax.py on GPU 0 ===
+
+=== Errors for sigmoid_argmax.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_prompt9_ultraspeed/call_acc/sigmoid_argmax.py", line 82, in <module>
+    test_results = test_sigmoid_argmax()
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt9_ultraspeed/call_acc/sigmoid_argmax.py", line 66, in test_sigmoid_argmax
+    results["test_case_1"] = sigmoid_argmax(input1)
+                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_prompt9_ultraspeed/call_acc/sigmoid_argmax.py", line 46, in sigmoid_argmax
+    _sigmoid_argmax_kernel[grid](flat_input, output, n, 1, n, BLOCK_SIZE=1024)
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 240, in compile
+    key = f"{triton_key()}-{src.hash()}-{backend.hash()}-{options.hash()}-{str(sorted(env_vars.items()))}"
+                            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 109, in hash
+    key = f"{self.fn.cache_key}-{self.attrs.hash()}-{sorted_sig}-{sorted_constants}"
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 758, in cache_key
+    dependencies_finder.visit(self.parse())
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 167, in visit_FunctionDef
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 221, in visit_Assign
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 417, in generic_visit
+    self.visit(value)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 127, in visit_Call
+    func = self.visit(node.func)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 117, in visit_Attribute
+    return getattr(lhs, node.attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'triton.language' has no attribute 'arg_max'. Did you mean: 'argmax'?
+
+=== Output for sub.py on GPU 0 ===
+
+=== Errors for sub.py on GPU 0 ===
+
+=== Output for grid_sample.py on GPU 0 ===
+
+=== Errors for grid_sample.py on GPU 0 ===
+
+Deleted sigmoid_argmax.py
+
+Correct execution rate: 90.00%
+['fused_bmm_rmsnorm_gelu_dropout_sub.py', 'div.py', 'sigmoid_conv2d.py', 'solve_multiple_lu.py', 'tanh.py', 'relu_sqrt.py', 'sqrt.py', 'sub.py', 'grid_sample.py']
+Above is call test for lmstudio_qwen_qwen3-coder-30b_simp_limit10_20260527-164111
+================================================================================================================================================================
+
+call_acc survivors: 9 / 10
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+Correct execution rate: 100.00% = 9 / 9
+above is the compare execution for /data/results/lmstudio_prompt9_ultraspeed/call_acc
+================================================================================================================================================================================================================================================
+
+exe_acc survivors: 9 / 10
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+[1AProcess:   0%|                                            | 0/9 [00:00<?, ?it/s]
+[1AProcess:  11%|████                                | 1/9 [00:29<03:56, 29.55s/it]
+[1AProcess:  22%|████████                            | 2/9 [01:50<06:57, 59.65s/it]
+[1AProcess:  33%|████████████                        | 3/9 [02:02<03:47, 37.90s/it]
+[1AProcess:  44%|████████████████                    | 4/9 [02:26<02:43, 32.67s/it]
+[1AProcess:  56%|████████████████████                | 5/9 [02:48<01:54, 28.63s/it]
+[1AProcess:  67%|████████████████████████            | 6/9 [03:00<01:08, 22.88s/it]
+[1AProcess:  78%|████████████████████████████        | 7/9 [03:24<00:47, 23.52s/it]
+[1AProcess:  89%|████████████████████████████████    | 8/9 [03:52<00:24, 24.81s/it]
+✅ finished 1/9: div_perf.py
+✅ finished 2/9: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 3/9: grid_sample_perf.py
+✅ finished 4/9: relu_sqrt_perf.py
+✅ finished 5/9: sigmoid_conv2d_perf.py
+✅ finished 6/9: solve_multiple_lu_perf.py
+✅ finished 7/9: sqrt_perf.py
+✅ finished 8/9: sub_perf.py
+✅ finished 9/9: tanh_perf.py
+[1AProcess: 100%|████████████████████████████████████| 9/9 [04:17<00:00, 24.75s/it]
+[1AProcess: 100%|████████████████████████████████████| 9/9 [04:17<00:00, 28.57s/it]
+
+[1AProcess:   0%|                                            | 0/9 [00:00<?, ?it/s]
+[1AProcess:  11%|████                                | 1/9 [00:26<03:30, 26.34s/it]
+[1AProcess:  22%|████████                            | 2/9 [01:34<05:57, 51.08s/it]
+[1AProcess:  33%|████████████                        | 3/9 [01:46<03:19, 33.28s/it]
+[1AProcess:  44%|████████████████                    | 4/9 [02:10<02:26, 29.35s/it]
+[1AProcess:  56%|████████████████████                | 5/9 [02:23<01:34, 23.62s/it]
+[1AProcess:  67%|████████████████████████            | 6/9 [02:35<00:58, 19.49s/it]
+[1AProcess:  78%|████████████████████████████        | 7/9 [02:58<00:41, 20.72s/it]
+[1AProcess:  89%|████████████████████████████████    | 8/9 [03:23<00:22, 22.22s/it]
+✅ finished 1/9: div_perf.py
+✅ finished 2/9: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 3/9: grid_sample_perf.py
+✅ finished 4/9: relu_sqrt_perf.py
+✅ finished 5/9: sigmoid_conv2d_perf.py
+✅ finished 6/9: solve_multiple_lu_perf.py
+✅ finished 7/9: sqrt_perf.py
+✅ finished 8/9: sub_perf.py
+✅ finished 9/9: tanh_perf.py
+[1AProcess: 100%|████████████████████████████████████| 9/9 [03:47<00:00, 22.56s/it]
+[1AProcess: 100%|████████████████████████████████████| 9/9 [03:47<00:00, 25.23s/it]
+
+=== Same-GPU PyTorch reference speedup ===
+================================================================================================================================================================
+div.json: 0.9803
+fused_bmm_rmsnorm_gelu_dropout_sub.json: 0.9458
+grid_sample.json: 1.0008
+relu_sqrt.json: 1.9573
+sigmoid_conv2d.json: 1.0432
+solve_multiple_lu.json: 0.9836
+sqrt.json: 0.981
+sub.json: 1.6599
+tanh.json: 0.98
+[0.9803, 0.9458, 1.0008, 1.9573, 1.0432, 0.9836, 0.981, 1.6599, 0.98]
+
+local_ref_results
+speed up: 1.17
+================================================================================================================================================================
+
+=== Final summary ===
+{
+  "total_predictions": 10,
+  "phase1_call_acc": {
+    "passed": 9,
+    "rate": 90.0
+  },
+  "phase2_exec_acc": {
+    "passed": 9,
+    "rate": 90.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.27,
+    "official_speedup_vs_upstream_golden": 0.27,
+    "local_speedup_vs_same_gpu_pytorch": 1.17,
+    "raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1441\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2018\ngrid_sample.json failed\nrelu_sqrt.json: 0.278\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7649\nsqrt.json: 0.1441\nsub.json: 0.2374\ntanh.json: 0.1439\n[0.1441, 0.2018, 0.278, 0.7649, 0.1441, 0.2374, 0.1439]\n\nperf_results\nspeed up: 0.27\n================================================================================================================================================================\n",
+    "official_raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.1441\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.2018\ngrid_sample.json failed\nrelu_sqrt.json: 0.278\nsigmoid_conv2d.json failed\nsolve_multiple_lu.json: 0.7649\nsqrt.json: 0.1441\nsub.json: 0.2374\ntanh.json: 0.1439\n[0.1441, 0.2018, 0.278, 0.7649, 0.1441, 0.2374, 0.1439]\n\nperf_results\nspeed up: 0.27\n================================================================================================================================================================\n",
+    "local_raw_output_tail": "================================================================================================================================================================\ndiv.json: 0.9803\nfused_bmm_rmsnorm_gelu_dropout_sub.json: 0.9458\ngrid_sample.json: 1.0008\nrelu_sqrt.json: 1.9573\nsigmoid_conv2d.json: 1.0432\nsolve_multiple_lu.json: 0.9836\nsqrt.json: 0.981\nsub.json: 1.6599\ntanh.json: 0.98\n[0.9803, 0.9458, 1.0008, 1.9573, 1.0432, 0.9836, 0.981, 1.6599, 0.98]\n\nlocal_ref_results\nspeed up: 1.17\n================================================================================================================================================================"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_prompt9_ultraspeed"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/a01637220/main/ap-28hT7iuYgPStMzg7OUziTe

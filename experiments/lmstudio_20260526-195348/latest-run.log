@@ -1,0 +1,245 @@
+✓ Initialized. View run at https://modal.com/apps/gusortepz/main/ap-zmihVngokBYsJV4gTHENmp
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app_lmstudio.py
+├── 🔨 Created mount PythonPackage:modal_app
+├── 🔨 Created function fetch_alpaca_items.
+└── 🔨 Created function evaluate_predictions.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+using prompt header: prompt-0.txt
+generating 5 missing predictions locally with qwen/qwen3.6-35b-a3b via native at http://localhost:1234/v1
+  5/5 generated
+uploading local-predictions/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-194518.jsonl -> volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-194518.jsonl
+
+evaluating: volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-194518.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_6a/call_acc/fused_bmm_rmsnorm_gelu_dropout_sub.py", line 144, in <module>
+    test_results = test_fused_bmm_rmsnorm_gelu_dropout_sub()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/fused_bmm_rmsnorm_gelu_dropout_sub.py", line 128, in test_fused_bmm_rmsnorm_gelu_dropout_sub
+    results["test_case_1"] = fused_bmm_rmsnorm_gelu_dropout_sub(input1, input2, other, normalized_shape)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/fused_bmm_rmsnorm_gelu_dropout_sub.py", line 102, in fused_bmm_rmsnorm_gelu_dropout_sub
+    fused_bmm_rmsnorm_gelu_dropout_sub_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 618, in run
+    bound_args, sig_and_spec, constexpr_vals, non_constexpr_vals, excess_kwargs = self.binder(*args, **kwargs)
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in dynamic_func
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 328, in mangle_type
+    dsk = (arg.dtype, is_const)
+           ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'dtype'
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_6a/call_acc/div.py", line 66, in <module>
+    test_results = test_div()
+                   ^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/div.py", line 47, in test_div
+    results["test_case_1"] = div(input1, other1)
+                             ^^^
+NameError: name 'div' is not defined. Did you mean: 'dir'?
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_6a/call_acc/sigmoid_conv2d.py", line 165, in <module>
+    test_results = test_sigmoid_conv2d()
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/sigmoid_conv2d.py", line 151, in test_sigmoid_conv2d
+    results["test_case_1"] = sigmoid_conv2d(input1, weight1)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/sigmoid_conv2d.py", line 58, in sigmoid_conv2d
+    sigmoid_conv2d_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 276, in compile
+    module = src.make_ir(options, codegen_fns, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 113, in make_ir
+    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.UnsupportedLanguageConstruct: at 39:23:
+
+    # Iterate over groups and input channels
+    for g in range(groups):
+        for ic in range(in_channels // groups):
+            # Compute input coordinates for each kernel position
+            for kh in range(kernel_height):
+                for kw in range(kernel_width):
+                    ih = h_start + kh * dilation
+                    iw = w_start + kw * dilation
+
+                    # Boundary check for padding
+                    if 0 <= ih < in_height and 0 <= iw < in_width:
+                       ^
+simultaneous multiple comparison is not supported
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_6a/call_acc/solve_multiple_lu.py", line 166, in <module>
+    test_results = test_solve_multiple_lu()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/solve_multiple_lu.py", line 147, in test_solve_multiple_lu
+    results["test_case_1"] = solve_multiple_lu(A1, Bs1)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/solve_multiple_lu.py", line 128, in solve_multiple_lu
+    P.stride(0), P.stride(1), P.stride(2) if P is not None else 0,
+                              ^^^^^^^^^^^
+IndexError: Dimension out of range (expected to be in range of [-2, 1], but got 2)
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio_6a/call_acc/tanh.py", line 82, in <module>
+    test_results = test_tanh()
+                   ^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/tanh.py", line 66, in test_tanh
+    results["test_case_1"] = tanh(input_tensor_1)
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio_6a/call_acc/tanh.py", line 46, in tanh
+    tanh_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 240, in compile
+    key = f"{triton_key()}-{src.hash()}-{backend.hash()}-{options.hash()}-{str(sorted(env_vars.items()))}"
+                            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 109, in hash
+    key = f"{self.fn.cache_key}-{self.attrs.hash()}-{sorted_sig}-{sorted_constants}"
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 758, in cache_key
+    dependencies_finder.visit(self.parse())
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 167, in visit_FunctionDef
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 221, in visit_Assign
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 417, in generic_visit
+    self.visit(value)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 127, in visit_Call
+    func = self.visit(node.func)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 117, in visit_Attribute
+    return getattr(lhs, node.attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'triton.language.math' has no attribute 'tanh'
+
+Deleted div.py
+Deleted fused_bmm_rmsnorm_gelu_dropout_sub.py
+Deleted sigmoid_conv2d.py
+Deleted solve_multiple_lu.py
+Deleted tanh.py
+
+Correct execution rate: 0.00%
+[]
+Above is call test for lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-194518
+================================================================================================================================================================
+
+call_acc survivors: 0 / 5
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+exe_acc survivors: 0 / 5
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+=== Final summary ===
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 0,
+    "rate": 0.0
+  },
+  "phase2_exec_acc": {
+    "passed": 0,
+    "rate": 0.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": null,
+    "raw_output_tail": "skipped (no surviving operators)"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_6a"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/gusortepz/main/ap-zmihVngokBYsJV4gTHENmp

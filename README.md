@@ -10,8 +10,9 @@ Designed to be cloned, configured in ~5 minutes, and shared with students.
 - **Benchmark:** [TritonBench](https://github.com/thunlp/TritonBench), track **T**
   (166 PyTorch operators with Alpaca-formatted instructions). Cloned and patched
   inside the container — you don't have to install or fix anything locally.
-- **What you get back:** call-accuracy %, execution-accuracy %, and a
-  geometric speedup vs. the golden PyTorch baseline.
+- **What you get back:** call-accuracy %, execution-accuracy %, the official
+  TritonBench speedup vs. shipped golden PyTorch timings, and a same-GPU
+  speedup vs. PyTorch remeasured on the current Modal GPU.
 
 ## Cost expectation
 
@@ -28,7 +29,9 @@ Anthropic Claude Sonnet, generation is well under $0.05.
 
 ```bash
 # 1. Modal client + auth
-pip install -r requirements-local.txt
+python3 -m venv ~/venvs/modal
+source ~/venvs/modal/bin/activate
+python -m pip install -r requirements-local.txt
 modal setup                       # opens a browser to link your account
 
 # 2. Pick ONE provider and add its key as a Modal secret named "tritonbench-llm".
@@ -45,9 +48,10 @@ an environment variable instead of editing code:
 export TRITONBENCH_LLM_SECRET=openai-secret    # or whatever yours is called
 ```
 
-You only need the secret if you want this project to **generate** the Triton
-predictions for you. If you already have a `predictions.jsonl` from somewhere
-else, skip it and use `evaluate_only` (see below).
+You only need the secret if you want Modal to **generate** the Triton predictions
+through Anthropic/OpenAI for you. If you generate locally with LM Studio or
+already have a `predictions.jsonl`, skip it and use the local/bring-your-own
+flows below.
 
 ---
 
@@ -68,6 +72,33 @@ modal run modal_app.py::main --provider openai --model gpt-4o-mini
 # Use the "complex" instruction variant
 modal run modal_app.py::main --dataset comp
 ```
+
+### Local LM Studio generation + Modal evaluation
+
+Use this when the LLM is running on your laptop and only the benchmark test runs
+on Modal. Start LM Studio's local server first, load your Qwen model, then run:
+
+```bash
+# Smoke test: generate 5 predictions locally, upload JSONL, evaluate on Modal
+modal run modal_app_lmstudio.py::main --limit 5
+
+# Full run. If --model is omitted, the script uses the first model reported by
+# LM Studio's /v1/models endpoint.
+modal run modal_app_lmstudio.py::main
+
+# If LM Studio exposes a different model id or port:
+modal run modal_app_lmstudio.py::main \
+  --model qwen3.6-35b-a3b \
+  --api native \
+  --prompt-file prompt-5.txt \
+  --base-url http://localhost:1234/v1
+```
+
+Local predictions are written under `local-predictions/` before upload. The
+default `--api native` uses LM Studio's `/api/v1/chat` endpoint, which returns
+the final message for reasoning models such as Qwen. The default `--concurrency
+1` is intentional for desktop LLM serving; increase it only if LM Studio and
+your hardware handle parallel requests well.
 
 ### Bring your own predictions
 
@@ -112,8 +143,10 @@ Each run writes to the `tritonbench-t-data` volume under `results/`:
 
 ```
 results/
-├── call_acc/         # one .py per operator that passed phase 1 (then pruned by phase 2)
-└── perf_results/     # per-op timing JSON consumed by phase 3
+├── call_acc/             # one .py per operator that passed phase 1 (then pruned by phase 2)
+├── perf_results/         # generated-code timings consumed by phase 3
+├── local_ref_ops/        # copied PyTorch reference modules for surviving ops
+└── local_ref_results/    # same-GPU PyTorch reference timings
 ```
 
 Browse / download from your laptop:
@@ -155,8 +188,9 @@ that rely on bf16 will fail at phase 1. To rerun on something beefier, edit
    - Phase 2 (`1_exe_acc.py::execute_4folder`) — re-runs each survivor and the
      reference side-by-side, deletes any whose `stdout` differs.
    - Phase 3 (`perf_T/run_bench/*` + `2_efficiency.py`) — benchmarks each
-     remaining op against the golden PyTorch timings and prints a summary
-     speedup.
+     remaining op, reports the official speedup against TritonBench's shipped
+     golden PyTorch timings, then remeasures the PyTorch reference modules on
+     the same Modal GPU and reports a local fair speedup.
 
 Final summary is printed as JSON, e.g.
 
@@ -165,7 +199,10 @@ Final summary is printed as JSON, e.g.
   "total_predictions": 166,
   "phase1_call_acc": { "passed": 88, "rate": 53.01 },
   "phase2_exec_acc": { "passed": 71, "rate": 42.77 },
-  "phase3_efficiency": { "speedup_vs_pytorch": 0.83, "raw_output_tail": "..." }
+  "phase3_efficiency": {
+    "official_speedup_vs_upstream_golden": 0.83,
+    "local_speedup_vs_same_gpu_pytorch": 1.02
+  }
 }
 ```
 

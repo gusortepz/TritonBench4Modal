@@ -1,0 +1,10 @@
+# TritonBench LM Studio Run
+
+- Saved at: 20260526-225817
+- Modal volume: tritonbench-t-data
+- Modal output subdir: results/lmstudio_prompt9_ultraspeed
+- Downloaded artifacts: results/lmstudio_prompt9_ultraspeed
+- Volume listing: modal-volume-listing.txt
+- Run log: latest-run.log, when present
+- Final summary: latest-summary.json, when present
+- Speedup summary: speedup-summary.json, when present

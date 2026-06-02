@@ -1,0 +1,17 @@
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 0,
+    "rate": 0.0
+  },
+  "phase2_exec_acc": {
+    "passed": 0,
+    "rate": 0.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": null,
+    "raw_output_tail": "skipped (no surviving operators)"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio_6a"
+}

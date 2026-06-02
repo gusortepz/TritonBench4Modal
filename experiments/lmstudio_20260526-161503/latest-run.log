@@ -1,0 +1,175 @@
+✓ Initialized. View run at https://modal.com/apps/gusortepz/main/ap-yLipgP1v5LZEld3V5pjnOc
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app_lmstudio.py
+├── 🔨 Created mount PythonPackage:modal_app
+├── 🔨 Created function fetch_alpaca_items.
+└── 🔨 Created function evaluate_predictions.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+generating 5 missing predictions locally with qwen/qwen3.6-35b-a3b via native at http://localhost:1234/v1
+  5/5 generated
+uploading local-predictions/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-155925.jsonl -> volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-155925.jsonl
+
+evaluating: volume://uploads/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-155925.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio/call_acc/fused_bmm_rmsnorm_gelu_dropout_sub.py", line 72, in <module>
+    test_results = test_fused_bmm_rmsnorm_gelu_dropout_sub()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio/call_acc/fused_bmm_rmsnorm_gelu_dropout_sub.py", line 56, in test_fused_bmm_rmsnorm_gelu_dropout_sub
+    results["test_case_1"] = fused_bmm_rmsnorm_gelu_dropout_sub(input1, input2, other, normalized_shape)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio/call_acc/fused_bmm_rmsnorm_gelu_dropout_sub.py", line 14, in fused_bmm_rmsnorm_gelu_dropout_sub
+    normalized_shape = tuple(normalized_shape)
+                       ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'int' object is not iterable
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio/call_acc/div.py", line 167, in <module>
+    test_results = test_div()
+                   ^^^^^^^^^^
+  File "/data/results/lmstudio/call_acc/div.py", line 148, in test_div
+    results["test_case_1"] = div(input1, other1)
+                             ^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio/call_acc/div.py", line 117, in div
+    _div_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 636, in run
+    raise KeyError("Keyword argument %s was specified but unrecognised" % k)
+KeyError: 'Keyword argument BLOCK_SIZE was specified but unrecognised'
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/lmstudio/call_acc/solve_multiple_lu.py", line 54, in <module>
+    test_results = test_solve_multiple_lu()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio/call_acc/solve_multiple_lu.py", line 35, in test_solve_multiple_lu
+    results["test_case_1"] = solve_multiple_lu(A1, Bs1)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/lmstudio/call_acc/solve_multiple_lu.py", line 15, in solve_multiple_lu
+    X = torch.linalg.lu_solve(LU, pivots, Bs, pivot=pivot)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: linalg_lu_solve() got an unexpected keyword argument 'pivot'
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+
+Deleted div.py
+Deleted fused_bmm_rmsnorm_gelu_dropout_sub.py
+Deleted solve_multiple_lu.py
+
+Correct execution rate: 40.00%
+['sigmoid_conv2d.py', 'tanh.py']
+Above is call test for lmstudio_qwen_qwen3.6-35b-a3b_simp_limit5_20260526-155925
+================================================================================================================================================================
+
+call_acc survivors: 2 / 5
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+Correct execution rate: 100.00% = 2 / 2
+above is the compare execution for /data/results/lmstudio/call_acc
+================================================================================================================================================================================================================================================
+
+exe_acc survivors: 2 / 5
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+[1AProcess:   0%|                                            | 0/2 [00:00<?, ?it/s]
+[1AProcess:  50%|██████████████████                  | 1/2 [00:11<00:11, 11.78s/it]
+✅ finished 1/2: sigmoid_conv2d_perf.py
+✅ finished 2/2: tanh_perf.py
+[1AProcess: 100%|████████████████████████████████████| 2/2 [00:34<00:00, 18.31s/it]
+[1AProcess: 100%|████████████████████████████████████| 2/2 [00:34<00:00, 17.33s/it]
+
+=== Final summary ===
+{
+  "total_predictions": 5,
+  "phase1_call_acc": {
+    "passed": 2,
+    "rate": 40.0
+  },
+  "phase2_exec_acc": {
+    "passed": 2,
+    "rate": 40.0
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.14,
+    "raw_output_tail": "================================================================================================================================================================\nsigmoid_conv2d.json failed\ntanh.json: 0.1437\n[0.1437]\n\nperf_results\nspeed up: 0.14\n================================================================================================================================================================\n"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/lmstudio"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/gusortepz/main/ap-yLipgP1v5LZEld3V5pjnOc
