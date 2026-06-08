@@ -1,0 +1,11 @@
+{
+  "label": "haiku45",
+  "model": "claude-haiku-4-5",
+  "provider": "anthropic",
+  "prompt_file": "prompt-12-general-router.txt",
+  "dataset": "simp",
+  "max_tokens": 16000,
+  "concurrency": 1,
+  "output_subdir": "results/prompt12_haiku45_full_20260607-201510",
+  "prediction_remote": "predictions/anthropic_claude-haiku-4-5_simp.jsonl"
+}

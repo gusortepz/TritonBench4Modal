@@ -1,0 +1,24 @@
+[
+  {
+    "run": "haiku45",
+    "artifacts_subdir": "results/prompt12_haiku45_full_20260607-201510",
+    "total_predictions": 166,
+    "phase1_passed": 135,
+    "phase1_rate": 81.33,
+    "phase2_passed": 135,
+    "phase2_rate": 81.33,
+    "official_speedup_vs_upstream_golden": 0.42,
+    "local_speedup_vs_same_gpu_pytorch": 1.1
+  },
+  {
+    "run": "sonnet46",
+    "artifacts_subdir": "results/prompt12_sonnet46_full_20260607-201510",
+    "total_predictions": 166,
+    "phase1_passed": 159,
+    "phase1_rate": 95.78,
+    "phase2_passed": 159,
+    "phase2_rate": 95.78,
+    "official_speedup_vs_upstream_golden": 0.4,
+    "local_speedup_vs_same_gpu_pytorch": 1.23
+  }
+]

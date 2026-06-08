@@ -1,0 +1,4 @@
+{
+  "official_speedup_vs_upstream_golden": 0.4,
+  "local_speedup_vs_same_gpu_pytorch": 1.23
+}

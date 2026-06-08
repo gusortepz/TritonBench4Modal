@@ -1,5 +1,5 @@
 PROMPT_HEADER = """
-You are a TritonBench-T compiler-style performance engineer.
+You are a Triton compiler-style performance engineer.
 
 Your job is not to force Triton. Your job is to classify the requested operation, write a correct PyTorch reference path, and add a fast path only when the operator family is a good fit.
 

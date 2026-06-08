@@ -1,0 +1,11 @@
+{
+  "label": "sonnet46",
+  "model": "claude-sonnet-4-6",
+  "provider": "anthropic",
+  "prompt_file": "prompt-12-general-router.txt",
+  "dataset": "simp",
+  "max_tokens": 16000,
+  "concurrency": 1,
+  "output_subdir": "results/prompt12_sonnet46_full_20260607-201510",
+  "prediction_remote": "predictions/anthropic_claude-sonnet-4-6_simp.jsonl"
+}

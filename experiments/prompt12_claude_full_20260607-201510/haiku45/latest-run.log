@@ -1,0 +1,2206 @@
+✓ Initialized. View run at https://modal.com/apps/a01637220/main/ap-97f2yMEJNBBobnWRiMO8ur
+✓ Created objects.
+├── 🔨 Created mount /Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/modal_app.py
+├── 🔨 Created function generate_predictions.
+└── 🔨 Created function evaluate.
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+generating 166 predictions with anthropic/claude-haiku-4-5
+  5/166
+  10/166
+  15/166
+  20/166
+  25/166
+  30/166
+  35/166
+  40/166
+  45/166
+  50/166
+  55/166
+  60/166
+  65/166
+  70/166
+  75/166
+  80/166
+  85/166
+  90/166
+  95/166
+  100/166
+  105/166
+  110/166
+  115/166
+  120/166
+  125/166
+  130/166
+  135/166
+  140/166
+  145/166
+  150/166
+  155/166
+  160/166
+  165/166
+  166/166
+wrote /data/predictions/anthropic_claude-haiku-4-5_simp.jsonl
+
+evaluating: volume://predictions/anthropic_claude-haiku-4-5_simp.jsonl
+
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.4.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+
+======================================================================
+=== Phase 1: call accuracy ===
+======================================================================
+instruction
+=== Output for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout_sub.py on GPU 0 ===
+
+=== Output for div.py on GPU 0 ===
+
+=== Errors for div.py on GPU 0 ===
+
+=== Output for sigmoid_conv2d.py on GPU 0 ===
+
+=== Errors for sigmoid_conv2d.py on GPU 0 ===
+
+=== Output for solve_multiple_lu.py on GPU 0 ===
+
+=== Errors for solve_multiple_lu.py on GPU 0 ===
+
+=== Output for tanh.py on GPU 0 ===
+
+=== Errors for tanh.py on GPU 0 ===
+
+=== Output for relu_sqrt.py on GPU 0 ===
+
+=== Errors for relu_sqrt.py on GPU 0 ===
+
+=== Output for sqrt.py on GPU 0 ===
+
+=== Errors for sqrt.py on GPU 0 ===
+
+=== Output for sigmoid_argmax.py on GPU 0 ===
+
+=== Errors for sigmoid_argmax.py on GPU 0 ===
+
+=== Output for sub.py on GPU 0 ===
+
+=== Errors for sub.py on GPU 0 ===
+
+=== Output for grid_sample.py on GPU 0 ===
+
+=== Errors for grid_sample.py on GPU 0 ===
+
+=== Output for svd.py on GPU 0 ===
+
+=== Errors for svd.py on GPU 0 ===
+
+=== Output for i0.py on GPU 0 ===
+
+=== Errors for i0.py on GPU 0 ===
+
+=== Output for rsqrt.py on GPU 0 ===
+
+=== Errors for rsqrt.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/rsqrt.py", line 38, in <module>
+    def rsqrt(input: Tensor, *, out: Optional[Tensor] = None) -> Tensor:
+                                     ^^^^^^^^
+NameError: name 'Optional' is not defined
+
+=== Output for dropout_relu_batch_norm_conv2d.py on GPU 0 ===
+
+=== Errors for dropout_relu_batch_norm_conv2d.py on GPU 0 ===
+
+=== Output for fused_mv_logsoftmax_dropout.py on GPU 0 ===
+
+=== Errors for fused_mv_logsoftmax_dropout.py on GPU 0 ===
+
+=== Output for add.py on GPU 0 ===
+
+=== Errors for add.py on GPU 0 ===
+
+=== Output for fused_silu_layer_norm_conv2d.py on GPU 0 ===
+
+=== Errors for fused_silu_layer_norm_conv2d.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_silu_layer_norm_conv2d.py", line 146, in <module>
+    test_results = test_fused_silu_layer_norm_conv2d()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_silu_layer_norm_conv2d.py", line 132, in test_fused_silu_layer_norm_conv2d
+    results['test_case_1'] = fused_silu_layer_norm_conv2d(x, None, conv_weight)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_silu_layer_norm_conv2d.py", line 101, in fused_silu_layer_norm_conv2d
+    ln_out = F.layer_norm(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/functional.py", line 2900, in layer_norm
+    return torch.layer_norm(
+           ^^^^^^^^^^^^^^^^^
+RuntimeError: Given normalized_shape=[6], expected input with shape [*, 6], but got input of size[1, 6, 3, 3]
+
+=== Output for fused_index_select_eq.py on GPU 0 ===
+
+=== Errors for fused_index_select_eq.py on GPU 0 ===
+
+=== Output for argmax.py on GPU 0 ===
+
+=== Errors for argmax.py on GPU 0 ===
+
+=== Output for fused_lu_solve.py on GPU 0 ===
+
+=== Errors for fused_lu_solve.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_lu_solve.py", line 81, in <module>
+    test_results = test_fused_lu_solve()
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_lu_solve.py", line 59, in test_fused_lu_solve
+    results["test_case_1"] = fused_lu_solve(A1, b1)
+                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_lu_solve.py", line 36, in fused_lu_solve
+    LU, pivots = torch.lu_factor(A)
+                 ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/__init__.py", line 2562, in __getattr__
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+AttributeError: module 'torch' has no attribute 'lu_factor'
+
+=== Output for normalize_pairwise_distance.py on GPU 0 ===
+
+=== Errors for normalize_pairwise_distance.py on GPU 0 ===
+
+=== Output for max.py on GPU 0 ===
+
+=== Errors for max.py on GPU 0 ===
+
+=== Output for log_softmax_linear.py on GPU 0 ===
+
+=== Errors for log_softmax_linear.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/log_softmax_linear.py", line 95, in <module>
+    test_results = test_log_softmax_linear()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/log_softmax_linear.py", line 91, in test_log_softmax_linear
+    results["test_case_4"] = log_softmax_linear(input4, weight4, bias4, dtype=torch.float64)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/log_softmax_linear.py", line 47, in log_softmax_linear
+    output = F.linear(input, weight, bias)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+=== Output for relu.py on GPU 0 ===
+
+=== Errors for relu.py on GPU 0 ===
+
+=== Output for least_squares_qr.py on GPU 0 ===
+
+=== Errors for least_squares_qr.py on GPU 0 ===
+
+=== Output for determinant_via_qr.py on GPU 0 ===
+
+=== Errors for determinant_via_qr.py on GPU 0 ===
+
+=== Output for fused_tile_exp.py on GPU 0 ===
+
+=== Errors for fused_tile_exp.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_tile_exp.py", line 87, in <module>
+    test_results = test_fused_tile_exp()
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_tile_exp.py", line 83, in test_fused_tile_exp
+    results["test_case_4"] = fused_tile_exp(input4, dims4, out=out_tensor)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_tile_exp.py", line 51, in fused_tile_exp
+    out.copy_(y)
+RuntimeError: The size of tensor a (3) must match the size of tensor b (6) at non-singleton dimension 1
+
+=== Output for sqrt_tanh.py on GPU 0 ===
+
+=== Errors for sqrt_tanh.py on GPU 0 ===
+
+=== Output for silu_batch_norm.py on GPU 0 ===
+
+=== Errors for silu_batch_norm.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/silu_batch_norm.py", line 198, in <module>
+    test_results = test_silu_batch_norm()
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/silu_batch_norm.py", line 183, in test_silu_batch_norm
+    results["test_case_1"] = silu_batch_norm(input_tensor, running_mean, running_var, training=False)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/silu_batch_norm.py", line 152, in silu_batch_norm
+    _silu_batch_norm_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 240, in compile
+    key = f"{triton_key()}-{src.hash()}-{backend.hash()}-{options.hash()}-{str(sorted(env_vars.items()))}"
+                            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 109, in hash
+    key = f"{self.fn.cache_key}-{self.attrs.hash()}-{sorted_sig}-{sorted_constants}"
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 758, in cache_key
+    dependencies_finder.visit(self.parse())
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 167, in visit_FunctionDef
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 221, in visit_Assign
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 417, in generic_visit
+    self.visit(value)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 127, in visit_Call
+    func = self.visit(node.func)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 117, in visit_Attribute
+    return getattr(lhs, node.attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'triton.language' has no attribute 'full_like'
+
+=== Output for index_fill_.py on GPU 0 ===
+
+=== Errors for index_fill_.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/index_fill_.py", line 162, in <module>
+    test_results = test_index_fill_()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/index_fill_.py", line 140, in test_index_fill_
+    results["test_case_1"] = index_fill_(0, x1, index1, value1).cpu()
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/index_fill_.py", line 101, in index_fill_
+    if dim < 0:
+       ^^^^^^^
+RuntimeError: Boolean value of Tensor with more than one value is ambiguous
+
+=== Output for fused_cross_entropy_softmax_layernorm.py on GPU 0 ===
+
+=== Errors for fused_cross_entropy_softmax_layernorm.py on GPU 0 ===
+
+=== Output for mean.py on GPU 0 ===
+
+=== Errors for mean.py on GPU 0 ===
+
+=== Output for eig.py on GPU 0 ===
+
+=== Errors for eig.py on GPU 0 ===
+
+=== Output for logsumexp.py on GPU 0 ===
+
+=== Errors for logsumexp.py on GPU 0 ===
+
+=== Output for fused_embedding_add_tanh.py on GPU 0 ===
+
+=== Errors for fused_embedding_add_tanh.py on GPU 0 ===
+
+=== Output for fused_mv_sigmoid_sub.py on GPU 0 ===
+
+=== Errors for fused_mv_sigmoid_sub.py on GPU 0 ===
+
+=== Output for add_gelu.py on GPU 0 ===
+
+=== Errors for add_gelu.py on GPU 0 ===
+
+=== Output for fused_cosine_embedding_loss_with_normalization.py on GPU 0 ===
+
+=== Errors for fused_cosine_embedding_loss_with_normalization.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_cosine_embedding_loss_with_normalization.py", line 167, in <module>
+    test_results = test_fused_cosine_embedding_loss_with_normalization()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_cosine_embedding_loss_with_normalization.py", line 151, in test_fused_cosine_embedding_loss_with_normalization
+    results["test_case_1"] = fused_cosine_embedding_loss_with_normalization(input1, input2, target)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_cosine_embedding_loss_with_normalization.py", line 102, in fused_cosine_embedding_loss_with_normalization
+    assert target.dtype == torch.float32, "Target must be float32"
+AssertionError: Target must be float32
+
+=== Output for fused_transformer_block.py on GPU 0 ===
+
+=== Errors for fused_transformer_block.py on GPU 0 ===
+
+=== Output for log1p.py on GPU 0 ===
+
+=== Errors for log1p.py on GPU 0 ===
+
+=== Output for sigmoid_batch_norm.py on GPU 0 ===
+
+=== Errors for sigmoid_batch_norm.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/sigmoid_batch_norm.py", line 258, in <module>
+    test_results = test_sigmoid_batch_norm()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/sigmoid_batch_norm.py", line 243, in test_sigmoid_batch_norm
+    results["test_case_1"] = sigmoid_batch_norm(input_tensor, running_mean, running_var)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/sigmoid_batch_norm.py", line 155, in sigmoid_batch_norm
+    _sigmoid_batch_norm_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 618, in run
+    bound_args, sig_and_spec, constexpr_vals, non_constexpr_vals, excess_kwargs = self.binder(*args, **kwargs)
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: dynamic_func() missing 1 required positional argument: 'input_ptr'
+
+=== Output for fused_hardsigmoid_batch_norm.py on GPU 0 ===
+
+=== Errors for fused_hardsigmoid_batch_norm.py on GPU 0 ===
+
+=== Output for zeta.py on GPU 0 ===
+
+=== Errors for zeta.py on GPU 0 ===
+
+=== Output for symmetric_matrix_vector_norm.py on GPU 0 ===
+
+=== Errors for symmetric_matrix_vector_norm.py on GPU 0 ===
+
+=== Output for softplus_linear.py on GPU 0 ===
+
+=== Errors for softplus_linear.py on GPU 0 ===
+
+=== Output for fused_svd_reconstruct.py on GPU 0 ===
+
+=== Errors for fused_svd_reconstruct.py on GPU 0 ===
+
+=== Output for fused_mul_add_logsoftmax_dropout_bmm.py on GPU 0 ===
+
+=== Errors for fused_mul_add_logsoftmax_dropout_bmm.py on GPU 0 ===
+
+=== Output for selu.py on GPU 0 ===
+
+=== Errors for selu.py on GPU 0 ===
+
+=== Output for scaled_add_norm.py on GPU 0 ===
+
+=== Errors for scaled_add_norm.py on GPU 0 ===
+
+=== Output for leaky_relu_conv2d.py on GPU 0 ===
+
+=== Errors for leaky_relu_conv2d.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/leaky_relu_conv2d.py", line 26, in <module>
+    stride: Union[int, Tuple[int, int]] = 1,
+                       ^^^^^
+NameError: name 'Tuple' is not defined. Did you mean: 'tuple'?
+
+=== Output for sqrt_exp.py on GPU 0 ===
+
+=== Errors for sqrt_exp.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/sqrt_exp.py", line 98, in <module>
+    test_results = test_sqrt_exp()
+                   ^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/sqrt_exp.py", line 85, in test_sqrt_exp
+    results["test_case_2"] = sqrt_exp(b)
+                             ^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/sqrt_exp.py", line 59, in sqrt_exp
+    grid = (triton.cdiv(n_elements, BLOCK_SIZE),)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/__init__.py", line 60, in cdiv
+    return (x + y - 1) // y
+           ~~~~~~~~~~~~^^~~
+ZeroDivisionError: integer division or modulo by zero
+
+=== Output for cos_avg_pool1d.py on GPU 0 ===
+
+=== Errors for cos_avg_pool1d.py on GPU 0 ===
+
+=== Output for sum_std.py on GPU 0 ===
+
+=== Errors for sum_std.py on GPU 0 ===
+
+=== Output for mul_relu.py on GPU 0 ===
+
+=== Errors for mul_relu.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/triton/language/core.py", line 35, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/core.py", line 1597, in load
+    return semantic.load(pointer, mask, other, boundary_check, padding_option, cache_modifier, eviction_policy,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/semantic.py", line 1037, in load
+    return _load_legacy(ptr, mask, other, boundary_check, padding, cache, eviction, is_volatile, builder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/semantic.py", line 969, in _load_legacy
+    raise ValueError(f"Unsupported ptr type {ptr.type.__repr__()} in `tl.load`")
+ValueError: Unsupported ptr type <[4], int64> in `tl.load`
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/mul_relu.py", line 141, in <module>
+    test_results = test_mul_relu()
+                   ^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/mul_relu.py", line 122, in test_mul_relu
+    results["test_case_1"] = mul_relu(input1, other1)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/mul_relu.py", line 94, in mul_relu
+    _mul_relu_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 276, in compile
+    module = src.make_ir(options, codegen_fns, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 113, in make_ir
+    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.CompilationError: at 14:8:
+    other_ptr,
+    output_ptr,
+    numel,
+    BLOCK_SIZE: tl.constexpr,
+    other_is_scalar: tl.constexpr,
+):
+    pid = tl.program_id(axis=0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + tl.arange(0, BLOCK_SIZE)
+    mask = offsets < numel
+
+    x = tl.load(input_ptr + offsets, mask=mask, other=0.0)
+        ^
+
+=== Output for gelu_conv2d.py on GPU 0 ===
+
+=== Errors for gelu_conv2d.py on GPU 0 ===
+
+=== Output for fused_instance_norm_selu_conv2d.py on GPU 0 ===
+
+=== Errors for fused_instance_norm_selu_conv2d.py on GPU 0 ===
+
+=== Output for fused_fractional_max_pool2d_with_relu.py on GPU 0 ===
+
+=== Errors for fused_fractional_max_pool2d_with_relu.py on GPU 0 ===
+
+=== Output for chebyshev_polynomial_t.py on GPU 0 ===
+
+=== Errors for chebyshev_polynomial_t.py on GPU 0 ===
+
+=== Output for logit.py on GPU 0 ===
+
+=== Errors for logit.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/logit.py", line 114, in <module>
+    test_results = test_logit()
+                   ^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/logit.py", line 100, in test_logit
+    results["test_case_2"] = logit(input2, eps=eps)
+                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/logit.py", line 66, in logit
+    _logit_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 240, in compile
+    key = f"{triton_key()}-{src.hash()}-{backend.hash()}-{options.hash()}-{str(sorted(env_vars.items()))}"
+                            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 109, in hash
+    key = f"{self.fn.cache_key}-{self.attrs.hash()}-{sorted_sig}-{sorted_constants}"
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 758, in cache_key
+    dependencies_finder.visit(self.parse())
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 167, in visit_FunctionDef
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 221, in visit_Assign
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 417, in generic_visit
+    self.visit(value)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 127, in visit_Call
+    func = self.visit(node.func)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 117, in visit_Attribute
+    return getattr(lhs, node.attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'triton.language' has no attribute 'full_like'
+
+=== Output for solve_symmetric_ldl.py on GPU 0 ===
+
+=== Errors for solve_symmetric_ldl.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/solve_symmetric_ldl.py", line 127, in <module>
+    test_results = test_solve_symmetric_ldl()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/solve_symmetric_ldl.py", line 95, in test_solve_symmetric_ldl
+    results["test_case_1"] = solve_symmetric_ldl(A1, b1)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/solve_symmetric_ldl.py", line 64, in solve_symmetric_ldl
+    LDL, pivots = torch.linalg.ldl_factor_ex(A, hermitian=hermitian)
+    ^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+=== Output for exp_sqrt.py on GPU 0 ===
+
+=== Errors for exp_sqrt.py on GPU 0 ===
+
+=== Output for combined_activation.py on GPU 0 ===
+
+=== Errors for combined_activation.py on GPU 0 ===
+W0608 02:36:53.346000 437 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for scaled_add_dot.py on GPU 0 ===
+
+=== Errors for scaled_add_dot.py on GPU 0 ===
+
+=== Output for tensordot.py on GPU 0 ===
+
+=== Errors for tensordot.py on GPU 0 ===
+
+=== Output for qr.py on GPU 0 ===
+
+=== Errors for qr.py on GPU 0 ===
+
+=== Output for asin.py on GPU 0 ===
+
+=== Errors for asin.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/asin.py", line 94, in <module>
+    test_results = test_asin()
+                   ^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/asin.py", line 78, in test_asin
+    results["test_case_1"] = asin(input_tensor_1)
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/asin.py", line 55, in asin
+    _asin_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 240, in compile
+    key = f"{triton_key()}-{src.hash()}-{backend.hash()}-{options.hash()}-{str(sorted(env_vars.items()))}"
+                            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 109, in hash
+    key = f"{self.fn.cache_key}-{self.attrs.hash()}-{sorted_sig}-{sorted_constants}"
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 758, in cache_key
+    dependencies_finder.visit(self.parse())
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 167, in visit_FunctionDef
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 221, in visit_Assign
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 417, in generic_visit
+    self.visit(value)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 127, in visit_Call
+    func = self.visit(node.func)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 117, in visit_Attribute
+    return getattr(lhs, node.attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'triton.language' has no attribute 'asin'. Did you mean: 'sin'?
+
+=== Output for fused_masked_select_add_gelu.py on GPU 0 ===
+
+=== Errors for fused_masked_select_add_gelu.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_masked_select_add_gelu.py", line 154, in <module>
+    test_results = test_fused_masked_select_add_gelu()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_masked_select_add_gelu.py", line 150, in test_fused_masked_select_add_gelu
+    results["test_case_4"] = fused_masked_select_add_gelu(input4, mask4, other4, out=out4)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_masked_select_add_gelu.py", line 112, in fused_masked_select_add_gelu
+    out.copy_(y)
+RuntimeError: The size of tensor a (3) must match the size of tensor b (4) at non-singleton dimension 0
+
+=== Output for fused_pairwise_distance_adaptive_avg_pool2d.py on GPU 0 ===
+
+=== Errors for fused_pairwise_distance_adaptive_avg_pool2d.py on GPU 0 ===
+
+=== Output for add_mean.py on GPU 0 ===
+
+=== Errors for add_mean.py on GPU 0 ===
+
+=== Output for fused_layer_norm_relu_linear.py on GPU 0 ===
+
+=== Errors for fused_layer_norm_relu_linear.py on GPU 0 ===
+W0608 02:37:55.866000 538 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for fused_add_mul_groupnorm.py on GPU 0 ===
+
+=== Errors for fused_add_mul_groupnorm.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_add_mul_groupnorm.py", line 355, in <module>
+    test_results = test_fused_add_mul_groupnorm()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_add_mul_groupnorm.py", line 351, in test_fused_add_mul_groupnorm
+    results["test_case_4"] = fused_add_mul_groupnorm(input1, input2, None, None, num_groups)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_add_mul_groupnorm.py", line 144, in fused_add_mul_groupnorm
+    raise ValueError("weight and bias must not be None")
+ValueError: weight and bias must not be None
+
+=== Output for SGD.py on GPU 0 ===
+
+=== Errors for SGD.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/SGD.py", line 166, in <module>
+    test_results = test_SGD()
+                   ^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/SGD.py", line 137, in test_SGD
+    loss = SGD(model, input, target, loss_fn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/SGD.py", line 51, in SGD
+    if not 0.0 <= lr:
+           ^^^^^^^^^
+RuntimeError: Boolean value of Tensor with more than one value is ambiguous
+
+=== Output for relu_batch_norm_conv2d.py on GPU 0 ===
+Output tensor shape: torch.Size([4, 6, 32, 32])
+
+=== Errors for relu_batch_norm_conv2d.py on GPU 0 ===
+
+=== Output for conv2d.py on GPU 0 ===
+
+=== Errors for conv2d.py on GPU 0 ===
+
+=== Output for normalized_cosine_similarity.py on GPU 0 ===
+
+=== Errors for normalized_cosine_similarity.py on GPU 0 ===
+
+=== Output for fused_cholesky_solve.py on GPU 0 ===
+
+=== Errors for fused_cholesky_solve.py on GPU 0 ===
+
+=== Output for matmul.py on GPU 0 ===
+
+=== Errors for matmul.py on GPU 0 ===
+
+=== Output for fused_gather_masked_fill.py on GPU 0 ===
+
+=== Errors for fused_gather_masked_fill.py on GPU 0 ===
+
+=== Output for fused_cross_entropy_log_softmax.py on GPU 0 ===
+
+=== Errors for fused_cross_entropy_log_softmax.py on GPU 0 ===
+
+=== Output for addmm.py on GPU 0 ===
+
+=== Errors for addmm.py on GPU 0 ===
+
+=== Output for fused_qr_solve.py on GPU 0 ===
+
+=== Errors for fused_qr_solve.py on GPU 0 ===
+
+=== Output for sigmoid_adaptive_avg_pool2d.py on GPU 0 ===
+
+=== Errors for sigmoid_adaptive_avg_pool2d.py on GPU 0 ===
+
+=== Output for cos.py on GPU 0 ===
+
+=== Errors for cos.py on GPU 0 ===
+
+=== Output for fused_bmm_dropout_gelu.py on GPU 0 ===
+
+=== Errors for fused_bmm_dropout_gelu.py on GPU 0 ===
+W0608 02:39:30.133000 704 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for trunc.py on GPU 0 ===
+
+=== Errors for trunc.py on GPU 0 ===
+
+=== Output for matrix_power_eig.py on GPU 0 ===
+
+=== Errors for matrix_power_eig.py on GPU 0 ===
+
+=== Output for log_tanh.py on GPU 0 ===
+
+=== Errors for log_tanh.py on GPU 0 ===
+
+=== Output for exp.py on GPU 0 ===
+
+=== Errors for exp.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/exp.py", line 38, in <module>
+    def exp(input: Tensor, *, out: Optional[Tensor] = None) -> Tensor:
+                                   ^^^^^^^^
+NameError: name 'Optional' is not defined
+
+=== Output for matrix_multiply_symmetric.py on GPU 0 ===
+
+=== Errors for matrix_multiply_symmetric.py on GPU 0 ===
+
+=== Output for fused_avg_pool2d_cosine_similarity.py on GPU 0 ===
+
+=== Errors for fused_avg_pool2d_cosine_similarity.py on GPU 0 ===
+
+=== Output for fused_hardshrink_dropout.py on GPU 0 ===
+
+=== Errors for fused_hardshrink_dropout.py on GPU 0 ===
+
+=== Output for erfc_sqrt.py on GPU 0 ===
+
+=== Errors for erfc_sqrt.py on GPU 0 ===
+
+=== Output for tensordot_rsqrt.py on GPU 0 ===
+
+=== Errors for tensordot_rsqrt.py on GPU 0 ===
+
+=== Output for softmax_log.py on GPU 0 ===
+
+=== Errors for softmax_log.py on GPU 0 ===
+
+=== Output for dropout_sigmoid_linear.py on GPU 0 ===
+
+=== Errors for dropout_sigmoid_linear.py on GPU 0 ===
+
+=== Output for batch_norm.py on GPU 0 ===
+
+=== Errors for batch_norm.py on GPU 0 ===
+
+=== Output for gammaln.py on GPU 0 ===
+
+=== Errors for gammaln.py on GPU 0 ===
+
+=== Output for bitwise_and.py on GPU 0 ===
+
+=== Errors for bitwise_and.py on GPU 0 ===
+
+=== Output for sub_gelu.py on GPU 0 ===
+
+=== Errors for sub_gelu.py on GPU 0 ===
+
+=== Output for gelu_std.py on GPU 0 ===
+
+=== Errors for gelu_std.py on GPU 0 ===
+
+=== Output for permute_copy.py on GPU 0 ===
+
+=== Errors for permute_copy.py on GPU 0 ===
+
+=== Output for digamma.py on GPU 0 ===
+
+=== Errors for digamma.py on GPU 0 ===
+
+=== Output for softmax_mul.py on GPU 0 ===
+
+=== Errors for softmax_mul.py on GPU 0 ===
+
+=== Output for bitwise_and_binomial.py on GPU 0 ===
+
+=== Errors for bitwise_and_binomial.py on GPU 0 ===
+
+=== Output for rad2deg_sqrt.py on GPU 0 ===
+
+=== Errors for rad2deg_sqrt.py on GPU 0 ===
+
+=== Output for bessel_j1.py on GPU 0 ===
+
+=== Errors for bessel_j1.py on GPU 0 ===
+
+=== Output for lu.py on GPU 0 ===
+
+=== Errors for lu.py on GPU 0 ===
+/usr/local/lib/python3.12/site-packages/torch/functional.py:2135: UserWarning: torch.lu is deprecated in favor of torch.linalg.lu_factor / torch.linalg.lu_factor_ex and will be removed in a future PyTorch release.
+LU, pivots = torch.lu(A, compute_pivots)
+should be replaced with
+LU, pivots = torch.linalg.lu_factor(A, compute_pivots)
+and
+LU, pivots, info = torch.lu(A, compute_pivots, get_infos=True)
+should be replaced with
+LU, pivots, info = torch.linalg.lu_factor_ex(A, compute_pivots) (Triggered internally at ../aten/src/ATen/native/BatchLinearAlgebra.cpp:1990.)
+  return torch._lu_with_info(A, pivot=pivot, check_errors=(not get_infos))
+
+=== Output for gelu_min.py on GPU 0 ===
+
+=== Errors for gelu_min.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/triton/language/core.py", line 35, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/core.py", line 1597, in load
+    return semantic.load(pointer, mask, other, boundary_check, padding_option, cache_modifier, eviction_policy,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/semantic.py", line 1037, in load
+    return _load_legacy(ptr, mask, other, boundary_check, padding, cache, eviction, is_volatile, builder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/semantic.py", line 969, in _load_legacy
+    raise ValueError(f"Unsupported ptr type {ptr.type.__repr__()} in `tl.load`")
+ValueError: Unsupported ptr type <[4], int64> in `tl.load`
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/gelu_min.py", line 175, in <module>
+    test_results = test_gelu_min()
+                   ^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/gelu_min.py", line 159, in test_gelu_min
+    results['test_case_1'] = gelu_min(input_tensor)
+                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/gelu_min.py", line 127, in gelu_min
+    gelu_out = _gelu_triton(input, approximate=approximate)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/gelu_min.py", line 95, in _gelu_triton
+    _gelu_kernel_exact[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 276, in compile
+    module = src.make_ir(options, codegen_fns, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 113, in make_ir
+    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.CompilationError: at 15:8:
+    n_elements: tl.constexpr,
+    BLOCK_SIZE: tl.constexpr,
+):
+    """
+    Compute GELU (exact) activation: 0.5 * x * (1 + erf(x / sqrt(2)))
+    """
+    pid = tl.program_id(axis=0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + tl.arange(0, BLOCK_SIZE)
+    mask = offsets < n_elements
+
+    x = tl.load(input_ptr + offsets, mask=mask, other=0.0)
+        ^
+
+=== Output for grid_sample_with_affine.py on GPU 0 ===
+
+=== Errors for grid_sample_with_affine.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/grid_sample_with_affine.py", line 99, in <module>
+    test_results = test_grid_sample_with_affine()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/grid_sample_with_affine.py", line 86, in test_grid_sample_with_affine
+    results["test_case_1"] = grid_sample_with_affine(input_tensor, theta, size)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/grid_sample_with_affine.py", line 60, in grid_sample_with_affine
+    grid = F.affine_grid(theta, size, align_corners=align_corners)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/functional.py", line 4979, in affine_grid
+    raise ValueError(
+ValueError: Expected theta to have floating point type, but got torch.int64
+
+=== Output for pseudoinverse_svd.py on GPU 0 ===
+
+=== Errors for pseudoinverse_svd.py on GPU 0 ===
+
+=== Output for exp_mean.py on GPU 0 ===
+
+=== Errors for exp_mean.py on GPU 0 ===
+
+=== Output for low_rank_svd_approximation.py on GPU 0 ===
+
+=== Errors for low_rank_svd_approximation.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/low_rank_svd_approximation.py", line 99, in <module>
+    test_results = test_low_rank_svd_approximation()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/low_rank_svd_approximation.py", line 80, in test_low_rank_svd_approximation
+    results["test_case_1"] = low_rank_svd_approximation(A, k)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/low_rank_svd_approximation.py", line 56, in low_rank_svd_approximation
+    US_k = U_k * S_k_expanded  # element-wise multiply: (*, m, k)
+           ~~~~^~~~~~~~~~~~~~
+RuntimeError: The size of tensor a (5) must match the size of tensor b (2) at non-singleton dimension 0
+
+=== Output for min.py on GPU 0 ===
+
+=== Errors for min.py on GPU 0 ===
+
+=== Output for symmetric_mm_and_abs_sum.py on GPU 0 ===
+
+=== Errors for symmetric_mm_and_abs_sum.py on GPU 0 ===
+
+=== Output for determinant_lu.py on GPU 0 ===
+
+=== Errors for determinant_lu.py on GPU 0 ===
+
+=== Output for tanh_linear.py on GPU 0 ===
+
+=== Errors for tanh_linear.py on GPU 0 ===
+
+=== Output for sum.py on GPU 0 ===
+
+=== Errors for sum.py on GPU 0 ===
+
+=== Output for logspace.py on GPU 0 ===
+
+=== Errors for logspace.py on GPU 0 ===
+
+=== Output for solve_and_add_scaled_vector.py on GPU 0 ===
+
+=== Errors for solve_and_add_scaled_vector.py on GPU 0 ===
+
+=== Output for pixel_shuffle_conv2d.py on GPU 0 ===
+
+=== Errors for pixel_shuffle_conv2d.py on GPU 0 ===
+
+=== Output for matrix_vector_dot.py on GPU 0 ===
+
+=== Errors for matrix_vector_dot.py on GPU 0 ===
+
+=== Output for min_gelu.py on GPU 0 ===
+
+=== Errors for min_gelu.py on GPU 0 ===
+
+=== Output for pow.py on GPU 0 ===
+
+=== Errors for pow.py on GPU 0 ===
+
+=== Output for relu_max_pool2d_conv2d.py on GPU 0 ===
+
+=== Errors for relu_max_pool2d_conv2d.py on GPU 0 ===
+
+=== Output for erf.py on GPU 0 ===
+
+=== Errors for erf.py on GPU 0 ===
+
+=== Output for sigmoid.py on GPU 0 ===
+
+=== Errors for sigmoid.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/sigmoid.py", line 38, in <module>
+    def sigmoid(input: Tensor, *, out: Optional[Tensor] = None) -> Tensor:
+                                       ^^^^^^^^
+NameError: name 'Optional' is not defined
+
+=== Output for gelu.py on GPU 0 ===
+
+=== Errors for gelu.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/triton/language/core.py", line 35, in wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/core.py", line 1597, in load
+    return semantic.load(pointer, mask, other, boundary_check, padding_option, cache_modifier, eviction_policy,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/semantic.py", line 1037, in load
+    return _load_legacy(ptr, mask, other, boundary_check, padding, cache, eviction, is_volatile, builder)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/language/semantic.py", line 969, in _load_legacy
+    raise ValueError(f"Unsupported ptr type {ptr.type.__repr__()} in `tl.load`")
+ValueError: Unsupported ptr type <[4], int64> in `tl.load`
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/gelu.py", line 137, in <module>
+    test_results = test_gelu()
+                   ^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/gelu.py", line 121, in test_gelu
+    results["test_case_1"] = gelu(input_tensor_1)
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/gelu.py", line 102, in gelu
+    _gelu_exact_kernel[grid](input_contiguous.data_ptr(), output.data_ptr(), numel, BLOCK_SIZE=BLOCK_SIZE)
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 276, in compile
+    module = src.make_ir(options, codegen_fns, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 113, in make_ir
+    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.CompilationError: at 12:8:
+def _gelu_exact_kernel(
+    input_ptr,
+    output_ptr,
+    numel,
+    BLOCK_SIZE: tl.constexpr,
+):
+    pid = tl.program_id(0)
+    block_start = pid * BLOCK_SIZE
+    offsets = block_start + tl.arange(0, BLOCK_SIZE)
+    mask = offsets < numel
+
+    x = tl.load(input_ptr + offsets, mask=mask, other=0.0)
+        ^
+
+=== Output for det.py on GPU 0 ===
+
+=== Errors for det.py on GPU 0 ===
+
+=== Output for fused_bmm_rmsnorm_gelu_dropout.py on GPU 0 ===
+
+=== Errors for fused_bmm_rmsnorm_gelu_dropout.py on GPU 0 ===
+W0608 02:44:50.257000 1136 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for floor.py on GPU 0 ===
+
+=== Errors for floor.py on GPU 0 ===
+
+=== Output for rand.py on GPU 0 ===
+
+=== Errors for rand.py on GPU 0 ===
+
+=== Output for cholesky_solve.py on GPU 0 ===
+
+=== Errors for cholesky_solve.py on GPU 0 ===
+
+=== Output for mul_sub.py on GPU 0 ===
+
+=== Errors for mul_sub.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/mul_sub.py", line 156, in <module>
+    test_results = test_mul_sub()
+                   ^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/mul_sub.py", line 152, in test_mul_sub
+    results["test_case_4"] = mul_sub(input_number, other_mul_number, other_sub_number)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/mul_sub.py", line 70, in mul_sub
+    if not input.is_cuda or input.dtype not in (torch.float32, torch.float64):
+           ^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'is_cuda'
+
+=== Output for ldl_factor.py on GPU 0 ===
+
+=== Errors for ldl_factor.py on GPU 0 ===
+
+=== Output for abs.py on GPU 0 ===
+
+=== Errors for abs.py on GPU 0 ===
+
+=== Output for mul.py on GPU 0 ===
+
+=== Errors for mul.py on GPU 0 ===
+
+=== Output for softmax.py on GPU 0 ===
+
+=== Errors for softmax.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/softmax.py", line 132, in <module>
+    test_results = test_softmax()
+                   ^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/softmax.py", line 124, in test_softmax
+    results["test_case_3"] = softmax(input3, dim=1, dtype=torch.float64)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/softmax.py", line 86, in softmax
+    _softmax_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 276, in compile
+    module = src.make_ir(options, codegen_fns, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 113, in make_ir
+    return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+triton.compiler.errors.CompilationError: at 17:4:
+    output_row_stride,
+    output_col_stride,
+    n_cols,
+    BLOCK_SIZE: tl.constexpr,
+):
+    row_idx = tl.program_id(0)
+    col_offsets = tl.arange(0, BLOCK_SIZE)
+    input_ptrs = input_ptr + row_idx * input_row_stride + col_offsets * input_col_stride
+    output_ptrs = output_ptr + row_idx * output_row_stride + col_offsets * output_col_stride
+
+    row_max_val = float("-inf")
+    for col_start in range(0, n_cols, BLOCK_SIZE):
+    ^
+AssertionError('Loop-carried variable row_max_val has initial type fp32 but is re-assigned to fp64 in loop! Please make sure that the type stays consistent.')
+
+=== Output for leaky_relu.py on GPU 0 ===
+
+=== Errors for leaky_relu.py on GPU 0 ===
+
+=== Output for invert_matrix_lu.py on GPU 0 ===
+
+=== Errors for invert_matrix_lu.py on GPU 0 ===
+
+=== Output for std.py on GPU 0 ===
+
+=== Errors for std.py on GPU 0 ===
+
+=== Output for tril_mm_and_scale.py on GPU 0 ===
+
+=== Errors for tril_mm_and_scale.py on GPU 0 ===
+
+=== Output for solve.py on GPU 0 ===
+
+=== Errors for solve.py on GPU 0 ===
+
+=== Output for airy_ai.py on GPU 0 ===
+
+=== Errors for airy_ai.py on GPU 0 ===
+
+=== Output for signbit.py on GPU 0 ===
+
+=== Errors for signbit.py on GPU 0 ===
+
+=== Output for matrix_multiply_and_row_dot.py on GPU 0 ===
+
+=== Errors for matrix_multiply_and_row_dot.py on GPU 0 ===
+W0608 02:46:47.520000 1331 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for polygamma.py on GPU 0 ===
+
+=== Errors for polygamma.py on GPU 0 ===
+
+=== Output for elu_linear.py on GPU 0 ===
+
+=== Errors for elu_linear.py on GPU 0 ===
+W0608 02:47:07.921000 1410 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for fused_pairwise_distance_normalize.py on GPU 0 ===
+
+=== Errors for fused_pairwise_distance_normalize.py on GPU 0 ===
+
+=== Output for Adam.py on GPU 0 ===
+
+=== Errors for Adam.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/Adam.py", line 209, in <module>
+    test_results = test_Adam()
+                   ^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/Adam.py", line 189, in test_Adam
+    optimizer1 = Adam(params1)
+                 ^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/Adam.py", line 92, in __init__
+    super(Adam, self).__init__(params, defaults)
+  File "/usr/local/lib/python3.12/site-packages/torch/optim/optimizer.py", line 371, in __init__
+    self.add_param_group(cast(dict, param_group))
+  File "/usr/local/lib/python3.12/site-packages/torch/_compile.py", line 32, in inner
+    return disable_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 632, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/optim/optimizer.py", line 1030, in add_param_group
+    raise ValueError(
+ValueError: parameter group didn't specify a value of required optimization parameter lr
+
+=== Output for fused_hstack_div.py on GPU 0 ===
+
+=== Errors for fused_hstack_div.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_hstack_div.py", line 154, in <module>
+    test_results = test_fused_hstack_div()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_hstack_div.py", line 140, in test_fused_hstack_div
+    results["test_case_1"] = fused_hstack_div(tensors1, divisor1)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_hstack_div.py", line 67, in fused_hstack_div
+    result = _fused_hstack_div_cuda(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fused_hstack_div.py", line 117, in _fused_hstack_div_cuda
+    _fused_hstack_div_kernel[grid](
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 345, in <lambda>
+    return lambda *args, **kwargs: self.run(grid=grid, warmup=False, *args, **kwargs)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 662, in run
+    kernel = self.compile(
+             ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 240, in compile
+    key = f"{triton_key()}-{src.hash()}-{backend.hash()}-{options.hash()}-{str(sorted(env_vars.items()))}"
+                            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/compiler/compiler.py", line 109, in hash
+    key = f"{self.fn.cache_key}-{self.attrs.hash()}-{sorted_sig}-{sorted_constants}"
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 758, in cache_key
+    dependencies_finder.visit(self.parse())
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 167, in visit_FunctionDef
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 415, in generic_visit
+    self.visit(item)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 221, in visit_Assign
+    self.generic_visit(node)
+  File "/usr/local/lib/python3.12/ast.py", line 417, in generic_visit
+    self.visit(value)
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 127, in visit_Call
+    func = self.visit(node.func)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ast.py", line 407, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/triton/runtime/jit.py", line 117, in visit_Attribute
+    return getattr(lhs, node.attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'triton.language' has no attribute 'trunc'. Did you mean: 'trans'?
+
+=== Output for broadcast_tensors.py on GPU 0 ===
+
+=== Errors for broadcast_tensors.py on GPU 0 ===
+
+=== Output for relu_conv2d.py on GPU 0 ===
+
+=== Errors for relu_conv2d.py on GPU 0 ===
+W0608 02:47:44.765000 1489 site-packages/torch/_inductor/utils.py:1048] [0/0] Not enough SMs to use max_autotune_gemm mode
+
+=== Output for log.py on GPU 0 ===
+
+=== Errors for log.py on GPU 0 ===
+
+=== Output for adaptive_avg_pool2d.py on GPU 0 ===
+
+=== Errors for adaptive_avg_pool2d.py on GPU 0 ===
+
+=== Output for quantize_dynamic.py on GPU 0 ===
+
+=== Errors for quantize_dynamic.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/quantize_dynamic.py", line 215, in <module>
+    test_results = test_quantize_dynamic()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/quantize_dynamic.py", line 195, in test_quantize_dynamic
+    quantized_model_1 = dynamic_custom(model)
+                        ^^^^^^^^^^^^^^
+NameError: name 'dynamic_custom' is not defined
+
+=== Output for conv2d_add.py on GPU 0 ===
+
+=== Errors for conv2d_add.py on GPU 0 ===
+
+=== Output for ifftshift.py on GPU 0 ===
+
+=== Errors for ifftshift.py on GPU 0 ===
+
+=== Output for signbit_bitwise_and.py on GPU 0 ===
+
+=== Errors for signbit_bitwise_and.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/signbit_bitwise_and.py", line 126, in <module>
+    test_results = test_signbit_bitwise_and()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/signbit_bitwise_and.py", line 107, in test_signbit_bitwise_and
+    results["test_case_1"] = signbit_bitwise_and(a, b)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/signbit_bitwise_and.py", line 85, in signbit_bitwise_and
+    bitwise_and_result = torch.bitwise_and(input, other)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: "bitwise_and_cuda" not implemented for 'Float'
+
+=== Output for fused_repeat_interleave_log_softmax.py on GPU 0 ===
+
+=== Errors for fused_repeat_interleave_log_softmax.py on GPU 0 ===
+
+=== Output for cholesky.py on GPU 0 ===
+
+=== Errors for cholesky.py on GPU 0 ===
+
+=== Output for ones_like.py on GPU 0 ===
+
+=== Errors for ones_like.py on GPU 0 ===
+
+=== Output for autocast.py on GPU 0 ===
+
+=== Errors for autocast.py on GPU 0 ===
+
+=== Output for reciprocal.py on GPU 0 ===
+
+=== Errors for reciprocal.py on GPU 0 ===
+
+=== Output for cos_signbit.py on GPU 0 ===
+
+=== Errors for cos_signbit.py on GPU 0 ===
+
+=== Output for spectral_norm_eig.py on GPU 0 ===
+
+=== Errors for spectral_norm_eig.py on GPU 0 ===
+
+=== Output for fftn.py on GPU 0 ===
+
+=== Errors for fftn.py on GPU 0 ===
+Traceback (most recent call last):
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fftn.py", line 126, in <module>
+    test_results = test_fftn()
+                   ^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fftn.py", line 107, in test_fftn
+    results["test_case_1"] = fftn(input_tensor)
+                             ^^^^^^^^^^^^^^^^^^
+  File "/data/results/prompt12_haiku45_full_20260607-201510/call_acc/fftn.py", line 85, in fftn
+    y = torch.fft.fftn(x, s=tuple(s if si != -1 else x.shape[d] for si, d in zip(s, dim)), 
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: fft_fftn(): argument 's' must be tuple of ints, not tuple
+
+Deleted Adam.py
+Deleted SGD.py
+Error deleting __pycache__: [Errno 21] Is a directory: '/data/results/prompt12_haiku45_full_20260607-201510/call_acc/__pycache__'
+Deleted asin.py
+Deleted exp.py
+Deleted fftn.py
+Deleted fused_add_mul_groupnorm.py
+Deleted fused_cosine_embedding_loss_with_normalization.py
+Deleted fused_hstack_div.py
+Deleted fused_lu_solve.py
+Deleted fused_masked_select_add_gelu.py
+Deleted fused_silu_layer_norm_conv2d.py
+Deleted fused_tile_exp.py
+Deleted gelu.py
+Deleted gelu_min.py
+Deleted grid_sample_with_affine.py
+Deleted index_fill_.py
+Deleted leaky_relu_conv2d.py
+Deleted log_softmax_linear.py
+Deleted logit.py
+Deleted low_rank_svd_approximation.py
+Deleted mul_relu.py
+Deleted mul_sub.py
+Deleted quantize_dynamic.py
+Deleted rsqrt.py
+Deleted sigmoid.py
+Deleted sigmoid_batch_norm.py
+Deleted signbit_bitwise_and.py
+Deleted silu_batch_norm.py
+Deleted softmax.py
+Deleted solve_symmetric_ldl.py
+Deleted sqrt_exp.py
+
+Correct execution rate: 81.33%
+['fused_bmm_rmsnorm_gelu_dropout_sub.py', 'div.py', 'sigmoid_conv2d.py', 'solve_multiple_lu.py', 'tanh.py', 'relu_sqrt.py', 'sqrt.py', 'sigmoid_argmax.py', 'sub.py', 'grid_sample.py', 'svd.py', 'i0.py', 'dropout_relu_batch_norm_conv2d.py', 'fused_mv_logsoftmax_dropout.py', 'add.py', 'fused_index_select_eq.py', 'argmax.py', 'normalize_pairwise_distance.py', 'max.py', 'relu.py', 'least_squares_qr.py', 'determinant_via_qr.py', 'sqrt_tanh.py', 'fused_cross_entropy_softmax_layernorm.py', 'mean.py', 'eig.py', 'logsumexp.py', 'fused_embedding_add_tanh.py', 'fused_mv_sigmoid_sub.py', 'add_gelu.py', 'fused_transformer_block.py', 'log1p.py', 'fused_hardsigmoid_batch_norm.py', 'zeta.py', 'symmetric_matrix_vector_norm.py', 'softplus_linear.py', 'fused_svd_reconstruct.py', 'fused_mul_add_logsoftmax_dropout_bmm.py', 'selu.py', 'scaled_add_norm.py', 'cos_avg_pool1d.py', 'sum_std.py', 'gelu_conv2d.py', 'fused_instance_norm_selu_conv2d.py', 'fused_fractional_max_pool2d_with_relu.py', 'chebyshev_polynomial_t.py', 'exp_sqrt.py', 'combined_activation.py', 'scaled_add_dot.py', 'tensordot.py', 'qr.py', 'fused_pairwise_distance_adaptive_avg_pool2d.py', 'add_mean.py', 'fused_layer_norm_relu_linear.py', 'relu_batch_norm_conv2d.py', 'conv2d.py', 'normalized_cosine_similarity.py', 'fused_cholesky_solve.py', 'matmul.py', 'fused_gather_masked_fill.py', 'fused_cross_entropy_log_softmax.py', 'addmm.py', 'fused_qr_solve.py', 'sigmoid_adaptive_avg_pool2d.py', 'cos.py', 'fused_bmm_dropout_gelu.py', 'trunc.py', 'matrix_power_eig.py', 'log_tanh.py', 'matrix_multiply_symmetric.py', 'fused_avg_pool2d_cosine_similarity.py', 'fused_hardshrink_dropout.py', 'erfc_sqrt.py', 'tensordot_rsqrt.py', 'softmax_log.py', 'dropout_sigmoid_linear.py', 'batch_norm.py', 'gammaln.py', 'bitwise_and.py', 'sub_gelu.py', 'gelu_std.py', 'permute_copy.py', 'digamma.py', 'softmax_mul.py', 'bitwise_and_binomial.py', 'rad2deg_sqrt.py', 'bessel_j1.py', 'lu.py', 'pseudoinverse_svd.py', 'exp_mean.py', 'min.py', 'symmetric_mm_and_abs_sum.py', 'determinant_lu.py', 'tanh_linear.py', 'sum.py', 'logspace.py', 'solve_and_add_scaled_vector.py', 'pixel_shuffle_conv2d.py', 'matrix_vector_dot.py', 'min_gelu.py', 'pow.py', 'relu_max_pool2d_conv2d.py', 'erf.py', 'det.py', 'fused_bmm_rmsnorm_gelu_dropout.py', 'floor.py', 'rand.py', 'cholesky_solve.py', 'ldl_factor.py', 'abs.py', 'mul.py', 'leaky_relu.py', 'invert_matrix_lu.py', 'std.py', 'tril_mm_and_scale.py', 'solve.py', 'airy_ai.py', 'signbit.py', 'matrix_multiply_and_row_dot.py', 'polygamma.py', 'elu_linear.py', 'fused_pairwise_distance_normalize.py', 'broadcast_tensors.py', 'relu_conv2d.py', 'log.py', 'adaptive_avg_pool2d.py', 'conv2d_add.py', 'ifftshift.py', 'fused_repeat_interleave_log_softmax.py', 'cholesky.py', 'ones_like.py', 'autocast.py', 'reciprocal.py', 'cos_signbit.py', 'spectral_norm_eig.py']
+Above is call test for anthropic_claude-haiku-4-5_simp
+================================================================================================================================================================
+
+call_acc survivors: 135 / 166
+
+======================================================================
+=== Phase 2: execution accuracy ===
+======================================================================
+
+Correct execution rate: 100.00% = 135 / 135
+above is the compare execution for /data/results/prompt12_haiku45_full_20260607-201510/call_acc
+================================================================================================================================================================================================================================================
+
+exe_acc survivors: 135 / 166
+
+======================================================================
+=== Phase 3: efficiency ===
+======================================================================
+
+[1AProcess:   0%|                                          | 0/135 [00:00<?, ?it/s]
+[1AProcess:   1%|▏                               | 1/135 [00:27<1:01:48, 27.68s/it]
+[1AProcess:   1%|▍                               | 2/135 [01:26<1:41:27, 45.77s/it]
+[1AProcess:   2%|▋                               | 3/135 [01:54<1:23:15, 37.85s/it]
+[1AProcess:   3%|▉                               | 4/135 [02:20<1:12:27, 33.19s/it]
+[1AProcess:   4%|█▏                              | 5/135 [02:46<1:06:16, 30.59s/it]
+[1AProcess:   4%|█▍                              | 6/135 [03:30<1:15:24, 35.08s/it]
+[1AProcess:   5%|█▋                              | 7/135 [03:56<1:08:28, 32.10s/it]
+[1AProcess:   6%|█▉                              | 8/135 [04:31<1:09:43, 32.94s/it]
+[1AProcess:   7%|██▏                             | 9/135 [05:14<1:15:57, 36.17s/it]
+[1AProcess:   7%|██▎                            | 10/135 [06:20<1:34:46, 45.49s/it]
+[1AProcess:   8%|██▌                            | 11/135 [06:43<1:19:58, 38.69s/it]
+[1AProcess:   9%|██▊                            | 12/135 [07:19<1:17:29, 37.80s/it]
+[1AProcess:  10%|██▉                            | 13/135 [07:50<1:12:13, 35.52s/it]
+[1AProcess:  10%|███▏                           | 14/135 [08:09<1:02:03, 30.77s/it]
+[1AProcess:  11%|███▋                             | 15/135 [08:35<58:30, 29.25s/it]
+[1AProcess:  12%|███▉                             | 16/135 [08:59<54:58, 27.72s/it]
+[1AProcess:  13%|███▉                           | 17/135 [09:37<1:00:16, 30.65s/it]
+[1AProcess:  13%|████▍                            | 18/135 [10:01<55:55, 28.68s/it]
+[1AProcess:  14%|████▋                            | 19/135 [10:32<57:02, 29.50s/it]
+[1AProcess:  15%|████▉                            | 20/135 [10:52<50:48, 26.51s/it]
+[1AProcess:  16%|█████▏                           | 21/135 [11:12<46:35, 24.52s/it]
+[1AProcess:  16%|█████▍                           | 22/135 [11:35<45:38, 24.24s/it]
+[1AProcess:  17%|█████▌                           | 23/135 [12:01<46:17, 24.80s/it]
+[1AProcess:  18%|█████▊                           | 24/135 [12:20<42:15, 22.84s/it]
+[1AProcess:  19%|██████                           | 25/135 [12:33<36:43, 20.03s/it]
+[1AProcess:  19%|██████▎                          | 26/135 [12:54<36:40, 20.18s/it]
+[1AProcess:  20%|██████▌                          | 27/135 [13:19<39:02, 21.69s/it]
+[1AProcess:  21%|██████▊                          | 28/135 [13:48<42:27, 23.81s/it]
+[1AProcess:  21%|███████                          | 29/135 [14:01<36:43, 20.78s/it]
+[1AProcess:  22%|███████▎                         | 30/135 [14:19<34:44, 19.85s/it]
+[1AProcess:  23%|███████▌                         | 31/135 [14:36<32:45, 18.90s/it]
+[1AProcess:  24%|███████▊                         | 32/135 [14:56<33:15, 19.37s/it]
+[1AProcess:  24%|████████                         | 33/135 [15:22<36:08, 21.26s/it]
+[1AProcess:  25%|████████▎                        | 34/135 [15:50<39:28, 23.45s/it]
+[1AProcess:  26%|████████▌                        | 35/135 [16:30<47:06, 28.26s/it]
+[1AProcess:  27%|████████▊                        | 36/135 [16:58<46:24, 28.12s/it]
+[1AProcess:  27%|█████████                        | 37/135 [17:25<45:29, 27.85s/it]
+[1AProcess:  28%|█████████▎                       | 38/135 [18:04<50:40, 31.34s/it]
+[1AProcess:  29%|████████▉                      | 39/135 [19:06<1:04:34, 40.36s/it]
+[1AProcess:  30%|█████████▏                     | 40/135 [20:22<1:21:05, 51.21s/it]
+[1AProcess:  30%|█████████▍                     | 41/135 [21:39<1:32:17, 58.91s/it]
+[1AProcess:  31%|█████████▋                     | 42/135 [21:56<1:11:51, 46.36s/it]
+[1AProcess:  32%|█████████▊                     | 43/135 [22:40<1:09:57, 45.63s/it]
+[1AProcess:  33%|██████████                     | 44/135 [23:15<1:04:15, 42.37s/it]
+[1AProcess:  33%|███████████                      | 45/135 [23:46<58:26, 38.96s/it]
+[1AProcess:  34%|███████████▏                     | 46/135 [24:15<53:25, 36.01s/it]
+[1AProcess:  35%|███████████▍                     | 47/135 [24:32<44:25, 30.29s/it]
+[1AProcess:  36%|███████████▋                     | 48/135 [25:00<43:02, 29.68s/it]
+[1AProcess:  36%|███████████▉                     | 49/135 [25:30<42:33, 29.69s/it]
+[1AProcess:  37%|████████████▏                    | 50/135 [26:13<47:43, 33.69s/it]
+[1AProcess:  38%|███████████▋                   | 51/135 [28:19<1:25:48, 61.29s/it]
+[1AProcess:  39%|███████████▉                   | 52/135 [30:40<1:57:50, 85.18s/it]
+[1AProcess:  39%|████████████▏                  | 53/135 [32:02<1:55:11, 84.29s/it]
+[1AProcess:  40%|████████████▍                  | 54/135 [32:40<1:35:08, 70.47s/it]
+[1AProcess:  41%|████████████▋                  | 55/135 [33:18<1:21:07, 60.84s/it]
+[1AProcess:  41%|████████████▊                  | 56/135 [34:47<1:31:09, 69.23s/it]
+[1AProcess:  42%|█████████████                  | 57/135 [35:00<1:07:49, 52.17s/it]
+[1AProcess:  43%|██████████████▏                  | 58/135 [35:17<53:36, 41.77s/it]
+[1AProcess:  44%|██████████████▍                  | 59/135 [35:33<42:58, 33.92s/it]
+[1AProcess:  44%|██████████████▋                  | 60/135 [35:47<35:01, 28.02s/it]
+[1AProcess:  45%|██████████████▉                  | 61/135 [36:02<29:40, 24.06s/it]
+[1AProcess:  46%|███████████████▏                 | 62/135 [36:28<30:11, 24.82s/it]
+[1AProcess:  47%|███████████████▍                 | 63/135 [37:05<34:05, 28.41s/it]
+[1AProcess:  47%|███████████████▋                 | 64/135 [37:40<36:04, 30.49s/it]
+[1AProcess:  48%|███████████████▉                 | 65/135 [37:53<29:27, 25.26s/it]
+[1AProcess:  49%|████████████████▏                | 66/135 [38:17<28:16, 24.59s/it]
+[1AProcess:  50%|████████████████▍                | 67/135 [38:39<27:17, 24.08s/it]
+[1AProcess:  50%|████████████████▌                | 68/135 [38:51<22:40, 20.31s/it]
+[1AProcess:  51%|████████████████▊                | 69/135 [39:03<19:28, 17.70s/it]
+[1AProcess:  52%|█████████████████                | 70/135 [39:27<21:14, 19.60s/it]
+[1AProcess:  53%|█████████████████▎               | 71/135 [39:41<19:13, 18.02s/it]
+[1AProcess:  53%|█████████████████▌               | 72/135 [40:05<20:50, 19.85s/it]
+[1AProcess:  54%|█████████████████▊               | 73/135 [40:31<22:16, 21.56s/it]
+[1AProcess:  55%|██████████████████               | 74/135 [40:56<23:11, 22.81s/it]
+[1AProcess:  56%|██████████████████▎              | 75/135 [41:17<22:11, 22.19s/it]
+[1AProcess:  56%|██████████████████▌              | 76/135 [41:42<22:30, 22.88s/it]
+[1AProcess:  57%|██████████████████▊              | 77/135 [41:59<20:29, 21.20s/it]
+[1AProcess:  58%|███████████████████              | 78/135 [42:40<25:55, 27.29s/it]
+[1AProcess:  59%|███████████████████▎             | 79/135 [43:07<25:14, 27.04s/it]
+[1AProcess:  59%|███████████████████▌             | 80/135 [43:49<29:02, 31.68s/it]
+[1AProcess:  60%|███████████████████▊             | 81/135 [45:14<42:53, 47.66s/it]
+[1AProcess:  61%|████████████████████             | 82/135 [45:45<37:40, 42.64s/it]
+[1AProcess:  61%|████████████████████▎            | 83/135 [46:09<31:58, 36.90s/it]
+[1AProcess:  62%|████████████████████▌            | 84/135 [46:33<28:15, 33.24s/it]
+[1AProcess:  63%|████████████████████▊            | 85/135 [47:00<26:01, 31.23s/it]
+[1AProcess:  64%|█████████████████████            | 86/135 [47:30<25:07, 30.77s/it]
+[1AProcess:  64%|█████████████████████▎           | 87/135 [47:57<23:53, 29.86s/it]
+[1AProcess:  65%|█████████████████████▌           | 88/135 [48:18<21:12, 27.07s/it]
+[1AProcess:  66%|█████████████████████▊           | 89/135 [48:35<18:31, 24.16s/it]
+[1AProcess:  67%|██████████████████████           | 90/135 [48:50<16:00, 21.35s/it]
+[1AProcess:  67%|██████████████████████▏          | 91/135 [49:03<13:52, 18.92s/it]
+[1AProcess:  68%|██████████████████████▍          | 92/135 [49:16<12:18, 17.18s/it]
+[1AProcess:  69%|██████████████████████▋          | 93/135 [49:42<13:44, 19.63s/it]
+[1AProcess:  70%|██████████████████████▉          | 94/135 [50:05<14:12, 20.80s/it]
+[1AProcess:  70%|███████████████████████▏         | 95/135 [50:19<12:27, 18.69s/it]
+[1AProcess:  71%|███████████████████████▍         | 96/135 [50:34<11:29, 17.68s/it]
+[1AProcess:  72%|███████████████████████▋         | 97/135 [51:02<13:09, 20.78s/it]
+[1AProcess:  73%|███████████████████████▉         | 98/135 [51:24<13:02, 21.14s/it]
+[1AProcess:  73%|████████████████████████▏        | 99/135 [51:50<13:30, 22.52s/it]
+[1AProcess:  74%|███████████████████████▋        | 100/135 [53:14<23:53, 40.94s/it]
+[1AProcess:  75%|███████████████████████▉        | 101/135 [53:33<19:28, 34.38s/it]
+[1AProcess:  76%|████████████████████████▏       | 102/135 [53:50<16:04, 29.24s/it]
+[1AProcess:  76%|████████████████████████▍       | 103/135 [54:15<14:52, 27.90s/it]
+[1AProcess:  77%|████████████████████████▋       | 104/135 [54:40<13:56, 26.98s/it]
+[1AProcess:  78%|████████████████████████▉       | 105/135 [55:10<13:58, 27.96s/it]
+[1AProcess:  79%|█████████████████████████▏      | 106/135 [58:01<34:12, 70.76s/it]
+[1AProcess:  79%|█████████████████████████▎      | 107/135 [58:30<27:12, 58.32s/it]
+[1AProcess:  80%|█████████████████████████▌      | 108/135 [58:46<20:34, 45.72s/it]
+[1AProcess:  81%|█████████████████████████▊      | 109/135 [59:18<17:59, 41.52s/it]
+[1AProcess:  81%|██████████████████████████      | 110/135 [59:32<13:51, 33.27s/it]
+[1AProcess:  82%|██████████████████████████▎     | 111/135 [59:55<12:04, 30.19s/it]
+[1AProcess:  83%|████████████████████████▉     | 112/135 [1:00:25<11:34, 30.18s/it]
+[1AProcess:  84%|█████████████████████████     | 113/135 [1:01:05<12:03, 32.88s/it]
+[1AProcess:  84%|█████████████████████████▎    | 114/135 [1:01:37<11:29, 32.82s/it]
+[1AProcess:  85%|█████████████████████████▌    | 115/135 [1:02:10<10:53, 32.67s/it]
+[1AProcess:  86%|█████████████████████████▊    | 116/135 [1:02:20<08:16, 26.12s/it]
+[1AProcess:  87%|██████████████████████████    | 117/135 [1:02:34<06:43, 22.44s/it]
+[1AProcess:  87%|██████████████████████████▏   | 118/135 [1:02:45<05:22, 18.98s/it]
+[1AProcess:  88%|██████████████████████████▍   | 119/135 [1:03:09<05:28, 20.53s/it]
+[1AProcess:  89%|██████████████████████████▋   | 120/135 [1:03:33<05:22, 21.50s/it]
+[1AProcess:  90%|██████████████████████████▉   | 121/135 [1:03:57<05:09, 22.10s/it]
+[1AProcess:  90%|███████████████████████████   | 122/135 [1:04:18<04:44, 21.92s/it]
+[1AProcess:  91%|███████████████████████████▎  | 123/135 [1:04:43<04:35, 22.94s/it]
+[1AProcess:  92%|███████████████████████████▌  | 124/135 [1:05:06<04:12, 22.94s/it]
+[1AProcess:  93%|███████████████████████████▊  | 125/135 [1:05:24<03:34, 21.40s/it]
+[1AProcess:  93%|████████████████████████████  | 126/135 [1:05:35<02:43, 18.17s/it]
+[1AProcess:  94%|████████████████████████████▏ | 127/135 [1:06:02<02:46, 20.75s/it]
+[1AProcess:  95%|████████████████████████████▍ | 128/135 [1:06:16<02:11, 18.79s/it]
+[1AProcess:  96%|████████████████████████████▋ | 129/135 [1:06:43<02:07, 21.23s/it]
+[1AProcess:  96%|████████████████████████████▉ | 130/135 [1:07:07<01:50, 22.12s/it]
+[1AProcess:  97%|█████████████████████████████ | 131/135 [1:07:22<01:20, 20.15s/it]
+[1AProcess:  98%|█████████████████████████████▎| 132/135 [1:07:38<00:56, 18.89s/it]
+[1AProcess:  99%|█████████████████████████████▌| 133/135 [1:07:43<00:29, 14.72s/it]
+[1AProcess:  99%|█████████████████████████████▊| 134/135 [1:08:08<00:17, 17.74s/it]
+✅ finished 1/135: abs_perf.py
+✅ finished 2/135: adaptive_avg_pool2d_perf.py
+✅ finished 3/135: add_gelu_perf.py
+✅ finished 4/135: add_mean_perf.py
+✅ finished 5/135: add_perf.py
+✅ finished 6/135: addmm_perf.py
+✅ finished 7/135: airy_ai_perf.py
+✅ finished 8/135: argmax_perf.py
+✅ finished 9/135: autocast_perf.py
+✅ finished 10/135: batch_norm_perf.py
+✅ finished 11/135: bessel_j1_perf.py
+✅ finished 12/135: bitwise_and_binomial_perf.py
+✅ finished 13/135: bitwise_and_perf.py
+✅ finished 14/135: broadcast_tensors_perf.py
+✅ finished 15/135: chebyshev_polynomial_t_perf.py
+✅ finished 16/135: cholesky_perf.py
+✅ finished 17/135: cholesky_solve_perf.py
+✅ finished 18/135: combined_activation_perf.py
+✅ finished 19/135: conv2d_add_perf.py
+✅ finished 20/135: conv2d_perf.py
+✅ finished 21/135: cos_avg_pool1d_perf.py
+✅ finished 22/135: cos_perf.py
+✅ finished 23/135: cos_signbit_perf.py
+✅ finished 24/135: det_perf.py
+✅ finished 25/135: determinant_lu_perf.py
+✅ finished 26/135: determinant_via_qr_perf.py
+✅ finished 27/135: digamma_perf.py
+✅ finished 28/135: div_perf.py
+✅ finished 29/135: dropout_relu_batch_norm_conv2d_perf.py
+✅ finished 30/135: dropout_sigmoid_linear_perf.py
+✅ finished 31/135: eig_perf.py
+✅ finished 32/135: elu_linear_perf.py
+✅ finished 33/135: erf_perf.py
+✅ finished 34/135: erfc_sqrt_perf.py
+✅ finished 35/135: exp_mean_perf.py
+✅ finished 36/135: exp_sqrt_perf.py
+✅ finished 37/135: floor_perf.py
+✅ finished 38/135: fused_avg_pool2d_cosine_similarity_perf.py
+✅ finished 39/135: fused_bmm_dropout_gelu_perf.py
+✅ finished 40/135: fused_bmm_rmsnorm_gelu_dropout_perf.py
+✅ finished 41/135: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 42/135: fused_cholesky_solve_perf.py
+✅ finished 43/135: fused_cross_entropy_log_softmax_perf.py
+✅ finished 44/135: fused_cross_entropy_softmax_layernorm_perf.py
+✅ finished 45/135: fused_embedding_add_tanh_perf.py
+✅ finished 46/135: fused_fractional_max_pool2d_with_relu_perf.py
+✅ finished 47/135: fused_gather_masked_fill_perf.py
+✅ finished 48/135: fused_hardshrink_dropout_perf.py
+✅ finished 49/135: fused_hardsigmoid_batch_norm_perf.py
+✅ finished 50/135: fused_index_select_eq_perf.py
+✅ finished 51/135: fused_instance_norm_selu_conv2d_perf.py
+✅ finished 52/135: fused_layer_norm_relu_linear_perf.py
+✅ finished 53/135: fused_mul_add_logsoftmax_dropout_bmm_perf.py
+✅ finished 54/135: fused_mv_logsoftmax_dropout_perf.py
+✅ finished 55/135: fused_mv_sigmoid_sub_perf.py
+✅ finished 56/135: fused_pairwise_distance_adaptive_avg_pool2d_perf.py
+✅ finished 57/135: fused_pairwise_distance_normalize_perf.py
+✅ finished 58/135: fused_qr_solve_perf.py
+✅ finished 59/135: fused_repeat_interleave_log_softmax_perf.py
+✅ finished 60/135: fused_svd_reconstruct_perf.py
+✅ finished 61/135: fused_transformer_block_perf.py
+✅ finished 62/135: gammaln_perf.py
+✅ finished 63/135: gelu_conv2d_perf.py
+✅ finished 64/135: gelu_std_perf.py
+✅ finished 65/135: grid_sample_perf.py
+✅ finished 66/135: i0_perf.py
+✅ finished 67/135: ifftshift_perf.py
+✅ finished 68/135: invert_matrix_lu_perf.py
+✅ finished 69/135: ldl_factor_perf.py
+✅ finished 70/135: leaky_relu_perf.py
+✅ finished 71/135: least_squares_qr_perf.py
+✅ finished 72/135: log1p_perf.py
+✅ finished 73/135: log_perf.py
+✅ finished 74/135: log_tanh_perf.py
+✅ finished 75/135: logspace_perf.py
+✅ finished 76/135: logsumexp_perf.py
+✅ finished 77/135: lu_perf.py
+✅ finished 78/135: matmul_perf.py
+✅ finished 79/135: matrix_multiply_and_row_dot_perf.py
+✅ finished 80/135: matrix_multiply_symmetric_perf.py
+✅ finished 81/135: matrix_power_eig_perf.py
+✅ finished 82/135: matrix_vector_dot_perf.py
+✅ finished 83/135: max_perf.py
+✅ finished 84/135: mean_perf.py
+✅ finished 85/135: min_gelu_perf.py
+✅ finished 86/135: min_perf.py
+✅ finished 87/135: mul_perf.py
+✅ finished 88/135: normalize_pairwise_distance_perf.py
+✅ finished 89/135: normalized_cosine_similarity_perf.py
+✅ finished 90/135: ones_like_perf.py
+✅ finished 91/135: permute_copy_perf.py
+✅ finished 92/135: pixel_shuffle_conv2d_perf.py
+✅ finished 93/135: polygamma_perf.py
+✅ finished 94/135: pow_perf.py
+✅ finished 95/135: pseudoinverse_svd_perf.py
+✅ finished 96/135: qr_perf.py
+✅ finished 97/135: rad2deg_sqrt_perf.py
+✅ finished 98/135: rand_perf.py
+✅ finished 99/135: reciprocal_perf.py
+✅ finished 100/135: relu_batch_norm_conv2d_perf.py
+✅ finished 101/135: relu_conv2d_perf.py
+✅ finished 102/135: relu_max_pool2d_conv2d_perf.py
+✅ finished 103/135: relu_perf.py
+✅ finished 104/135: relu_sqrt_perf.py
+✅ finished 105/135: scaled_add_dot_perf.py
+✅ finished 106/135: scaled_add_norm_perf.py
+✅ finished 107/135: selu_perf.py
+✅ finished 108/135: sigmoid_adaptive_avg_pool2d_perf.py
+✅ finished 109/135: sigmoid_argmax_perf.py
+✅ finished 110/135: sigmoid_conv2d_perf.py
+✅ finished 111/135: signbit_perf.py
+✅ finished 112/135: softmax_log_perf.py
+✅ finished 113/135: softmax_mul_perf.py
+✅ finished 114/135: softplus_linear_perf.py
+✅ finished 115/135: solve_and_add_scaled_vector_perf.py
+✅ finished 116/135: solve_multiple_lu_perf.py
+✅ finished 117/135: solve_perf.py
+✅ finished 118/135: spectral_norm_eig_perf.py
+✅ finished 119/135: sqrt_perf.py
+✅ finished 120/135: sqrt_tanh_perf.py
+✅ finished 121/135: std_perf.py
+✅ finished 122/135: sub_gelu_perf.py
+✅ finished 123/135: sub_perf.py
+✅ finished 124/135: sum_perf.py
+✅ finished 125/135: sum_std_perf.py
+✅ finished 126/135: svd_perf.py
+✅ finished 127/135: symmetric_matrix_vector_norm_perf.py
+✅ finished 128/135: symmetric_mm_and_abs_sum_perf.py
+✅ finished 129/135: tanh_linear_perf.py
+✅ finished 130/135: tanh_perf.py
+✅ finished 131/135: tensordot_perf.py
+✅ finished 132/135: tensordot_rsqrt_perf.py
+✅ finished 133/135: tril_mm_and_scale_perf.py
+✅ finished 134/135: trunc_perf.py
+✅ finished 135/135: zeta_perf.py
+[1AProcess: 100%|██████████████████████████████| 135/135 [1:08:34<00:00, 20.17s/it]
+[1AProcess: 100%|██████████████████████████████| 135/135 [1:08:34<00:00, 30.48s/it]
+
+[1AProcess:   0%|                                          | 0/135 [00:00<?, ?it/s]
+[1AProcess:   1%|▎                                 | 1/135 [00:23<51:50, 23.21s/it]
+[1AProcess:   1%|▍                               | 2/135 [01:14<1:28:08, 39.76s/it]
+[1AProcess:   2%|▋                               | 3/135 [01:40<1:13:26, 33.38s/it]
+[1AProcess:   3%|▉                               | 4/135 [02:05<1:05:58, 30.22s/it]
+[1AProcess:   4%|█▏                              | 5/135 [02:30<1:01:25, 28.35s/it]
+[1AProcess:   4%|█▍                              | 6/135 [03:14<1:12:33, 33.75s/it]
+[1AProcess:   5%|█▋                              | 7/135 [03:38<1:04:55, 30.43s/it]
+[1AProcess:   6%|█▉                              | 8/135 [04:12<1:06:26, 31.39s/it]
+[1AProcess:   7%|██▏                             | 9/135 [04:53<1:12:38, 34.59s/it]
+[1AProcess:   7%|██▎                            | 10/135 [05:56<1:29:59, 43.20s/it]
+[1AProcess:   8%|██▌                            | 11/135 [06:20<1:17:08, 37.33s/it]
+[1AProcess:   9%|██▊                            | 12/135 [06:55<1:15:00, 36.59s/it]
+[1AProcess:  10%|██▉                            | 13/135 [07:25<1:10:42, 34.77s/it]
+[1AProcess:  10%|███▏                           | 14/135 [07:45<1:01:02, 30.27s/it]
+[1AProcess:  11%|███▋                             | 15/135 [08:09<56:51, 28.43s/it]
+[1AProcess:  12%|███▉                             | 16/135 [08:32<52:56, 26.69s/it]
+[1AProcess:  13%|████▏                            | 17/135 [09:09<58:37, 29.81s/it]
+[1AProcess:  13%|████▍                            | 18/135 [09:28<51:39, 26.49s/it]
+[1AProcess:  14%|████▋                            | 19/135 [09:54<51:25, 26.60s/it]
+[1AProcess:  15%|████▉                            | 20/135 [10:09<44:15, 23.10s/it]
+[1AProcess:  16%|█████▏                           | 21/135 [10:27<40:51, 21.51s/it]
+[1AProcess:  16%|█████▍                           | 22/135 [10:52<42:19, 22.48s/it]
+[1AProcess:  17%|█████▌                           | 23/135 [11:15<42:20, 22.68s/it]
+[1AProcess:  18%|█████▊                           | 24/135 [11:33<39:03, 21.11s/it]
+[1AProcess:  19%|██████                           | 25/135 [11:45<33:54, 18.50s/it]
+[1AProcess:  19%|██████▎                          | 26/135 [12:07<35:33, 19.58s/it]
+[1AProcess:  20%|██████▌                          | 27/135 [12:31<37:49, 21.01s/it]
+[1AProcess:  21%|██████▊                          | 28/135 [12:58<40:22, 22.64s/it]
+[1AProcess:  21%|███████                          | 29/135 [13:10<34:26, 19.49s/it]
+[1AProcess:  22%|███████▎                         | 30/135 [13:24<31:27, 17.98s/it]
+[1AProcess:  23%|███████▌                         | 31/135 [13:40<29:59, 17.31s/it]
+[1AProcess:  24%|███████▊                         | 32/135 [13:57<29:23, 17.12s/it]
+[1AProcess:  24%|████████                         | 33/135 [14:20<32:01, 18.84s/it]
+[1AProcess:  25%|████████▎                        | 34/135 [14:44<34:37, 20.57s/it]
+[1AProcess:  26%|████████▌                        | 35/135 [15:16<39:48, 23.89s/it]
+[1AProcess:  27%|████████▊                        | 36/135 [15:39<39:03, 23.67s/it]
+[1AProcess:  27%|█████████                        | 37/135 [16:03<38:43, 23.71s/it]
+[1AProcess:  28%|█████████▎                       | 38/135 [16:42<45:57, 28.43s/it]
+[1AProcess:  29%|█████████▌                       | 39/135 [17:37<58:16, 36.43s/it]
+[1AProcess:  30%|█████████▏                     | 40/135 [18:34<1:07:04, 42.36s/it]
+[1AProcess:  30%|█████████▍                     | 41/135 [19:43<1:18:53, 50.36s/it]
+[1AProcess:  31%|█████████▋                     | 42/135 [19:56<1:00:39, 39.14s/it]
+[1AProcess:  32%|██████████▌                      | 43/135 [20:34<59:34, 38.85s/it]
+[1AProcess:  33%|██████████▊                      | 44/135 [21:01<53:38, 35.37s/it]
+[1AProcess:  33%|███████████                      | 45/135 [21:29<49:41, 33.13s/it]
+[1AProcess:  34%|███████████▏                     | 46/135 [21:51<44:18, 29.87s/it]
+[1AProcess:  35%|███████████▍                     | 47/135 [22:05<36:50, 25.12s/it]
+[1AProcess:  36%|███████████▋                     | 48/135 [22:28<35:19, 24.36s/it]
+[1AProcess:  36%|███████████▉                     | 49/135 [22:52<34:45, 24.25s/it]
+[1AProcess:  37%|████████████▏                    | 50/135 [23:28<39:37, 27.97s/it]
+[1AProcess:  38%|███████████▋                   | 51/135 [25:08<1:09:21, 49.54s/it]
+[1AProcess:  39%|███████████▉                   | 52/135 [27:09<1:37:53, 70.77s/it]
+[1AProcess:  39%|████████████▏                  | 53/135 [28:24<1:38:41, 72.21s/it]
+[1AProcess:  40%|████████████▍                  | 54/135 [29:02<1:23:41, 62.00s/it]
+[1AProcess:  41%|████████████▋                  | 55/135 [29:28<1:08:15, 51.19s/it]
+[1AProcess:  41%|████████████▊                  | 56/135 [30:57<1:22:12, 62.44s/it]
+[1AProcess:  42%|█████████████                  | 57/135 [31:10<1:01:47, 47.53s/it]
+[1AProcess:  43%|██████████████▏                  | 58/135 [31:27<49:15, 38.38s/it]
+[1AProcess:  44%|██████████████▍                  | 59/135 [31:44<40:24, 31.91s/it]
+[1AProcess:  44%|██████████████▋                  | 60/135 [31:55<32:12, 25.77s/it]
+[1AProcess:  45%|██████████████▉                  | 61/135 [32:08<26:53, 21.81s/it]
+[1AProcess:  46%|███████████████▏                 | 62/135 [32:31<27:04, 22.25s/it]
+[1AProcess:  47%|███████████████▍                 | 63/135 [33:00<29:16, 24.39s/it]
+[1AProcess:  47%|███████████████▋                 | 64/135 [33:24<28:38, 24.20s/it]
+[1AProcess:  48%|███████████████▉                 | 65/135 [33:36<23:52, 20.47s/it]
+[1AProcess:  49%|████████████████▏                | 66/135 [33:59<24:25, 21.24s/it]
+[1AProcess:  50%|████████████████▍                | 67/135 [34:21<24:30, 21.62s/it]
+[1AProcess:  50%|████████████████▌                | 68/135 [34:33<20:47, 18.63s/it]
+[1AProcess:  51%|████████████████▊                | 69/135 [34:44<18:02, 16.39s/it]
+[1AProcess:  52%|█████████████████                | 70/135 [35:07<19:56, 18.41s/it]
+[1AProcess:  53%|█████████████████▎               | 71/135 [35:22<18:29, 17.33s/it]
+[1AProcess:  53%|█████████████████▌               | 72/135 [35:45<19:49, 18.88s/it]
+[1AProcess:  54%|█████████████████▊               | 73/135 [36:08<20:56, 20.26s/it]
+[1AProcess:  55%|██████████████████               | 74/135 [36:32<21:47, 21.43s/it]
+[1AProcess:  56%|██████████████████▎              | 75/135 [36:52<20:53, 20.89s/it]
+[1AProcess:  56%|██████████████████▌              | 76/135 [37:15<21:15, 21.61s/it]
+[1AProcess:  57%|██████████████████▊              | 77/135 [37:33<19:39, 20.33s/it]
+[1AProcess:  58%|███████████████████              | 78/135 [38:15<25:40, 27.02s/it]
+[1AProcess:  59%|███████████████████▎             | 79/135 [39:00<30:16, 32.43s/it]
+[1AProcess:  59%|███████████████████▌             | 80/135 [39:47<33:36, 36.66s/it]
+[1AProcess:  60%|███████████████████▊             | 81/135 [40:09<28:58, 32.20s/it]
+[1AProcess:  61%|████████████████████             | 82/135 [40:41<28:30, 32.28s/it]
+[1AProcess:  61%|████████████████████▎            | 83/135 [41:06<26:10, 30.21s/it]
+[1AProcess:  62%|████████████████████▌            | 84/135 [41:32<24:27, 28.77s/it]
+[1AProcess:  63%|████████████████████▊            | 85/135 [41:58<23:24, 28.09s/it]
+[1AProcess:  64%|█████████████████████            | 86/135 [42:29<23:33, 28.84s/it]
+[1AProcess:  64%|█████████████████████▎           | 87/135 [42:58<23:13, 29.03s/it]
+[1AProcess:  65%|█████████████████████▌           | 88/135 [43:20<20:57, 26.76s/it]
+[1AProcess:  66%|█████████████████████▊           | 89/135 [43:38<18:29, 24.13s/it]
+[1AProcess:  67%|██████████████████████           | 90/135 [43:53<16:07, 21.50s/it]
+[1AProcess:  67%|██████████████████████▏          | 91/135 [44:07<14:03, 19.18s/it]
+[1AProcess:  68%|██████████████████████▍          | 92/135 [44:21<12:42, 17.74s/it]
+[1AProcess:  69%|██████████████████████▋          | 93/135 [44:48<14:12, 20.30s/it]
+[1AProcess:  70%|██████████████████████▉          | 94/135 [45:13<14:59, 21.95s/it]
+[1AProcess:  70%|███████████████████████▏         | 95/135 [45:30<13:28, 20.20s/it]
+[1AProcess:  71%|███████████████████████▍         | 96/135 [45:47<12:34, 19.34s/it]
+[1AProcess:  72%|███████████████████████▋         | 97/135 [46:14<13:46, 21.75s/it]
+[1AProcess:  73%|███████████████████████▉         | 98/135 [46:37<13:40, 22.16s/it]
+[1AProcess:  73%|████████████████████████▏        | 99/135 [47:01<13:32, 22.57s/it]
+[1AProcess:  74%|███████████████████████▋        | 100/135 [47:29<14:06, 24.18s/it]
+[1AProcess:  75%|███████████████████████▉        | 101/135 [47:41<11:43, 20.69s/it]
+[1AProcess:  76%|████████████████████████▏       | 102/135 [47:57<10:36, 19.28s/it]
+[1AProcess:  76%|████████████████████████▍       | 103/135 [48:21<10:57, 20.55s/it]
+[1AProcess:  77%|████████████████████████▋       | 104/135 [48:44<11:05, 21.46s/it]
+[1AProcess:  78%|████████████████████████▉       | 105/135 [49:11<11:27, 22.90s/it]
+[1AProcess:  79%|█████████████████████████▏      | 106/135 [49:38<11:39, 24.13s/it]
+[1AProcess:  79%|█████████████████████████▎      | 107/135 [50:03<11:21, 24.35s/it]
+[1AProcess:  80%|█████████████████████████▌      | 108/135 [50:17<09:37, 21.37s/it]
+[1AProcess:  81%|█████████████████████████▊      | 109/135 [50:44<10:00, 23.09s/it]
+[1AProcess:  81%|██████████████████████████      | 110/135 [50:57<08:23, 20.13s/it]
+[1AProcess:  82%|██████████████████████████▎     | 111/135 [51:20<08:24, 21.03s/it]
+[1AProcess:  83%|██████████████████████████▌     | 112/135 [51:51<09:08, 23.86s/it]
+[1AProcess:  84%|██████████████████████████▊     | 113/135 [52:35<10:54, 29.77s/it]
+[1AProcess:  84%|███████████████████████████     | 114/135 [53:04<10:26, 29.82s/it]
+[1AProcess:  85%|███████████████████████████▎    | 115/135 [53:37<10:14, 30.70s/it]
+[1AProcess:  86%|███████████████████████████▍    | 116/135 [53:48<07:50, 24.76s/it]
+[1AProcess:  87%|███████████████████████████▋    | 117/135 [54:02<06:25, 21.43s/it]
+[1AProcess:  87%|███████████████████████████▉    | 118/135 [54:13<05:10, 18.29s/it]
+[1AProcess:  88%|████████████████████████████▏   | 119/135 [54:36<05:15, 19.70s/it]
+[1AProcess:  89%|████████████████████████████▍   | 120/135 [54:59<05:13, 20.87s/it]
+[1AProcess:  90%|████████████████████████████▋   | 121/135 [55:22<04:59, 21.39s/it]
+[1AProcess:  90%|████████████████████████████▉   | 122/135 [55:42<04:32, 20.99s/it]
+[1AProcess:  91%|█████████████████████████████▏  | 123/135 [56:09<04:32, 22.68s/it]
+[1AProcess:  92%|█████████████████████████████▍  | 124/135 [56:32<04:10, 22.77s/it]
+[1AProcess:  93%|█████████████████████████████▋  | 125/135 [56:50<03:34, 21.46s/it]
+[1AProcess:  93%|█████████████████████████████▊  | 126/135 [57:00<02:42, 18.05s/it]
+[1AProcess:  94%|██████████████████████████████  | 127/135 [57:28<02:47, 20.99s/it]
+[1AProcess:  95%|██████████████████████████████▎ | 128/135 [57:42<02:12, 18.90s/it]
+[1AProcess:  96%|██████████████████████████████▌ | 129/135 [58:08<02:05, 20.95s/it]
+[1AProcess:  96%|██████████████████████████████▊ | 130/135 [58:31<01:48, 21.67s/it]
+[1AProcess:  97%|███████████████████████████████ | 131/135 [58:46<01:19, 19.77s/it]
+[1AProcess:  98%|███████████████████████████████▎| 132/135 [58:59<00:52, 17.53s/it]
+[1AProcess:  99%|███████████████████████████████▌| 133/135 [59:03<00:26, 13.45s/it]
+[1AProcess:  99%|███████████████████████████████▊| 134/135 [59:26<00:16, 16.41s/it]
+✅ finished 1/135: abs_perf.py
+✅ finished 2/135: adaptive_avg_pool2d_perf.py
+✅ finished 3/135: add_gelu_perf.py
+✅ finished 4/135: add_mean_perf.py
+✅ finished 5/135: add_perf.py
+✅ finished 6/135: addmm_perf.py
+✅ finished 7/135: airy_ai_perf.py
+✅ finished 8/135: argmax_perf.py
+✅ finished 9/135: autocast_perf.py
+✅ finished 10/135: batch_norm_perf.py
+✅ finished 11/135: bessel_j1_perf.py
+✅ finished 12/135: bitwise_and_binomial_perf.py
+✅ finished 13/135: bitwise_and_perf.py
+✅ finished 14/135: broadcast_tensors_perf.py
+✅ finished 15/135: chebyshev_polynomial_t_perf.py
+✅ finished 16/135: cholesky_perf.py
+✅ finished 17/135: cholesky_solve_perf.py
+✅ finished 18/135: combined_activation_perf.py
+✅ finished 19/135: conv2d_add_perf.py
+✅ finished 20/135: conv2d_perf.py
+✅ finished 21/135: cos_avg_pool1d_perf.py
+✅ finished 22/135: cos_perf.py
+✅ finished 23/135: cos_signbit_perf.py
+✅ finished 24/135: det_perf.py
+✅ finished 25/135: determinant_lu_perf.py
+✅ finished 26/135: determinant_via_qr_perf.py
+✅ finished 27/135: digamma_perf.py
+✅ finished 28/135: div_perf.py
+✅ finished 29/135: dropout_relu_batch_norm_conv2d_perf.py
+✅ finished 30/135: dropout_sigmoid_linear_perf.py
+✅ finished 31/135: eig_perf.py
+✅ finished 32/135: elu_linear_perf.py
+✅ finished 33/135: erf_perf.py
+✅ finished 34/135: erfc_sqrt_perf.py
+✅ finished 35/135: exp_mean_perf.py
+✅ finished 36/135: exp_sqrt_perf.py
+✅ finished 37/135: floor_perf.py
+✅ finished 38/135: fused_avg_pool2d_cosine_similarity_perf.py
+✅ finished 39/135: fused_bmm_dropout_gelu_perf.py
+✅ finished 40/135: fused_bmm_rmsnorm_gelu_dropout_perf.py
+✅ finished 41/135: fused_bmm_rmsnorm_gelu_dropout_sub_perf.py
+✅ finished 42/135: fused_cholesky_solve_perf.py
+✅ finished 43/135: fused_cross_entropy_log_softmax_perf.py
+✅ finished 44/135: fused_cross_entropy_softmax_layernorm_perf.py
+✅ finished 45/135: fused_embedding_add_tanh_perf.py
+✅ finished 46/135: fused_fractional_max_pool2d_with_relu_perf.py
+✅ finished 47/135: fused_gather_masked_fill_perf.py
+✅ finished 48/135: fused_hardshrink_dropout_perf.py
+✅ finished 49/135: fused_hardsigmoid_batch_norm_perf.py
+✅ finished 50/135: fused_index_select_eq_perf.py
+✅ finished 51/135: fused_instance_norm_selu_conv2d_perf.py
+✅ finished 52/135: fused_layer_norm_relu_linear_perf.py
+✅ finished 53/135: fused_mul_add_logsoftmax_dropout_bmm_perf.py
+✅ finished 54/135: fused_mv_logsoftmax_dropout_perf.py
+✅ finished 55/135: fused_mv_sigmoid_sub_perf.py
+✅ finished 56/135: fused_pairwise_distance_adaptive_avg_pool2d_perf.py
+✅ finished 57/135: fused_pairwise_distance_normalize_perf.py
+✅ finished 58/135: fused_qr_solve_perf.py
+✅ finished 59/135: fused_repeat_interleave_log_softmax_perf.py
+✅ finished 60/135: fused_svd_reconstruct_perf.py
+✅ finished 61/135: fused_transformer_block_perf.py
+✅ finished 62/135: gammaln_perf.py
+✅ finished 63/135: gelu_conv2d_perf.py
+✅ finished 64/135: gelu_std_perf.py
+✅ finished 65/135: grid_sample_perf.py
+✅ finished 66/135: i0_perf.py
+✅ finished 67/135: ifftshift_perf.py
+✅ finished 68/135: invert_matrix_lu_perf.py
+✅ finished 69/135: ldl_factor_perf.py
+✅ finished 70/135: leaky_relu_perf.py
+✅ finished 71/135: least_squares_qr_perf.py
+✅ finished 72/135: log1p_perf.py
+✅ finished 73/135: log_perf.py
+✅ finished 74/135: log_tanh_perf.py
+✅ finished 75/135: logspace_perf.py
+✅ finished 76/135: logsumexp_perf.py
+✅ finished 77/135: lu_perf.py
+✅ finished 78/135: matmul_perf.py
+✅ finished 79/135: matrix_multiply_and_row_dot_perf.py
+✅ finished 80/135: matrix_multiply_symmetric_perf.py
+✅ finished 81/135: matrix_power_eig_perf.py
+✅ finished 82/135: matrix_vector_dot_perf.py
+✅ finished 83/135: max_perf.py
+✅ finished 84/135: mean_perf.py
+✅ finished 85/135: min_gelu_perf.py
+✅ finished 86/135: min_perf.py
+✅ finished 87/135: mul_perf.py
+✅ finished 88/135: normalize_pairwise_distance_perf.py
+✅ finished 89/135: normalized_cosine_similarity_perf.py
+✅ finished 90/135: ones_like_perf.py
+✅ finished 91/135: permute_copy_perf.py
+✅ finished 92/135: pixel_shuffle_conv2d_perf.py
+✅ finished 93/135: polygamma_perf.py
+✅ finished 94/135: pow_perf.py
+✅ finished 95/135: pseudoinverse_svd_perf.py
+✅ finished 96/135: qr_perf.py
+✅ finished 97/135: rad2deg_sqrt_perf.py
+✅ finished 98/135: rand_perf.py
+✅ finished 99/135: reciprocal_perf.py
+✅ finished 100/135: relu_batch_norm_conv2d_perf.py
+✅ finished 101/135: relu_conv2d_perf.py
+✅ finished 102/135: relu_max_pool2d_conv2d_perf.py
+✅ finished 103/135: relu_perf.py
+✅ finished 104/135: relu_sqrt_perf.py
+✅ finished 105/135: scaled_add_dot_perf.py
+✅ finished 106/135: scaled_add_norm_perf.py
+✅ finished 107/135: selu_perf.py
+✅ finished 108/135: sigmoid_adaptive_avg_pool2d_perf.py
+✅ finished 109/135: sigmoid_argmax_perf.py
+✅ finished 110/135: sigmoid_conv2d_perf.py
+✅ finished 111/135: signbit_perf.py
+✅ finished 112/135: softmax_log_perf.py
+✅ finished 113/135: softmax_mul_perf.py
+✅ finished 114/135: softplus_linear_perf.py
+✅ finished 115/135: solve_and_add_scaled_vector_perf.py
+✅ finished 116/135: solve_multiple_lu_perf.py
+✅ finished 117/135: solve_perf.py
+✅ finished 118/135: spectral_norm_eig_perf.py
+✅ finished 119/135: sqrt_perf.py
+✅ finished 120/135: sqrt_tanh_perf.py
+✅ finished 121/135: std_perf.py
+✅ finished 122/135: sub_gelu_perf.py
+✅ finished 123/135: sub_perf.py
+✅ finished 124/135: sum_perf.py
+✅ finished 125/135: sum_std_perf.py
+✅ finished 126/135: svd_perf.py
+✅ finished 127/135: symmetric_matrix_vector_norm_perf.py
+✅ finished 128/135: symmetric_mm_and_abs_sum_perf.py
+✅ finished 129/135: tanh_linear_perf.py
+✅ finished 130/135: tanh_perf.py
+✅ finished 131/135: tensordot_perf.py
+✅ finished 132/135: tensordot_rsqrt_perf.py
+✅ finished 133/135: tril_mm_and_scale_perf.py
+✅ finished 134/135: trunc_perf.py
+✅ finished 135/135: zeta_perf.py
+[1AProcess: 100%|████████████████████████████████| 135/135 [59:52<00:00, 19.38s/it]
+[1AProcess: 100%|████████████████████████████████| 135/135 [59:52<00:00, 26.61s/it]
+
+=== Same-GPU PyTorch reference speedup ===
+================================================================================================================================================================
+abs.json: 0.9827
+adaptive_avg_pool2d.json: 1.0003
+add.json: 1.0001
+add_gelu.json: 1.0001
+add_mean.json: 1.0003
+addmm.json: 0.8723
+airy_ai.json: 0.9992
+argmax.json: 0.9996
+autocast.json: 0.9941
+batch_norm.json: 0.1695
+bessel_j1.json: 1.001
+bitwise_and.json: 1.0
+bitwise_and_binomial.json: 1.1296
+broadcast_tensors.json: 0.9955
+chebyshev_polynomial_t.json: 0.1074
+cholesky.json failed (input-size mismatch: generated=6 reference=5)
+cholesky_solve.json: 0.9972
+combined_activation.json: 1.0266
+conv2d.json: 0.9729
+conv2d_add.json: 0.9958
+cos.json: 1.0006
+cos_avg_pool1d.json: 0.9854
+cos_signbit.json: 0.7269
+det.json: 1.0008
+determinant_lu.json: 1.0064
+determinant_via_qr.json: 1.2768
+digamma.json: 0.9937
+div.json: 0.9999
+dropout_relu_batch_norm_conv2d.json: 0.9952
+dropout_sigmoid_linear.json: 0.2163
+eig.json: 0.9411
+elu_linear.json: 0.6862
+erf.json: 0.9826
+erfc_sqrt.json: 2.2322
+exp_mean.json: 0.9872
+exp_sqrt.json: 1.9559
+floor.json: 0.9834
+fused_avg_pool2d_cosine_similarity.json: 1.0003
+fused_bmm_dropout_gelu.json: 0.9472
+fused_bmm_rmsnorm_gelu_dropout.json: 1.0239
+fused_bmm_rmsnorm_gelu_dropout_sub.json: 0.9538
+fused_cholesky_solve.json: 3.2637
+fused_cross_entropy_log_softmax.json: 3.5476
+fused_cross_entropy_softmax_layernorm.json: 1.2381
+fused_embedding_add_tanh.json: 1.0007
+fused_fractional_max_pool2d_with_relu.json: 0.9996
+fused_gather_masked_fill.json: 0.9983
+fused_hardshrink_dropout.json: 0.2895
+fused_hardsigmoid_batch_norm.json: 0.7047
+fused_index_select_eq.json: 1.0003
+fused_instance_norm_selu_conv2d.json: 0.903
+fused_layer_norm_relu_linear.json: 0.7558
+fused_mul_add_logsoftmax_dropout_bmm.json: 0.9961
+fused_mv_logsoftmax_dropout.json: 1.0013
+fused_mv_sigmoid_sub.json failed (suspicious speedup 0.0151)
+fused_pairwise_distance_adaptive_avg_pool2d.json: 0.5826
+fused_pairwise_distance_normalize.json: 1.0115
+fused_qr_solve.json: 1.1486
+fused_repeat_interleave_log_softmax.json: 1.0002
+fused_svd_reconstruct.json: 1.009
+fused_transformer_block.json: 1.002
+gammaln.json: 0.9995
+gelu_conv2d.json: 1.0019
+gelu_std.json: 0.1232
+grid_sample.json: 1.0008
+i0.json: 1.0005
+ifftshift.json: 1.0022
+invert_matrix_lu.json: 2.7243
+ldl_factor.json: 1.0062
+leaky_relu.json: 0.9835
+least_squares_qr.json: 1.4259
+log.json: 0.4945
+log1p.json: 0.9826
+log_tanh.json: 2.6941
+logspace.json: 0.9995
+logsumexp.json: 0.9993
+lu.py.json: 1.002
+matmul.json: 1.0059
+matrix_multiply_and_row_dot.json: 0.9504
+matrix_multiply_symmetric.json: 1.0125
+matrix_power_eig.json failed (suspicious speedup 0.0344)
+matrix_vector_dot.json: 1.0039
+max.json: 1.0002
+mean.json: 1.0009
+min.json: 1.0
+min_gelu.json: 3.3596
+mul.json: 0.9999
+normalize_pairwise_distance.json: 0.6606
+normalized_cosine_similarity.json: 1.0003
+ones_like.json: 0.2776
+permute_copy.json failed (suspicious speedup 0.0587)
+pixel_shuffle_conv2d.json: 1.0046
+polygamma.json: 1.0147
+pow.json: 0.9997
+pseudoinverse_svd.json: 0.9992
+qr.json: 1.0036
+rad2deg_sqrt.json: 1.2267
+rand.json: 1.001
+reciprocal.json: 0.9822
+relu.json: 0.9824
+relu_batch_norm_conv2d.json: 1.0027
+relu_conv2d.json: 0.959
+relu_max_pool2d_conv2d.json: 1.0004
+relu_sqrt.json: 1.9564
+scaled_add_dot.json: 1.9983
+scaled_add_norm.json failed (suspicious speedup 0.0014)
+selu.json: 1.8475
+sigmoid_adaptive_avg_pool2d.json: 1.043
+sigmoid_argmax.json: 0.4363
+sigmoid_conv2d.json: 0.981
+signbit.json: 0.9997
+softmax_log.json: 0.9993
+softmax_mul.json: 0.9992
+softplus_linear.json: 1.0058
+solve.json: 1.0015
+solve_and_add_scaled_vector..json: 1.0003
+solve_multiple_lu.json: 0.9856
+spectral_norm_eig.json: 1.4343
+sqrt.json: 0.9805
+sqrt_tanh.json: 1.8273
+std.json: 1.0023
+sub.json: 1.6894
+sub_gelu.json: 4.6026
+sum.json: 0.9998
+sum_std.json: 0.8488
+svd.json: 0.9991
+symmetric_matrix_vector_norm.json: 1.0092
+symmetric_mm_and_abs_sum.json: 1.019
+tanh.json: 0.9798
+tanh_linear.json: 1.0453
+tensordot.json: 1.0057
+tensordot_rsqrt.json: 0.1836
+trunc.json: 0.9994
+zeta.json: 0.9997
+[0.9827, 1.0003, 1.0001, 1.0001, 1.0003, 0.8723, 0.9992, 0.9996, 0.9941, 0.1695, 1.001, 1.0, 1.1296, 0.9955, 0.1074, 0.9972, 1.0266, 0.9729, 0.9958, 1.0006, 0.9854, 0.7269, 1.0008, 1.0064, 1.2768, 0.9937, 0.9999, 0.9952, 0.2163, 0.9411, 0.6862, 0.9826, 2.2322, 0.9872, 1.9559, 0.9834, 1.0003, 0.9472, 1.0239, 0.9538, 3.2637, 3.5476, 1.2381, 1.0007, 0.9996, 0.9983, 0.2895, 0.7047, 1.0003, 0.903, 0.7558, 0.9961, 1.0013, 0.5826, 1.0115, 1.1486, 1.0002, 1.009, 1.002, 0.9995, 1.0019, 0.1232, 1.0008, 1.0005, 1.0022, 2.7243, 1.0062, 0.9835, 1.4259, 0.4945, 0.9826, 2.6941, 0.9995, 0.9993, 1.002, 1.0059, 0.9504, 1.0125, 1.0039, 1.0002, 1.0009, 1.0, 3.3596, 0.9999, 0.6606, 1.0003, 0.2776, 1.0046, 1.0147, 0.9997, 0.9992, 1.0036, 1.2267, 1.001, 0.9822, 0.9824, 1.0027, 0.959, 1.0004, 1.9564, 1.9983, 1.8475, 1.043, 0.4363, 0.981, 0.9997, 0.9993, 0.9992, 1.0058, 1.0015, 1.0003, 0.9856, 1.4343, 0.9805, 1.8273, 1.0023, 1.6894, 4.6026, 0.9998, 0.8488, 0.9991, 1.0092, 1.019, 0.9798, 1.0453, 1.0057, 0.1836, 0.9994, 0.9997]
+
+local_ref_results
+speed up: 1.1
+================================================================================================================================================================
+
+=== Final summary ===
+{
+  "total_predictions": 166,
+  "phase1_call_acc": {
+    "passed": 135,
+    "rate": 81.33
+  },
+  "phase2_exec_acc": {
+    "passed": 135,
+    "rate": 81.33
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.42,
+    "official_speedup_vs_upstream_golden": 0.42,
+    "local_speedup_vs_same_gpu_pytorch": 1.1,
+    "raw_output_tail": "\nrelu.json: 0.1441\nrelu_batch_norm_conv2d.json failed\nrelu_conv2d.json: 0.167\nrelu_max_pool2d_conv2d.json: 0.1742\nrelu_sqrt.json: 0.2782\nscaled_add_dot.json: 0.3172\nscaled_add_norm.json failed\nselu.json: 0.2563\nsigmoid_adaptive_avg_pool2d.json: 1.2647\nsigmoid_argmax.json failed\nsigmoid_conv2d.json failed\nsignbit.json: 0.1846\nsoftmax_log.json: 0.1447\nsoftmax_mul.json: 0.1441\nsoftplus_linear.json: 0.1749\nsolve.json: 0.8597\nsolve_and_add_scaled_vector..json: 0.605\nsolve_multiple_lu.json: 0.76\nspectral_norm_eig.json: 1.2302\nsqrt.json: 0.144\nsqrt_tanh.json: 0.268\nstd.json: 0.2979\nsub.json: 0.2419\nsub_gelu.json: 0.6945\nsum.json: 0.2271\nsum_std.json: 0.4944\nsvd.json: 1.0486\nsymmetric_matrix_vector_norm.json: 0.2047\nsymmetric_mm_and_abs_sum.json: 0.2811\ntanh.json: 0.1439\ntanh_linear.json: 0.2309\ntensordot.json: 0.1689\ntensordot_rsqrt.json failed\ntrunc.json: 0.1464\nzeta.json: 0.1465\n[0.1441, 1.2712, 0.1467, 0.1647, 0.1522, 0.1191, 0.2867, 0.2502, 0.1461, 0.2289, 0.1464, 0.4598, 1.7618, 0.3473, 0.4072, 0.2838, 0.1593, 0.1479, 0.274, 0.113, 0.4236, 0.8937, 0.5216, 0.235, 0.1471, 0.2571, 0.8503, 0.2335, 0.1454, 0.3351, 0.1456, 0.2776, 0.1438, 0.1447, 0.2077, 0.2138, 0.1996, 2.8554, 3.6072, 0.4271, 0.1989, 0.1758, 0.2099, 0.2865, 0.1051, 0.1555, 0.2078, 0.4541, 0.1719, 0.1621, 0.6154, 1.0947, 0.626, 0.2428, 0.1642, 0.157, 0.2481, 0.2133, 1.7879, 1.1732, 0.1447, 1.6267, 0.1465, 0.4599, 0.5903, 0.1759, 0.844, 0.1284, 0.1318, 0.1355, 0.1726, 0.241, 0.2269, 0.1966, 0.497, 0.1638, 0.1258, 0.1908, 1.3563, 0.2338, 0.2369, 0.1468, 0.9949, 0.6428, 0.1749, 0.1612, 0.1443, 0.1441, 0.167, 0.1742, 0.2782, 0.3172, 0.2563, 1.2647, 0.1846, 0.1447, 0.1441, 0.1749, 0.8597, 0.605, 0.76, 1.2302, 0.144, 0.268, 0.2979, 0.2419, 0.6945, 0.2271, 0.4944, 1.0486, 0.2047, 0.2811, 0.1439, 0.2309, 0.1689, 0.1464, 0.1465]\n\nperf_results\nspeed up: 0.42\n================================================================================================================================================================\n",
+    "official_raw_output_tail": "\nrelu.json: 0.1441\nrelu_batch_norm_conv2d.json failed\nrelu_conv2d.json: 0.167\nrelu_max_pool2d_conv2d.json: 0.1742\nrelu_sqrt.json: 0.2782\nscaled_add_dot.json: 0.3172\nscaled_add_norm.json failed\nselu.json: 0.2563\nsigmoid_adaptive_avg_pool2d.json: 1.2647\nsigmoid_argmax.json failed\nsigmoid_conv2d.json failed\nsignbit.json: 0.1846\nsoftmax_log.json: 0.1447\nsoftmax_mul.json: 0.1441\nsoftplus_linear.json: 0.1749\nsolve.json: 0.8597\nsolve_and_add_scaled_vector..json: 0.605\nsolve_multiple_lu.json: 0.76\nspectral_norm_eig.json: 1.2302\nsqrt.json: 0.144\nsqrt_tanh.json: 0.268\nstd.json: 0.2979\nsub.json: 0.2419\nsub_gelu.json: 0.6945\nsum.json: 0.2271\nsum_std.json: 0.4944\nsvd.json: 1.0486\nsymmetric_matrix_vector_norm.json: 0.2047\nsymmetric_mm_and_abs_sum.json: 0.2811\ntanh.json: 0.1439\ntanh_linear.json: 0.2309\ntensordot.json: 0.1689\ntensordot_rsqrt.json failed\ntrunc.json: 0.1464\nzeta.json: 0.1465\n[0.1441, 1.2712, 0.1467, 0.1647, 0.1522, 0.1191, 0.2867, 0.2502, 0.1461, 0.2289, 0.1464, 0.4598, 1.7618, 0.3473, 0.4072, 0.2838, 0.1593, 0.1479, 0.274, 0.113, 0.4236, 0.8937, 0.5216, 0.235, 0.1471, 0.2571, 0.8503, 0.2335, 0.1454, 0.3351, 0.1456, 0.2776, 0.1438, 0.1447, 0.2077, 0.2138, 0.1996, 2.8554, 3.6072, 0.4271, 0.1989, 0.1758, 0.2099, 0.2865, 0.1051, 0.1555, 0.2078, 0.4541, 0.1719, 0.1621, 0.6154, 1.0947, 0.626, 0.2428, 0.1642, 0.157, 0.2481, 0.2133, 1.7879, 1.1732, 0.1447, 1.6267, 0.1465, 0.4599, 0.5903, 0.1759, 0.844, 0.1284, 0.1318, 0.1355, 0.1726, 0.241, 0.2269, 0.1966, 0.497, 0.1638, 0.1258, 0.1908, 1.3563, 0.2338, 0.2369, 0.1468, 0.9949, 0.6428, 0.1749, 0.1612, 0.1443, 0.1441, 0.167, 0.1742, 0.2782, 0.3172, 0.2563, 1.2647, 0.1846, 0.1447, 0.1441, 0.1749, 0.8597, 0.605, 0.76, 1.2302, 0.144, 0.268, 0.2979, 0.2419, 0.6945, 0.2271, 0.4944, 1.0486, 0.2047, 0.2811, 0.1439, 0.2309, 0.1689, 0.1464, 0.1465]\n\nperf_results\nspeed up: 0.42\n================================================================================================================================================================\n",
+    "local_raw_output_tail": "1.9564\nscaled_add_dot.json: 1.9983\nscaled_add_norm.json failed (suspicious speedup 0.0014)\nselu.json: 1.8475\nsigmoid_adaptive_avg_pool2d.json: 1.043\nsigmoid_argmax.json: 0.4363\nsigmoid_conv2d.json: 0.981\nsignbit.json: 0.9997\nsoftmax_log.json: 0.9993\nsoftmax_mul.json: 0.9992\nsoftplus_linear.json: 1.0058\nsolve.json: 1.0015\nsolve_and_add_scaled_vector..json: 1.0003\nsolve_multiple_lu.json: 0.9856\nspectral_norm_eig.json: 1.4343\nsqrt.json: 0.9805\nsqrt_tanh.json: 1.8273\nstd.json: 1.0023\nsub.json: 1.6894\nsub_gelu.json: 4.6026\nsum.json: 0.9998\nsum_std.json: 0.8488\nsvd.json: 0.9991\nsymmetric_matrix_vector_norm.json: 1.0092\nsymmetric_mm_and_abs_sum.json: 1.019\ntanh.json: 0.9798\ntanh_linear.json: 1.0453\ntensordot.json: 1.0057\ntensordot_rsqrt.json: 0.1836\ntrunc.json: 0.9994\nzeta.json: 0.9997\n[0.9827, 1.0003, 1.0001, 1.0001, 1.0003, 0.8723, 0.9992, 0.9996, 0.9941, 0.1695, 1.001, 1.0, 1.1296, 0.9955, 0.1074, 0.9972, 1.0266, 0.9729, 0.9958, 1.0006, 0.9854, 0.7269, 1.0008, 1.0064, 1.2768, 0.9937, 0.9999, 0.9952, 0.2163, 0.9411, 0.6862, 0.9826, 2.2322, 0.9872, 1.9559, 0.9834, 1.0003, 0.9472, 1.0239, 0.9538, 3.2637, 3.5476, 1.2381, 1.0007, 0.9996, 0.9983, 0.2895, 0.7047, 1.0003, 0.903, 0.7558, 0.9961, 1.0013, 0.5826, 1.0115, 1.1486, 1.0002, 1.009, 1.002, 0.9995, 1.0019, 0.1232, 1.0008, 1.0005, 1.0022, 2.7243, 1.0062, 0.9835, 1.4259, 0.4945, 0.9826, 2.6941, 0.9995, 0.9993, 1.002, 1.0059, 0.9504, 1.0125, 1.0039, 1.0002, 1.0009, 1.0, 3.3596, 0.9999, 0.6606, 1.0003, 0.2776, 1.0046, 1.0147, 0.9997, 0.9992, 1.0036, 1.2267, 1.001, 0.9822, 0.9824, 1.0027, 0.959, 1.0004, 1.9564, 1.9983, 1.8475, 1.043, 0.4363, 0.981, 0.9997, 0.9993, 0.9992, 1.0058, 1.0015, 1.0003, 0.9856, 1.4343, 0.9805, 1.8273, 1.0023, 1.6894, 4.6026, 0.9998, 0.8488, 0.9991, 1.0092, 1.019, 0.9798, 1.0453, 1.0057, 0.1836, 0.9994, 0.9997]\n\nlocal_ref_results\nspeed up: 1.1\n================================================================================================================================================================"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/prompt12_haiku45_full_20260607-201510"
+}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/a01637220/main/ap-97f2yMEJNBBobnWRiMO8ur
