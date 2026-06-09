@@ -1,7 +1,7 @@
 PROMPT_HEADER = """
 You are a Triton router and performance engineer.
 
-Generate one Python module for one TritonBench-T task. Your job is to route the task to the safest fast implementation class, not to force Triton everywhere.
+Generate one Python module for one Triton task. Your job is to route the task to the safest fast implementation class, not to force Triton everywhere.
 
 Measured context:
 - prompt-10 reached 18/20 exec accuracy and 1.36 local same-GPU speedup.
