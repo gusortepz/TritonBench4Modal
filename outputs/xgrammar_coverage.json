@@ -1,0 +1,95 @@
+{
+  "prompt11": {
+    "path": "outputs/grammar_elementwise_compare/prompt11_elementwise6.jsonl",
+    "passed": 6,
+    "total": 6,
+    "rows": [
+      {
+        "function": "add",
+        "accepted": true
+      },
+      {
+        "function": "sub",
+        "accepted": true
+      },
+      {
+        "function": "sqrt",
+        "accepted": true
+      },
+      {
+        "function": "rsqrt",
+        "accepted": true
+      },
+      {
+        "function": "tanh",
+        "accepted": true
+      },
+      {
+        "function": "relu_sqrt",
+        "accepted": true
+      }
+    ]
+  },
+  "prompt0_specific_grammar": {
+    "path": "outputs/grammar_elementwise_compare/prompt0_plus_grammar_elementwise6.jsonl",
+    "passed": 6,
+    "total": 6,
+    "rows": [
+      {
+        "function": "add",
+        "accepted": true
+      },
+      {
+        "function": "sub",
+        "accepted": true
+      },
+      {
+        "function": "sqrt",
+        "accepted": true
+      },
+      {
+        "function": "rsqrt",
+        "accepted": true
+      },
+      {
+        "function": "tanh",
+        "accepted": true
+      },
+      {
+        "function": "relu_sqrt",
+        "accepted": true
+      }
+    ]
+  },
+  "prompt11_specific_grammar": {
+    "path": "outputs/grammar_elementwise_compare/prompt11_plus_grammar_elementwise6.jsonl",
+    "passed": 6,
+    "total": 6,
+    "rows": [
+      {
+        "function": "add",
+        "accepted": true
+      },
+      {
+        "function": "sub",
+        "accepted": true
+      },
+      {
+        "function": "sqrt",
+        "accepted": true
+      },
+      {
+        "function": "rsqrt",
+        "accepted": true
+      },
+      {
+        "function": "tanh",
+        "accepted": true
+      },
+      {
+        "function": "relu_sqrt",
+        "accepted": true
+      }
+    ]
+  }
+}

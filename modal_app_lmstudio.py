@@ -4,8 +4,9 @@ Local LM Studio generation + Modal GPU evaluation for TritonBench-T.
 This file is intentionally parallel to modal_app.py:
 1. fetch the exact Alpaca instructions from the Modal image;
 2. generate predictions locally through LM Studio's OpenAI-compatible API;
-3. upload the local JSONL to the Modal Volume;
-4. run the existing GPU evaluator on Modal.
+3. preflight the local JSONL with the Lex/Yacc frontend;
+4. upload the validated JSONL to the Modal Volume;
+5. run the existing GPU evaluator on Modal.
 """
 
 from __future__ import annotations
@@ -349,6 +350,9 @@ def main(
     temperature: float = 0.1,
     retries: int = 1,
     resume: bool = True,
+    skip_preflight: bool = False,
+    preflight_output_dir: str = "",
+    summary_path: str = "",
 ):
     """Generate locally with LM Studio, upload predictions, then evaluate on Modal."""
     items = fetch_alpaca_items.remote(dataset=dataset, limit=limit or None)
@@ -376,7 +380,11 @@ def main(
         resume=resume,
     )
 
-    remote = _upload_local_predictions(predictions_path)
+    remote = _upload_local_predictions(
+        predictions_path,
+        skip_preflight=skip_preflight,
+        preflight_output_dir=preflight_output_dir,
+    )
     print(f"\nevaluating: volume://{remote}\n", flush=True)
     summary = evaluate_predictions.remote(
         predictions_path=remote,
@@ -385,6 +393,10 @@ def main(
     print("\n=== Final summary ===")
     print(json.dumps(summary, indent=2))
     Path("latest-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    if summary_path:
+        summary_file = Path(summary_path)
+        summary_file.parent.mkdir(parents=True, exist_ok=True)
+        summary_file.write_text(json.dumps(summary, indent=2) + "\n")
 
 
 @app.local_entrypoint()

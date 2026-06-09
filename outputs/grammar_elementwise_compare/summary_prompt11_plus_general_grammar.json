@@ -1,0 +1,53 @@
+{
+  "total_predictions": 6,
+  "phase1_call_acc": {
+    "passed": 6,
+    "rate": 100.0,
+    "survivors": [
+      "add.py",
+      "relu_sqrt.py",
+      "rsqrt.py",
+      "sqrt.py",
+      "sub.py",
+      "tanh.py"
+    ]
+  },
+  "phase2_exec_acc": {
+    "passed": 6,
+    "rate": 100.0,
+    "survivors": [
+      "add.py",
+      "relu_sqrt.py",
+      "rsqrt.py",
+      "sqrt.py",
+      "sub.py",
+      "tanh.py"
+    ]
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": 0.26,
+    "official_speedup_vs_upstream_golden": 0.26,
+    "local_speedup_vs_same_gpu_pytorch": 1.71,
+    "per_op_official_speedup_vs_upstream_golden": {
+      "add": 0.1437,
+      "relu_sqrt": 0.2777,
+      "rsqrt": 0.5955,
+      "sqrt": 0.1439,
+      "sub": 0.237,
+      "tanh": 0.1436
+    },
+    "per_op_local_speedup_vs_same_gpu_pytorch": {
+      "add": 0.9809,
+      "relu_sqrt": 1.9594,
+      "rsqrt": 3.6681,
+      "sqrt": 0.982,
+      "sub": 1.6605,
+      "tanh": 0.98
+    },
+    "raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1437\nrelu_sqrt.json: 0.2777\nrsqrt.json: 0.5955\nsqrt.json: 0.1439\nsub.json: 0.237\ntanh.json: 0.1436\n[0.1437, 0.2777, 0.5955, 0.1439, 0.237, 0.1436]\n\nperf_results\nspeed up: 0.26\n================================================================================================================================================================\n",
+    "official_raw_output_tail": "================================================================================================================================================================\nadd.json: 0.1437\nrelu_sqrt.json: 0.2777\nrsqrt.json: 0.5955\nsqrt.json: 0.1439\nsub.json: 0.237\ntanh.json: 0.1436\n[0.1437, 0.2777, 0.5955, 0.1439, 0.237, 0.1436]\n\nperf_results\nspeed up: 0.26\n================================================================================================================================================================\n",
+    "local_raw_output_tail": "================================================================================================================================================================\nadd.json: 0.9809\nrelu_sqrt.json: 1.9594\nrsqrt.json: 3.6681\nsqrt.json: 0.982\nsub.json: 1.6605\ntanh.json: 0.98\n[0.9809, 1.9594, 3.6681, 0.982, 1.6605, 0.98]\n\nlocal_ref_results\nspeed up: 1.71\n================================================================================================================================================================"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/grammar_elementwise_prompt11_general_grammar"
+}

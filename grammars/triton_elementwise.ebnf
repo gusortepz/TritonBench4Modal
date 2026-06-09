@@ -1,0 +1,158 @@
+root ::= add_module | sub_module | sqrt_module | rsqrt_module | tanh_module | relu_sqrt_module
+
+add_root ::= add_module
+sub_root ::= sub_module
+sqrt_root ::= sqrt_module
+rsqrt_root ::= rsqrt_module
+tanh_root ::= tanh_module
+relu_sqrt_root ::= relu_sqrt_module
+
+add_module ::= imports module_gap add_kernel module_gap add_wrapper
+sub_module ::= imports module_gap sub_kernel module_gap sub_wrapper
+sqrt_module ::= imports module_gap sqrt_kernel module_gap sqrt_wrapper
+rsqrt_module ::= imports module_gap rsqrt_kernel module_gap rsqrt_wrapper
+tanh_module ::= imports module_gap tanh_kernel module_gap tanh_wrapper
+relu_sqrt_module ::= imports module_gap relu_sqrt_kernel module_gap relu_sqrt_wrapper
+
+imports ::= "import torch\nimport triton\nimport triton.language as tl\n"
+module_gap ::= "\n\n"
+
+pid_line ::= "    pid = tl.program_id(0)\n"
+offsets_line ::= "    offsets = pid * BLOCK_SIZE + tl.arange(0, BLOCK_SIZE)\n"
+mask_line ::= "    mask = offsets < n_elements\n"
+load_x_line ::= "    x = tl.load(input_ptr + offsets, mask=mask, other=0.0)\n"
+load_y_line ::= "    y = tl.load(other_ptr + offsets, mask=mask, other=0.0)\n"
+store_result_line ::= "    tl.store(output_ptr + offsets, result, mask=mask)\n"
+
+block_size ::= "128" | "256" | "512" | "1024"
+
+add_kernel ::= "@triton.jit\n"
+               "def _add_kernel(input_ptr, other_ptr, output_ptr, n_elements, alpha: tl.constexpr, BLOCK_SIZE: tl.constexpr):\n"
+               pid_line
+               offsets_line
+               mask_line
+               load_x_line
+               load_y_line
+               "    result = x + alpha * y\n"
+               store_result_line
+
+sub_kernel ::= "@triton.jit\n"
+               "def _sub_kernel(input_ptr, other_ptr, output_ptr, n_elements, alpha: tl.constexpr, BLOCK_SIZE: tl.constexpr):\n"
+               pid_line
+               offsets_line
+               mask_line
+               load_x_line
+               load_y_line
+               "    result = x - alpha * y\n"
+               store_result_line
+
+sqrt_kernel ::= "@triton.jit\n"
+                "def _sqrt_kernel(input_ptr, output_ptr, n_elements, BLOCK_SIZE: tl.constexpr):\n"
+                pid_line
+                offsets_line
+                mask_line
+                load_x_line
+                "    result = tl.sqrt(x)\n"
+                store_result_line
+
+rsqrt_kernel ::= "@triton.jit\n"
+                 "def _rsqrt_kernel(input_ptr, output_ptr, n_elements, BLOCK_SIZE: tl.constexpr):\n"
+                 pid_line
+                 offsets_line
+                 mask_line
+                 load_x_line
+                 "    result = tl.rsqrt(x)\n"
+                 store_result_line
+
+tanh_kernel ::= "@triton.jit\n"
+                "def _tanh_kernel(input_ptr, output_ptr, n_elements, BLOCK_SIZE: tl.constexpr):\n"
+                pid_line
+                offsets_line
+                mask_line
+                load_x_line
+                "    result = 2.0 / (1.0 + tl.exp(-2.0 * x)) - 1.0\n"
+                store_result_line
+
+relu_sqrt_kernel ::= "@triton.jit\n"
+                     "def _relu_sqrt_kernel(input_ptr, output_ptr, n_elements, BLOCK_SIZE: tl.constexpr):\n"
+                     pid_line
+                     offsets_line
+                     mask_line
+                     load_x_line
+                     "    relu = tl.maximum(x, 0.0)\n"
+                     "    result = tl.sqrt(relu)\n"
+                     store_result_line
+
+binary_wrapper_prefix ::= "    if out is None:\n"
+                          "        output = torch.empty_like(input)\n"
+                          "    else:\n"
+                          "        output = out\n"
+                          "    n_elements = input.numel()\n"
+                          "    if n_elements == 0:\n"
+                          "        return output\n"
+                          "    if torch.is_tensor(other):\n"
+                          "        other_tensor = other.contiguous()\n"
+                          "    else:\n"
+                          "        other_tensor = torch.full_like(input, other)\n"
+                          "    input_contig = input.contiguous()\n"
+                          "    grid = lambda meta: (triton.cdiv(n_elements, meta['BLOCK_SIZE']),)\n"
+
+unary_wrapper_prefix ::= "    if out is None:\n"
+                         "        output = torch.empty_like(input)\n"
+                         "    else:\n"
+                         "        output = out\n"
+                         "    n_elements = input.numel()\n"
+                         "    if n_elements == 0:\n"
+                         "        return output\n"
+                         "    input_contig = input.contiguous()\n"
+                         "    grid = lambda meta: (triton.cdiv(n_elements, meta['BLOCK_SIZE']),)\n"
+
+relu_sqrt_wrapper_prefix ::= "    if input.dtype != torch.float32 and input.dtype != torch.float64:\n"
+                             "        result = torch.sqrt(torch.relu(input.float()))\n"
+                             "        if out is not None:\n"
+                             "            out.copy_(result)\n"
+                             "            return out\n"
+                             "        return result\n"
+                             "    if inplace:\n"
+                             "        output = input\n"
+                             "    elif out is None:\n"
+                             "        output = torch.empty_like(input)\n"
+                             "    else:\n"
+                             "        output = out\n"
+                             "    n_elements = input.numel()\n"
+                             "    if n_elements == 0:\n"
+                             "        return output\n"
+                             "    input_contig = input.contiguous()\n"
+                             "    grid = lambda meta: (triton.cdiv(n_elements, meta['BLOCK_SIZE']),)\n"
+
+return_output ::= "    return output\n"
+
+add_wrapper ::= "def add(input, other, *, alpha=1, out=None):\n"
+                binary_wrapper_prefix
+                "    _add_kernel[grid](input_contig, other_tensor, output, n_elements, alpha, BLOCK_SIZE=" block_size ")\n"
+                return_output
+
+sub_wrapper ::= "def sub(input, other, *, alpha=1, out=None):\n"
+                binary_wrapper_prefix
+                "    _sub_kernel[grid](input_contig, other_tensor, output, n_elements, alpha, BLOCK_SIZE=" block_size ")\n"
+                return_output
+
+sqrt_wrapper ::= "def sqrt(input, *, out=None):\n"
+                 unary_wrapper_prefix
+                 "    _sqrt_kernel[grid](input_contig, output, n_elements, BLOCK_SIZE=" block_size ")\n"
+                 return_output
+
+rsqrt_wrapper ::= "def rsqrt(input, *, out=None):\n"
+                  unary_wrapper_prefix
+                  "    _rsqrt_kernel[grid](input_contig, output, n_elements, BLOCK_SIZE=" block_size ")\n"
+                  return_output
+
+tanh_wrapper ::= "def tanh(input, *, out=None):\n"
+                 unary_wrapper_prefix
+                 "    _tanh_kernel[grid](input_contig, output, n_elements, BLOCK_SIZE=" block_size ")\n"
+                 return_output
+
+relu_sqrt_wrapper ::= "def relu_sqrt(input, inplace=False, out=None):\n"
+                      relu_sqrt_wrapper_prefix
+                      "    _relu_sqrt_kernel[grid](input_contig, output, n_elements, BLOCK_SIZE=" block_size ")\n"
+                      return_output

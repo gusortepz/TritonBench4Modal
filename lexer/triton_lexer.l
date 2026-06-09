@@ -186,7 +186,7 @@ PREFIX     ([rRuUbBfF]|[rR][fF]|[fF][rR]|[bB][rR]|[rR][bB])?
 <BOL>[ \t\f]+                   { if (nesting_depth == 0) { process_indentation(yytext, yyleng); } BEGIN(INITIAL); if (!pending_empty()) RET(pop_pending()); }
 <BOL>.                          { if (nesting_depth == 0) { process_indentation("", 0); } BEGIN(INITIAL); scanner_line = triton_token_line; scanner_column = triton_token_column; yyless(0); if (!pending_empty()) RET(pop_pending()); }
 
-"\\\r?\n"                       { }
+\\[ \t\f]*\r?\n                 { }
 [ \t\f]+                         { }
 #[^\r\n]*                        { }
 \r?\n                            { BEGIN(BOL); if (nesting_depth == 0) { RET(T_NEWLINE); } }
@@ -205,45 +205,6 @@ PREFIX     ([rRuUbBfF]|[rR][fF]|[fF][rR]|[bB][rR]|[rR][bB])?
 {PREFIX}\'([^\\\'\r\n]|\\.)*\'   { RET(T_STRING); }
 {PREFIX}\"([^\\\"\r\n]|\\.)*     { RET(T_ERROR); }
 {PREFIX}\'([^\\\'\r\n]|\\.)*     { RET(T_ERROR); }
-
-"@triton.jit"                    { RET(T_TRITON_JIT); }
-"@triton.autotune"               { RET(T_TRITON_AUTOTUNE); }
-"@triton.heuristics"             { RET(T_TRITON_HEURISTICS); }
-"@triton."{IDENT}                { RET(T_TRITON_DECORATOR); }
-
-"tl.constexpr"                   { RET(T_TL_CONSTEXPR); }
-"tl.load"                        { RET(T_TL_LOAD); }
-"tl.store"                       { RET(T_TL_STORE); }
-"tl.arange"                      { RET(T_TL_ARANGE); }
-"tl.program_id"                  { RET(T_TL_PROGRAM_ID); }
-"tl.cdiv"                        { RET(T_TL_CDIV); }
-"tl.where"                       { RET(T_TL_WHERE); }
-"tl.dot"                         { RET(T_TL_DOT); }
-"tl.full"                        { RET(T_TL_FULL); }
-"tl.zeros"                       { RET(T_TL_ZEROS); }
-"tl.exp"                         { RET(T_TL_EXP); }
-"tl.log"                         { RET(T_TL_LOG); }
-"tl.sqrt"                        { RET(T_TL_SQRT); }
-"tl.rsqrt"                       { RET(T_TL_RSQRT); }
-"tl.sigmoid"                     { RET(T_TL_SIGMOID); }
-"tl.erf"                         { RET(T_TL_ERF); }
-"tl.sin"                         { RET(T_TL_SIN); }
-"tl.cos"                         { RET(T_TL_COS); }
-"tl.abs"                         { RET(T_TL_ABS); }
-"tl.maximum"                     { RET(T_TL_MAXIMUM); }
-"tl.minimum"                     { RET(T_TL_MINIMUM); }
-"tl.sum"                         { RET(T_TL_SUM); }
-"tl.max"                         { RET(T_TL_MAX); }
-"tl.min"                         { RET(T_TL_MIN); }
-"tl.argmax"                      { RET(T_TL_ARGMAX); }
-"tl.argmin"                      { RET(T_TL_ARGMIN); }
-"tl."(float8e5|float8e4nv|float8e4b15|float16|float32|float64|bfloat16|int1|int8|int16|int32|int64|uint8|uint16|uint32|uint64) { RET(T_TL_DTYPE); }
-"tl."{IDENT}                     { RET(T_TL_SYMBOL); }
-
-"triton.jit"                     { RET(T_TRITON_SYMBOL); }
-"triton."{IDENT}                 { RET(T_TRITON_SYMBOL); }
-"torch."{IDENT}("."{IDENT})*     { RET(T_TORCH_SYMBOL); }
-"F."{IDENT}                      { RET(T_FUNCTIONAL_SYMBOL); }
 
 "def"                            { RET(T_DEF); }
 "return"                         { RET(T_RETURN); }
@@ -270,6 +231,9 @@ PREFIX     ([rRuUbBfF]|[rR][fF]|[fF][rR]|[bB][rR]|[rR][bB])?
 "raise"                          { RET(T_RAISE); }
 "global"                         { RET(T_GLOBAL); }
 "nonlocal"                       { RET(T_NONLOCAL); }
+"del"                            { RET(T_DEL); }
+"async"                          { RET(T_ASYNC); }
+"await"                          { RET(T_AWAIT); }
 "and"                            { RET(T_AND); }
 "or"                             { RET(T_OR); }
 "not"                            { RET(T_NOT); }
@@ -303,6 +267,7 @@ PREFIX     ([rRuUbBfF]|[rR][fF]|[fF][rR]|[bB][rR]|[rR][bB])?
 "&="                             { RET(T_AMP_ASSIGN); }
 "|="                             { RET(T_PIPE_ASSIGN); }
 "^="                             { RET(T_CARET_ASSIGN); }
+"@="                             { RET(T_AT_ASSIGN); }
 "<<"                             { RET(T_LSHIFT); }
 ">>"                             { RET(T_RSHIFT); }
 "**"                             { RET(T_POWER); }
@@ -397,6 +362,9 @@ const char *triton_token_name(int token)
     case T_RAISE: return "RAISE";
     case T_GLOBAL: return "GLOBAL";
     case T_NONLOCAL: return "NONLOCAL";
+    case T_DEL: return "DEL";
+    case T_ASYNC: return "ASYNC";
+    case T_AWAIT: return "AWAIT";
     case T_AND: return "AND";
     case T_OR: return "OR";
     case T_NOT: return "NOT";
@@ -404,41 +372,6 @@ const char *triton_token_name(int token)
     case T_NONE: return "NONE";
     case T_TRUE: return "TRUE";
     case T_FALSE: return "FALSE";
-    case T_TRITON_JIT: return "TRITON_JIT";
-    case T_TRITON_AUTOTUNE: return "TRITON_AUTOTUNE";
-    case T_TRITON_HEURISTICS: return "TRITON_HEURISTICS";
-    case T_TRITON_DECORATOR: return "TRITON_DECORATOR";
-    case T_TRITON_SYMBOL: return "TRITON_SYMBOL";
-    case T_TL_CONSTEXPR: return "TL_CONSTEXPR";
-    case T_TL_LOAD: return "TL_LOAD";
-    case T_TL_STORE: return "TL_STORE";
-    case T_TL_ARANGE: return "TL_ARANGE";
-    case T_TL_PROGRAM_ID: return "TL_PROGRAM_ID";
-    case T_TL_CDIV: return "TL_CDIV";
-    case T_TL_WHERE: return "TL_WHERE";
-    case T_TL_DOT: return "TL_DOT";
-    case T_TL_FULL: return "TL_FULL";
-    case T_TL_ZEROS: return "TL_ZEROS";
-    case T_TL_EXP: return "TL_EXP";
-    case T_TL_LOG: return "TL_LOG";
-    case T_TL_SQRT: return "TL_SQRT";
-    case T_TL_RSQRT: return "TL_RSQRT";
-    case T_TL_SIGMOID: return "TL_SIGMOID";
-    case T_TL_ERF: return "TL_ERF";
-    case T_TL_SIN: return "TL_SIN";
-    case T_TL_COS: return "TL_COS";
-    case T_TL_ABS: return "TL_ABS";
-    case T_TL_MAXIMUM: return "TL_MAXIMUM";
-    case T_TL_MINIMUM: return "TL_MINIMUM";
-    case T_TL_SUM: return "TL_SUM";
-    case T_TL_MAX: return "TL_MAX";
-    case T_TL_MIN: return "TL_MIN";
-    case T_TL_ARGMAX: return "TL_ARGMAX";
-    case T_TL_ARGMIN: return "TL_ARGMIN";
-    case T_TL_DTYPE: return "TL_DTYPE";
-    case T_TL_SYMBOL: return "TL_SYMBOL";
-    case T_TORCH_SYMBOL: return "TORCH_SYMBOL";
-    case T_FUNCTIONAL_SYMBOL: return "FUNCTIONAL_SYMBOL";
     case T_ARROW: return "ARROW";
     case T_WALRUS: return "WALRUS";
     case T_ELLIPSIS: return "ELLIPSIS";
@@ -458,6 +391,7 @@ const char *triton_token_name(int token)
     case T_AMP_ASSIGN: return "AMP_ASSIGN";
     case T_PIPE_ASSIGN: return "PIPE_ASSIGN";
     case T_CARET_ASSIGN: return "CARET_ASSIGN";
+    case T_AT_ASSIGN: return "AT_ASSIGN";
     case T_LSHIFT_ASSIGN: return "LSHIFT_ASSIGN";
     case T_RSHIFT_ASSIGN: return "RSHIFT_ASSIGN";
     case T_POWER_ASSIGN: return "POWER_ASSIGN";
@@ -532,7 +466,7 @@ int main(int argc, char **argv)
 
     BEGIN(BOL);
     while ((token = yylex()) != 0) {
-        printf("%5d:%-4d %-22s ", triton_token_line, triton_token_column, triton_token_name(token));
+        printf("%5d:%-4d %-18s ", triton_token_line, triton_token_column, triton_token_name(token));
         print_escaped(triton_token_text);
         putchar('\n');
     }

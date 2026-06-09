@@ -1,0 +1,60 @@
+{
+  "total_predictions": 166,
+  "phase1_call_acc": {
+    "passed": 16,
+    "rate": 9.64,
+    "survivors": [
+      "logsumexp.py",
+      "sigmoid_batch_norm.py",
+      "selu.py",
+      "scaled_add_norm.py",
+      "sqrt_exp.py",
+      "exp_sqrt.py",
+      "sigmoid_adaptive_avg_pool2d.py",
+      "tensordot_rsqrt.py",
+      "bitwise_and.py",
+      "bessel_j1.py",
+      "solve_and_add_scaled_vector.py",
+      "erf.py",
+      "sigmoid.py",
+      "leaky_relu.py",
+      "log.py",
+      "autocast.py"
+    ]
+  },
+  "phase2_exec_acc": {
+    "passed": 16,
+    "rate": 9.64,
+    "survivors": [
+      "logsumexp.py",
+      "sigmoid_batch_norm.py",
+      "selu.py",
+      "scaled_add_norm.py",
+      "sqrt_exp.py",
+      "exp_sqrt.py",
+      "sigmoid_adaptive_avg_pool2d.py",
+      "tensordot_rsqrt.py",
+      "bitwise_and.py",
+      "bessel_j1.py",
+      "solve_and_add_scaled_vector.py",
+      "erf.py",
+      "sigmoid.py",
+      "leaky_relu.py",
+      "log.py",
+      "autocast.py"
+    ]
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": null,
+    "official_speedup_vs_upstream_golden": null,
+    "local_speedup_vs_same_gpu_pytorch": null,
+    "per_op_official_speedup_vs_upstream_golden": {},
+    "per_op_local_speedup_vs_same_gpu_pytorch": {},
+    "raw_output_tail": "stalled during efficiency after 2/16 progress ticks; call/exec stats from evaluator log",
+    "official_raw_output_tail": "stalled during efficiency after 2/16 progress ticks; call/exec stats from evaluator log",
+    "local_raw_output_tail": "stalled during efficiency after 2/16 progress ticks; call/exec stats from evaluator log"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/full166_qwen_prompt0_20260609",
+  "note": "Manual summary written locally because Modal Phase 3 efficiency stalled after Phase 2 completed. Phase 1/2 counts were printed by modal_app.py::evaluate_only."
+}

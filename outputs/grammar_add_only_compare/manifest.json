@@ -1,0 +1,20 @@
+{
+  "model": "qwen/qwen3.6-35b-a3b",
+  "base_url": "http://localhost:1234/v1",
+  "limit": 20,
+  "only_add": true,
+  "grammar": "/Users/gustavoortiz/Downloads/grammar.txt",
+  "seed_jsonl": "experiments/lmstudio_prompt11_router_20260527-194836/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260527-194844.jsonl",
+  "outputs": {
+    "prompt0": "outputs/grammar_add_only_compare/prompt0_limit20.jsonl",
+    "prompt0_plus_add_grammar": "outputs/grammar_add_only_compare/prompt0_plus_add_grammar_limit20.jsonl",
+    "prompt11": "outputs/grammar_add_only_compare/prompt11_limit20.jsonl",
+    "prompt11_plus_add_grammar": "outputs/grammar_add_only_compare/prompt11_plus_add_grammar_limit20.jsonl",
+    "prompt0_add_only": "outputs/grammar_add_only_compare/prompt0_add_only.jsonl",
+    "prompt0_add_grammar_only": "outputs/grammar_add_only_compare/prompt0_add_grammar_only.jsonl",
+    "prompt11_add_only": "outputs/grammar_add_only_compare/prompt11_add_only.jsonl",
+    "prompt11_add_grammar_only": "outputs/grammar_add_only_compare/prompt11_add_grammar_only.jsonl",
+    "prompt0_add_code": "outputs/grammar_add_only_compare/add_from_prompt0_grammar.py",
+    "prompt11_add_code": "outputs/grammar_add_only_compare/add_from_prompt11_grammar.py"
+  }
+}

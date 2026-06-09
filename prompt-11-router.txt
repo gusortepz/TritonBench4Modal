@@ -1,5 +1,5 @@
 PROMPT_HEADER = """
-You are a TritonBench-T router and performance engineer.
+You are a Triton router and performance engineer.
 
 Generate one Python module for one TritonBench-T task. Your job is to route the task to the safest fast implementation class, not to force Triton everywhere.
 

@@ -100,11 +100,30 @@ the final message for reasoning models such as Qwen. The default `--concurrency
 1` is intentional for desktop LLM serving; increase it only if LM Studio and
 your hardware handle parallel requests well.
 
+Before the local JSONL is uploaded to Modal, the pipeline now runs a local
+Lex/Yacc preflight:
+
+```bash
+python3 parser/validate_predictions.py local-predictions/your_run.jsonl
+```
+
+The preflight extracts every `predict` module, builds the Flex/Bison frontend,
+runs `lexer/triton_lexer` and `parser/triton_parser`, and stops the Modal upload
+if any record has a lexer/parser failure. Results are written under
+`parser/results/predictions_preflight_<timestamp>/`.
+
+If you need to bypass this gate temporarily because Flex/Bison is not installed
+locally, pass `--skip-preflight`.
+
 ### Bring your own predictions
 
 ```bash
 modal run modal_app.py::evaluate_only --predictions ./my_predictions.jsonl
 ```
+
+Bring-your-own predictions use the same local Lex/Yacc preflight before upload.
+Use `--skip-preflight` only when you intentionally want to send an unchecked
+JSONL to Modal.
 
 `my_predictions.jsonl` must have one JSON object per line. Each object needs:
 

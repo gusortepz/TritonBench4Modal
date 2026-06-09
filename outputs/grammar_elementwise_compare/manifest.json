@@ -1,0 +1,35 @@
+{
+  "model": "qwen/qwen3.6-35b-a3b",
+  "base_url": "http://localhost:1234/v1",
+  "seed_jsonl": "experiments/lmstudio_prompt11_router_20260527-194836/lmstudio_qwen_qwen3.6-35b-a3b_simp_limit20_20260527-194844.jsonl",
+  "grammar": "grammars/triton_elementwise.ebnf",
+  "operations": [
+    "add",
+    "sub",
+    "sqrt",
+    "rsqrt",
+    "tanh",
+    "relu_sqrt"
+  ],
+  "grammar_mode": "structured-general",
+  "start_rules": {
+    "add": "add_root",
+    "sub": "sub_root",
+    "sqrt": "sqrt_root",
+    "rsqrt": "rsqrt_root",
+    "tanh": "tanh_root",
+    "relu_sqrt": "relu_sqrt_root"
+  },
+  "outputs": {
+    "prompt0": "outputs/grammar_elementwise_compare/prompt0_elementwise6.jsonl",
+    "prompt11": "outputs/grammar_elementwise_compare/prompt11_elementwise6.jsonl",
+    "prompt0_plus_grammar": "outputs/grammar_elementwise_compare/prompt0_plus_general_constraints_elementwise6.jsonl",
+    "prompt11_plus_grammar": "outputs/grammar_elementwise_compare/prompt11_plus_general_constraints_elementwise6.jsonl"
+  },
+  "counts": {
+    "prompt0": 6,
+    "prompt11": 6,
+    "prompt0_plus_grammar": 6,
+    "prompt11_plus_grammar": 6
+  }
+}

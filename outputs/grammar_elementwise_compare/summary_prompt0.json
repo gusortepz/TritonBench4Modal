@@ -1,0 +1,25 @@
+{
+  "total_predictions": 6,
+  "phase1_call_acc": {
+    "passed": 0,
+    "rate": 0.0,
+    "survivors": []
+  },
+  "phase2_exec_acc": {
+    "passed": 0,
+    "rate": 0.0,
+    "survivors": []
+  },
+  "phase3_efficiency": {
+    "speedup_vs_pytorch": null,
+    "official_speedup_vs_upstream_golden": null,
+    "local_speedup_vs_same_gpu_pytorch": null,
+    "per_op_official_speedup_vs_upstream_golden": {},
+    "per_op_local_speedup_vs_same_gpu_pytorch": {},
+    "raw_output_tail": "skipped (no surviving operators)",
+    "official_raw_output_tail": "skipped (no surviving operators)",
+    "local_raw_output_tail": "skipped (no surviving operators)"
+  },
+  "artifacts_volume": "tritonbench-t-data",
+  "artifacts_subdir": "results/grammar_elementwise_prompt0"
+}

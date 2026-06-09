@@ -1,0 +1,36 @@
+{
+  "xgrammar": {
+    "grammar_path": "grammars/triton_python_xgrammar.ebnf",
+    "compiled": true,
+    "valid_sample_accepted": true,
+    "invalid_sample_accepted": false
+  },
+  "lmstudio": {
+    "base_url": "http://localhost:1234/v1",
+    "model": "qwen/qwen3.6-35b-a3b",
+    "probes": {
+      "openai_top_level_grammar": {
+        "ok": true,
+        "status": 200,
+        "content_preview": "Here's a thinking process:\n\n",
+        "error": null
+      },
+      "openai_response_format_grammar": {
+        "ok": false,
+        "status": 400,
+        "content_preview": null,
+        "error": "'response_format.type' must be 'json_schema' or 'text'"
+      },
+      "native_top_level_grammar": {
+        "ok": false,
+        "status": 400,
+        "content_preview": null,
+        "error": {
+          "message": "Unrecognized key(s) in object: 'grammar'",
+          "type": "invalid_request",
+          "code": "unrecognized_keys"
+        }
+      }
+    }
+  }
+}

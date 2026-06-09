@@ -21,7 +21,7 @@ Quick start (see README.md for full instructions):
     modal secret create tritonbench-llm ANTHROPIC_API_KEY=sk-ant-...
     modal run modal_app.py                        # generate + evaluate
     modal run modal_app.py -- --limit 5           # smoke test on 5 ops
-    modal run modal_app.py -- --predictions ./preds.jsonl   # bring your own
+    modal run modal_app.py -- --predictions ./preds.jsonl   # preflight + bring your own
 """
 
 from __future__ import annotations
@@ -741,9 +741,19 @@ def _summarize_perf_speedups(gen_dir: Path, ref_dir: Path) -> tuple[float | None
     return mean_speedup, "\n".join(lines)
 
 
+def _parse_named_speedups(summary_text: str) -> dict[str, float]:
+    speedups: dict[str, float] = {}
+    for line in summary_text.splitlines():
+        match = re.match(r"^([A-Za-z0-9_.-]+)\.json:\s*([0-9.]+)\s*$", line.strip())
+        if match:
+            speedups[match.group(1)] = float(match.group(2))
+    return speedups
+
+
 def _evaluate_impl(
     predictions_path: str = "predictions.jsonl",
     output_subdir: str = "results",
+    skip_efficiency: bool = False,
 ) -> dict:
     """Run TritonBench-T eval phases against an existing predictions.jsonl."""
     pred_full = Path(DATA_DIR) / predictions_path
@@ -799,7 +809,11 @@ def _evaluate_impl(
     speedup = None
     local_eff_summary = "skipped (no surviving operators)"
     local_speedup = None
-    if exec_survivors:
+    if skip_efficiency:
+        eff_summary = "skipped by request"
+        local_eff_summary = "skipped by request"
+        print("skipping efficiency by request", flush=True)
+    elif exec_survivors:
         perf_root = f"{REPO_DIR}/performance_metrics/perf_T"
         patched = _patch_unsafe_generated_kernels(call_acc_dir)
         if patched:
@@ -852,15 +866,19 @@ def _evaluate_impl(
         "phase1_call_acc": {
             "passed": len(call_survivors),
             "rate": round(100 * len(call_survivors) / total, 2) if total else 0,
+            "survivors": call_survivors,
         },
         "phase2_exec_acc": {
             "passed": len(exec_survivors),
             "rate": round(100 * len(exec_survivors) / total, 2) if total else 0,
+            "survivors": exec_survivors,
         },
         "phase3_efficiency": {
             "speedup_vs_pytorch": speedup,
             "official_speedup_vs_upstream_golden": speedup,
             "local_speedup_vs_same_gpu_pytorch": local_speedup,
+            "per_op_official_speedup_vs_upstream_golden": _parse_named_speedups(eff_summary),
+            "per_op_local_speedup_vs_same_gpu_pytorch": _parse_named_speedups(local_eff_summary),
             "raw_output_tail": eff_summary[-2000:],
             "official_raw_output_tail": eff_summary[-2000:],
             "local_raw_output_tail": local_eff_summary[-2000:],
@@ -880,8 +898,13 @@ def _evaluate_impl(
 def evaluate(
     predictions_path: str = "predictions.jsonl",
     output_subdir: str = "results",
+    skip_efficiency: bool = False,
 ) -> dict:
-    return _evaluate_impl(predictions_path=predictions_path, output_subdir=output_subdir)
+    return _evaluate_impl(
+        predictions_path=predictions_path,
+        output_subdir=output_subdir,
+        skip_efficiency=skip_efficiency,
+    )
 
 
 # --------------------------------------------------------------------------- #
@@ -889,10 +912,43 @@ def evaluate(
 # --------------------------------------------------------------------------- #
 
 
-def _upload_local_predictions(local_path: Path) -> str:
+def _preflight_local_predictions(local_path: Path, output_dir: str = "") -> None:
+    """Validate local predictions with the Lex/Yacc frontend before upload."""
+    validator = Path(__file__).resolve().parent / "parser" / "validate_predictions.py"
+    if not validator.exists():
+        raise FileNotFoundError(f"missing preflight validator: {validator}")
+
+    command = [sys.executable, str(validator), str(local_path)]
+    if output_dir:
+        command.extend(["--output-dir", output_dir])
+
+    print(f"preflight validating local predictions: {local_path}", flush=True)
+    result = subprocess.run(
+        command,
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    if result.stdout:
+        print(result.stdout, end="", flush=True)
+    if result.returncode != 0:
+        raise RuntimeError(
+            "preflight validation failed; not uploading predictions to Modal"
+        )
+
+
+def _upload_local_predictions(
+    local_path: Path,
+    *,
+    skip_preflight: bool = False,
+    preflight_output_dir: str = "",
+) -> str:
     """Upload a local predictions.jsonl to the volume; return its remote path."""
     if not local_path.exists():
         raise FileNotFoundError(local_path)
+    if not skip_preflight:
+        _preflight_local_predictions(local_path, preflight_output_dir)
     remote = f"uploads/{local_path.name}"
     print(f"uploading {local_path} -> volume://{remote}", flush=True)
     with data_volume.batch_upload(force=True) as batch:
@@ -913,6 +969,9 @@ def main(
     max_tokens: int = 8192,
     anthropic_thinking: str = "",
     anthropic_effort: str = "",
+    skip_preflight: bool = False,
+    preflight_output_dir: str = "",
+    summary_path: str = "",
 ):
     """End-to-end: (optionally) generate predictions, then evaluate.
 
@@ -929,10 +988,23 @@ def main(
         max_tokens: maximum output tokens per generated module.
         anthropic_thinking: Anthropic thinking mode, e.g. ``adaptive``.
         anthropic_effort: Anthropic effort hint, e.g. ``max``.
+        skip_preflight: skip local Lex/Yacc validation before uploading a local
+            predictions file.
+        preflight_output_dir: optional local directory for preflight artifacts.
     """
     if predictions:
-        remote = _upload_local_predictions(Path(predictions))
+        remote = _upload_local_predictions(
+            Path(predictions),
+            skip_preflight=skip_preflight,
+            preflight_output_dir=preflight_output_dir,
+        )
     else:
+        if not skip_preflight:
+            print(
+                "preflight is only available for local predictions; "
+                "remote generation will be evaluated after generation",
+                flush=True,
+            )
         tag = f"{provider}_{model.replace('/', '_').replace(':', '_')}_{dataset}"
         prompt_header = _read_prompt_header(prompt_file) if prompt_file else ""
         remote = generate_predictions.remote(
@@ -956,18 +1028,38 @@ def main(
     print("\n=== Final summary ===")
     print(json.dumps(summary, indent=2))
     Path("latest-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    if summary_path:
+        summary_file = Path(summary_path)
+        summary_file.parent.mkdir(parents=True, exist_ok=True)
+        summary_file.write_text(json.dumps(summary, indent=2) + "\n")
 
 
 @app.local_entrypoint()
 def evaluate_only(
     predictions: str,
     output_subdir: str = "results",
+    skip_preflight: bool = False,
+    preflight_output_dir: str = "",
+    summary_path: str = "",
+    skip_efficiency: bool = False,
 ):
     """Evaluate an existing local predictions.jsonl without (re)generating."""
-    remote = _upload_local_predictions(Path(predictions))
-    summary = evaluate.remote(predictions_path=remote, output_subdir=output_subdir)
+    remote = _upload_local_predictions(
+        Path(predictions),
+        skip_preflight=skip_preflight,
+        preflight_output_dir=preflight_output_dir,
+    )
+    summary = evaluate.remote(
+        predictions_path=remote,
+        output_subdir=output_subdir,
+        skip_efficiency=skip_efficiency,
+    )
     print(json.dumps(summary, indent=2))
     Path("latest-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    if summary_path:
+        summary_file = Path(summary_path)
+        summary_file.parent.mkdir(parents=True, exist_ok=True)
+        summary_file.write_text(json.dumps(summary, indent=2) + "\n")
 
 
 @app.local_entrypoint()

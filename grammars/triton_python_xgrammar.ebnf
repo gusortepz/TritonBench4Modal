@@ -1,0 +1,97 @@
+root ::= module
+
+module ::= blank_lines import_block top_level_item+ blank_lines
+
+blank_lines ::= ("\n")*
+import_block ::= import_stmt ("\n" import_stmt)* "\n\n"
+import_stmt ::= "import " dotted_name import_alias? | "from " dotted_name " import " import_targets
+import_alias ::= " as " identifier
+import_targets ::= "*" | import_target (", " import_target)* ","?
+import_target ::= identifier import_alias?
+dotted_name ::= identifier ("." identifier)*
+
+top_level_item ::= decorated_function "\n"* | function_def "\n"* | compound_stmt0 | simple_stmt "\n" | "\n"
+decorated_function ::= decorator+ function_def
+decorator ::= "@" expression "\n"
+function_def ::= "def " identifier "(" parameters? ")" return_annotation? ":\n" suite1
+return_annotation ::= " -> " expression
+
+parameters ::= parameter (", " parameter)* ","?
+parameter ::= "*" | "*" identifier | "**" identifier | identifier annotation? default?
+annotation ::= ": " expression
+default ::= "=" expression | " = " expression
+
+suite1 ::= statement1+
+suite2 ::= statement2+
+suite3 ::= statement3+
+
+statement1 ::= indent1 simple_stmt "\n" | indent1 compound_stmt1
+statement2 ::= indent2 simple_stmt "\n" | indent2 compound_stmt2
+statement3 ::= indent3 simple_stmt "\n"
+
+compound_stmt0 ::= try_header suite1 except_block1+ finally_block1?
+compound_stmt1 ::= if_header suite2 elif_block2* else_block2? | try_header suite2 except_block2+ finally_block2?
+compound_stmt2 ::= if_header suite3 elif_block3* else_block3? | try_header suite3 except_block3+
+if_header ::= "if " expression ":\n"
+elif_block2 ::= indent1 "elif " expression ":\n" suite2
+else_block2 ::= indent1 "else:\n" suite2
+elif_block3 ::= indent2 "elif " expression ":\n" suite3
+else_block3 ::= indent2 "else:\n" suite3
+try_header ::= "try:\n"
+except_block1 ::= "except" (" " expression)? ":\n" suite1
+except_block2 ::= indent1 "except" (" " expression)? ":\n" suite2
+except_block3 ::= indent2 "except" (" " expression)? ":\n" suite3
+finally_block1 ::= "finally:\n" suite1
+finally_block2 ::= indent1 "finally:\n" suite2
+
+simple_stmt ::= import_stmt | assignment | annotated_assignment | return_stmt | expression | pass_stmt | raise_stmt | break_stmt | continue_stmt
+assignment ::= target assignment_op expression
+annotated_assignment ::= target ": " expression default?
+assignment_op ::= " = " | " += " | " -= " | " *= " | " /= " | " %= "
+return_stmt ::= "return" (" " expression)?
+pass_stmt ::= "pass"
+raise_stmt ::= "raise" (" " expression)?
+break_stmt ::= "break"
+continue_stmt ::= "continue"
+
+target ::= identifier postfix*
+
+expression ::= conditional_expr
+conditional_expr ::= bool_expr (" if " bool_expr " else " bool_expr)?
+bool_expr ::= comparison ((" and " | " or ") comparison)*
+comparison ::= arith_expr ((" == " | " != " | " < " | " <= " | " > " | " >= " | " is " | " is not " | " in " | " not in ") arith_expr)*
+arith_expr ::= term ((" + " | " - " | "+" | "-") term)*
+term ::= factor ((" * " | " / " | " // " | " % " | " *" | "* " | "/" | "*") factor)*
+factor ::= ("+" | "-" | "~" | "not ")* power
+power ::= primary (" ** " factor)?
+primary ::= atom postfix*
+postfix ::= attribute | call | subscript
+attribute ::= "." identifier
+call ::= "(" arguments? ")"
+subscript ::= "[" subscript_body "]"
+
+arguments ::= argument (", " argument)* ","?
+argument ::= expression | identifier "=" expression | "*" expression | "**" expression
+subscript_body ::= expression? (":" expression? (":" expression?)?)? | expression (", " expression)* ","?
+
+atom ::= identifier | literal | tuple_literal | list_literal | dict_literal | lambda_expr
+tuple_literal ::= "(" (arguments | expression)? ")"
+list_literal ::= "[" (expression (", " expression)* ","?)? "]"
+dict_literal ::= "{" (dict_item (", " dict_item)* ","?)? "}"
+dict_item ::= expression ": " expression
+lambda_expr ::= "lambda " parameters? ": " expression
+
+literal ::= number | string | "None" | "True" | "False"
+number ::= float | integer
+integer ::= "0" | [1-9] [0-9]*
+float ::= integer "." [0-9]+
+string ::= double_string | single_string
+double_string ::= "\"" ([^"\\\n] | "\\" escape_char)* "\""
+single_string ::= "'" ([^'\\\n] | "\\" escape_char)* "'"
+escape_char ::= ["'\\nrt]
+
+identifier ::= [A-Za-z_] [A-Za-z0-9_]*
+
+indent1 ::= "    "
+indent2 ::= "        "
+indent3 ::= "            "

@@ -1,0 +1,24 @@
+Resumen de resultados
+
+Pregunta 1
+Operating Income 2023: 7956.385
+Operating Income 2024: 8248.163
+Operating Income 2025: 8405.341
+Promedio Operating Income: 7245.889
+
+Pregunta 2
+Modelo final corregido: roa = 6.5079 + 0.0649*firm_size -7.1229*debt_ratio +3.3384*asset_turnover
+Max VIF: 1.0145
+Breusch-Pagan p-value: 0.00000010
+Correccion: errores robustos HC3.
+
+Pregunta 3
+Modelo final corregido: audit_fee = 0.5538 + 0.3492*total_assets -0.7655*leverage +3.1369*big4
+Max VIF inicial: 68.3484
+Max VIF final: 1.0037
+Breusch-Pagan final p-value: 0.87840689
+Correccion: se elimina net_assets.
+
+Pregunta 4
+RMSE Lasso: 3.523823
+Coeficientes: const=9.848836, esg_score=0.040327, revenue_growth=0.000000, debt_to_equity=-1.097235, firm_age=-0.003175
