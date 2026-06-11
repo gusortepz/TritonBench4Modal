@@ -1,0 +1,16 @@
+digraph G {
+  rankdir=LR; bgcolor="white";
+  node [fontname="Helvetica", fontsize=12];
+  edge [fontname="Helvetica", fontsize=11];
+  start [shape=point];
+  C1 [shape=doublecircle, xlabel="(comment, skipped)"];
+  R1 [shape=doublecircle, xlabel="ERROR"];
+  S0 [shape=circle];
+  W1 [shape=doublecircle, xlabel="(whitespace, skipped)"];
+  start -> S0;
+  S0 -> C1 [label="#"];
+  C1 -> C1 [label="not \\n"];
+  S0 -> W1 [label="space, tab, \\r, \\n"];
+  W1 -> W1 [label="space, tab, \\r, \\n"];
+  S0 -> R1 [label="any other char"];
+}

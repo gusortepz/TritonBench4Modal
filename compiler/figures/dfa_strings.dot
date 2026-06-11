@@ -1,0 +1,24 @@
+digraph G {
+  rankdir=LR; bgcolor="white";
+  node [fontname="Helvetica", fontsize=12];
+  edge [fontname="Helvetica", fontsize=11];
+  start [shape=point];
+  Q1 [shape=circle];
+  Q2 [shape=doublecircle, xlabel="STRING (single-line)"];
+  S0 [shape=circle];
+  T0 [shape=circle];
+  T1 [shape=circle];
+  T2 [shape=circle];
+  T3 [shape=doublecircle, xlabel="STRING (triple-quoted)"];
+  start -> S0;
+  S0 -> Q1 [label="\""];
+  Q1 -> Q1 [label="not \", not \\n"];
+  Q1 -> Q2 [label="\""];
+  Q2 -> T0 [label="\""];
+  T0 -> T0 [label="not \"  (incl. \\n)"];
+  T0 -> T1 [label="\""];
+  T1 -> T0 [label="not \""];
+  T1 -> T2 [label="\""];
+  T2 -> T0 [label="not \""];
+  T2 -> T3 [label="\""];
+}

@@ -1,0 +1,236 @@
+================= TOKEN SEQUENCE =================
+TOKEN                  LEXEME                           LINE
+NAME                   i                                2
+ASSIGN                 =                                2
+INTEGER                42                               2
+NAME                   f1                               3
+ASSIGN                 =                                3
+FLOAT                  3.14                             3
+NAME                   f2                               4
+ASSIGN                 =                                4
+FLOAT                  .5                               4
+NAME                   f3                               5
+ASSIGN                 =                                5
+FLOAT                  1e6                              5
+NAME                   f4                               6
+ASSIGN                 =                                6
+FLOAT                  2.5e-3                           6
+NAME                   s1                               7
+ASSIGN                 =                                7
+STRING                 "double"                         7
+NAME                   s2                               8
+ASSIGN                 =                                8
+STRING                 'single'                         8
+NAME                   s3                               9
+ASSIGN                 =                                9
+STRING                 """triple\nspanning lines"""     10
+NAME                   a                                11
+ASSIGN                 =                                11
+INTEGER                1                                11
+PLUS                   +                                11
+INTEGER                2                                11
+MINUS                  -                                11
+INTEGER                3                                11
+STAR                   *                                11
+INTEGER                4                                11
+SLASH                  /                                11
+INTEGER                5                                11
+DOUBLE_SLASH           //                               11
+INTEGER                6                                11
+PERCENT                %                                11
+INTEGER                7                                11
+DOUBLE_STAR            **                               11
+INTEGER                8                                11
+NAME                   b                                12
+ASSIGN                 =                                12
+OPEN_PARENTHESIS       (                                12
+INTEGER                1                                12
+LESS                   <                                12
+INTEGER                2                                12
+CLOSE_PARENTHESIS      )                                12
+LESS_EQUAL             <=                               12
+OPEN_PARENTHESIS       (                                12
+INTEGER                3                                12
+GREATER                >                                12
+INTEGER                4                                12
+CLOSE_PARENTHESIS      )                                12
+GREATER_EQUAL          >=                               12
+OPEN_PARENTHESIS       (                                12
+INTEGER                5                                12
+EQUAL_EQUAL            ==                               12
+INTEGER                6                                12
+CLOSE_PARENTHESIS      )                                12
+NOT_EQUAL              !=                               12
+OPEN_PARENTHESIS       (                                12
+INTEGER                7                                12
+IS                     is                               12
+NOT                    not                              12
+INTEGER                8                                12
+CLOSE_PARENTHESIS      )                                12
+AND                    and                              12
+INTEGER                9                                12
+IN                     in                               12
+NAME                   x                                12
+OR                     or                               12
+NOT                    not                              12
+NAME                   y                                12
+NAME                   c                                13
+ASSIGN                 =                                13
+NAME                   p                                13
+AMPERSAND              &                                13
+NAME                   q                                13
+PIPE                   |                                13
+NAME                   r                                13
+CARET                  ^                                13
+TILDE                  ~                                13
+NAME                   s                                13
+LEFT_SHIFT             <<                               13
+INTEGER                2                                13
+RIGHT_SHIFT            >>                               13
+INTEGER                1                                13
+NAME                   a                                14
+PLUS_ASSIGN            +=                               14
+INTEGER                1                                14
+SEMICOLON              ;                                14
+NAME                   a                                14
+MINUS_ASSIGN           -=                               14
+INTEGER                2                                14
+SEMICOLON              ;                                14
+NAME                   a                                14
+STAR_ASSIGN            *=                               14
+INTEGER                3                                14
+SEMICOLON              ;                                14
+NAME                   a                                14
+SLASH_ASSIGN           /=                               14
+INTEGER                4                                14
+SEMICOLON              ;                                14
+NAME                   a                                14
+DOUBLE_SLASH_ASSIGN    //=                              14
+INTEGER                5                                14
+SEMICOLON              ;                                14
+NAME                   a                                14
+PERCENT_ASSIGN         %=                               14
+INTEGER                6                                14
+SEMICOLON              ;                                14
+NAME                   a                                14
+DOUBLE_STAR_ASSIGN     **=                              14
+INTEGER                7                                14
+NAME                   a                                15
+AMPERSAND_ASSIGN       &=                               15
+INTEGER                1                                15
+SEMICOLON              ;                                15
+NAME                   a                                15
+PIPE_ASSIGN            |=                               15
+INTEGER                2                                15
+SEMICOLON              ;                                15
+NAME                   a                                15
+CARET_ASSIGN           ^=                               15
+INTEGER                3                                15
+SEMICOLON              ;                                15
+NAME                   a                                15
+LEFT_SHIFT_ASSIGN      <<=                              15
+INTEGER                4                                15
+SEMICOLON              ;                                15
+NAME                   a                                15
+RIGHT_SHIFT_ASSIGN     >>=                              15
+INTEGER                5                                15
+NAME                   m                                16
+ASSIGN                 =                                16
+NAME                   w                                16
+OPEN_BRACKET           [                                16
+COLON                  :                                16
+COMMA                  ,                                16
+NONE                   None                             16
+CLOSE_BRACKET          ]                                16
+AT                     @                                16
+NAME                   w                                16
+OPEN_BRACKET           [                                16
+NONE                   None                             16
+COMMA                  ,                                16
+COLON                  :                                16
+CLOSE_BRACKET          ]                                16
+DEF                    def                              17
+NAME                   g                                17
+OPEN_PARENTHESIS       (                                17
+NAME                   x                                17
+CLOSE_PARENTHESIS      )                                17
+ARROW                  ->                               17
+NAME                   int                              17
+COLON                  :                                17
+RETURN                 return                           17
+NAME                   x                                17
+NAME                   t                                18
+ASSIGN                 =                                18
+OPEN_PARENTHESIS       (                                18
+INTEGER                1                                18
+COMMA                  ,                                18
+CLOSE_PARENTHESIS      )                                18
+SEMICOLON              ;                                18
+NAME                   l                                18
+ASSIGN                 =                                18
+OPEN_BRACKET           [                                18
+INTEGER                1                                18
+COMMA                  ,                                18
+INTEGER                2                                18
+CLOSE_BRACKET          ]                                18
+SEMICOLON              ;                                18
+NAME                   d                                18
+ASSIGN                 =                                18
+OPEN_BRACE             {                                18
+STRING                 "k"                              18
+COLON                  :                                18
+INTEGER                1                                18
+CLOSE_BRACE            }                                18
+NAME                   e                                19
+ASSIGN                 =                                19
+ELLIPSIS               ...                              19
+EOF
+
+================== SYMBOL TABLE ==================
+ID    TOKEN     LEXEME                           FIRST_LINE  COUNT
+1     NAME      i                                2           1
+2     INTEGER   42                               2           1
+3     NAME      f1                               3           1
+4     FLOAT     3.14                             3           1
+5     NAME      f2                               4           1
+6     FLOAT     .5                               4           1
+7     NAME      f3                               5           1
+8     FLOAT     1e6                              5           1
+9     NAME      f4                               6           1
+10    FLOAT     2.5e-3                           6           1
+11    NAME      s1                               7           1
+12    STRING    "double"                         7           1
+13    NAME      s2                               8           1
+14    STRING    'single'                         8           1
+15    NAME      s3                               9           1
+16    STRING    """triple\nspanning lines"""     10          1
+17    NAME      a                                11          13
+18    INTEGER   1                                11          8
+19    INTEGER   2                                11          6
+20    INTEGER   3                                11          4
+21    INTEGER   4                                11          4
+22    INTEGER   5                                11          4
+23    INTEGER   6                                11          3
+24    INTEGER   7                                11          3
+25    INTEGER   8                                11          2
+26    NAME      b                                12          1
+27    INTEGER   9                                12          1
+28    NAME      x                                12          3
+29    NAME      y                                12          1
+30    NAME      c                                13          1
+31    NAME      p                                13          1
+32    NAME      q                                13          1
+33    NAME      r                                13          1
+34    NAME      s                                13          1
+35    NAME      m                                16          1
+36    NAME      w                                16          2
+37    NAME      g                                17          1
+38    NAME      int                              17          1
+39    NAME      t                                18          1
+40    NAME      l                                18          1
+41    NAME      d                                18          1
+42    STRING    "k"                              18          1
+43    NAME      e                                19          1
+(43 distinct symbols)
+
+No lexical errors.

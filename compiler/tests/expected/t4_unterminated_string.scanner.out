@@ -1,0 +1,5 @@
+================= TOKEN SEQUENCE =================
+TOKEN                  LEXEME                           LINE
+NAME                   x                                1
+ASSIGN                 =                                1
+ERROR                                                   2   <-- LEXICAL ERROR: invalid symbol

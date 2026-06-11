@@ -1,0 +1,18 @@
+digraph G {
+  rankdir=LR; bgcolor="white";
+  node [shape=box, style="rounded,filled", fillcolor="#eef2fa",
+        fontname="Helvetica", fontsize=12];
+  edge [fontname="Helvetica", fontsize=11];
+  src   [label="kernel.py\n(Triton source)", fillcolor="#ffffff"];
+  lex   [label="Scanner\nnewlexer.l -> flex -> lex.yy.c"];
+  toks  [label="token sequence\n+ symbol table", shape=note,
+         fillcolor="#fdf6e3"];
+  yacc  [label="Parser\nnewparser.y -> yacc -> y.tab.c"];
+  out   [label="ACCEPT / REJECT\n+ error line", shape=note,
+         fillcolor="#fdf6e3"];
+  hdr   [label="y.tab.h\n(shared token ids)", shape=component,
+         fillcolor="#e8f5e9"];
+  src -> lex; lex -> toks [label=" newscanner"];
+  lex -> yacc [label=" yylex()"]; yacc -> out [label=" newparser"];
+  hdr -> lex [style=dashed]; hdr -> yacc [style=dashed];
+}

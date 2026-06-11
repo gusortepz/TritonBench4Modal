@@ -1,0 +1,29 @@
+digraph G {
+  rankdir=LR; bgcolor="white";
+  node [fontname="Helvetica", fontsize=12];
+  edge [fontname="Helvetica", fontsize=11];
+  start [shape=point];
+  N1 [shape=doublecircle, xlabel="INTEGER"];
+  N2 [shape=doublecircle, xlabel="FLOAT"];
+  N3 [shape=circle];
+  N5 [shape=doublecircle, xlabel="FLOAT"];
+  N6 [shape=circle];
+  N7 [shape=doublecircle, xlabel="FLOAT"];
+  P1 [shape=circle];
+  S0 [shape=circle];
+  start -> S0;
+  S0 -> N1 [label="digit"];
+  N1 -> N1 [label="digit"];
+  N1 -> N2 [label="."];
+  N2 -> N2 [label="digit"];
+  S0 -> P1 [label="."];
+  P1 -> N5 [label="digit"];
+  N5 -> N5 [label="digit"];
+  N1 -> N3 [label="e, E"];
+  N2 -> N3 [label="e, E"];
+  N5 -> N3 [label="e, E"];
+  N3 -> N6 [label="+, -"];
+  N3 -> N7 [label="digit"];
+  N6 -> N7 [label="digit"];
+  N7 -> N7 [label="digit"];
+}

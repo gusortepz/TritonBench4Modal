@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal",
+      "program": "/Users/gustavoortiz/Documents/tec/8/reto-dev/TritonBench4Modal/build/Debug/outDebug"
+    }
+  ]
+}
