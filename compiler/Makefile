@@ -1,4 +1,3 @@
-# Triton-Python recognizer: flex lexer + yacc parser (see grammar.md)
 CC = cc
 
 all: parser scanner
@@ -6,12 +5,12 @@ all: parser scanner
 parser: y.tab.c lex.yy.c
 	$(CC) -o parser y.tab.c lex.yy.c
 
-# standalone scanner: token sequence + symbol table (lexical phase deliverable)
+# standalone scanner
 scanner: lex.yy.c
 	$(CC) -DSCANNER_MAIN -o scanner lex.yy.c
 
-# yacc -d writes y.tab.h (token numbers, shared with the lexer)
-# yacc -v writes y.output (the LALR automaton + conflict report)
+# yacc -d writes y.tab.h
+# yacc -v writes y.output
 y.tab.c y.tab.h: parser.y
 	yacc -d -v parser.y
 
@@ -23,7 +22,7 @@ test: parser scanner
 	./scanner example_kernel.py > results/tokens.txt
 	./parser example_kernel.py
 
-# full test suite over tests/ -> timestamped report in results/suite_<ts>.txt
+# full test suite over tests/
 suite: parser scanner
 	./run_suite.sh
 
