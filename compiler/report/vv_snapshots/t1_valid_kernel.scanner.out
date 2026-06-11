@@ -1,0 +1,138 @@
+================= TOKEN SEQUENCE =================
+TOKEN                  LEXEME                           LINE
+IMPORT                 import                           1
+NAME                   triton                           1
+IMPORT                 import                           2
+NAME                   triton                           2
+DOT                    .                                2
+NAME                   language                         2
+AS                     as                               2
+NAME                   tl                               2
+AT                     @                                4
+NAME                   triton                           4
+DOT                    .                                4
+NAME                   jit                              4
+DEF                    def                              5
+NAME                   add_kernel                       5
+OPEN_PARENTHESIS       (                                5
+NAME                   x_ptr                            5
+COMMA                  ,                                5
+NAME                   y_ptr                            5
+COMMA                  ,                                5
+NAME                   out_ptr                          5
+COMMA                  ,                                5
+NAME                   n                                5
+COMMA                  ,                                5
+NAME                   BLOCK_SIZE                       5
+COLON                  :                                5
+NAME                   tl                               5
+DOT                    .                                5
+NAME                   constexpr                        5
+CLOSE_PARENTHESIS      )                                5
+COLON                  :                                5
+STRING                 ""                               6
+STRING                 "Adds two vectors, one block per 6
+STRING                 ""                               6
+NAME                   pid                              7
+ASSIGN                 =                                7
+NAME                   tl                               7
+DOT                    .                                7
+NAME                   program_id                       7
+OPEN_PARENTHESIS       (                                7
+INTEGER                0                                7
+CLOSE_PARENTHESIS      )                                7
+NAME                   offs                             8
+ASSIGN                 =                                8
+NAME                   pid                              8
+STAR                   *                                8
+NAME                   BLOCK_SIZE                       8
+PLUS                   +                                8
+NAME                   tl                               8
+DOT                    .                                8
+NAME                   arange                           8
+OPEN_PARENTHESIS       (                                8
+INTEGER                0                                8
+COMMA                  ,                                8
+NAME                   BLOCK_SIZE                       8
+CLOSE_PARENTHESIS      )                                8
+NAME                   mask                             9
+ASSIGN                 =                                9
+NAME                   offs                             9
+LESS                   <                                9
+NAME                   n                                9
+NAME                   x                                10
+ASSIGN                 =                                10
+NAME                   tl                               10
+DOT                    .                                10
+NAME                   load                             10
+OPEN_PARENTHESIS       (                                10
+NAME                   x_ptr                            10
+PLUS                   +                                10
+NAME                   offs                             10
+COMMA                  ,                                10
+NAME                   mask                             10
+ASSIGN                 =                                10
+NAME                   mask                             10
+CLOSE_PARENTHESIS      )                                10
+NAME                   y                                11
+ASSIGN                 =                                11
+NAME                   tl                               11
+DOT                    .                                11
+NAME                   load                             11
+OPEN_PARENTHESIS       (                                11
+NAME                   y_ptr                            11
+PLUS                   +                                11
+NAME                   offs                             11
+COMMA                  ,                                11
+NAME                   mask                             11
+ASSIGN                 =                                11
+NAME                   mask                             11
+CLOSE_PARENTHESIS      )                                11
+NAME                   tl                               12
+DOT                    .                                12
+NAME                   store                            12
+OPEN_PARENTHESIS       (                                12
+NAME                   out_ptr                          12
+PLUS                   +                                12
+NAME                   offs                             12
+COMMA                  ,                                12
+NAME                   x                                12
+PLUS                   +                                12
+NAME                   y                                12
+COMMA                  ,                                12
+NAME                   mask                             12
+ASSIGN                 =                                12
+NAME                   mask                             12
+CLOSE_PARENTHESIS      )                                12
+EOF
+
+================== SYMBOL TABLE ==================
+ID    TOKEN     LEXEME                           FIRST_LINE  COUNT
+1     NAME      triton                           1           3
+2     NAME      language                         2           1
+3     NAME      tl                               2           7
+4     NAME      jit                              4           1
+5     NAME      add_kernel                       5           1
+6     NAME      x_ptr                            5           2
+7     NAME      y_ptr                            5           2
+8     NAME      out_ptr                          5           2
+9     NAME      n                                5           2
+10    NAME      BLOCK_SIZE                       5           3
+11    NAME      constexpr                        5           1
+12    STRING    ""                               6           2
+13    STRING    "Adds two vectors, one block per program." 6           1
+14    NAME      pid                              7           2
+15    NAME      program_id                       7           1
+16    INTEGER   0                                7           2
+17    NAME      offs                             8           5
+18    NAME      arange                           8           1
+19    NAME      mask                             9           7
+20    NAME      x                                10          2
+21    NAME      load                             10          2
+22    NAME      y                                11          2
+23    NAME      store                            12          1
+(23 distinct symbols)
+
+triton: true
+
+No lexical errors.

@@ -226,7 +226,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "newparser.y"
+#line 1 "parser.y"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -2016,7 +2016,7 @@ yyreturn:
 }
 
 
-#line 557 "newparser.y"
+#line 557 "parser.y"
 
 
 void yyerror(const char *msg)

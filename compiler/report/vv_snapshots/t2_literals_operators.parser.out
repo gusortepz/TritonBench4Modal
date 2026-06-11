@@ -1,0 +1,3 @@
+syntax error at line 13 near ';'
+triton: false  code: reject
+parser_exit=1

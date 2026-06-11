@@ -1,8 +1,9 @@
 import triton
 import triton.language as tl
 
-@triton.ji
+@triton.jit
 def add_kernel(x_ptr, y_ptr, out_ptr, n, BLOCK_SIZE: tl.constexpr):
+    """Adds two vectors, one block per program."""
     pid = tl.program_id(0)
     offs = pid * BLOCK_SIZE + tl.arange(0, BLOCK_SIZE)
     mask = offs < n

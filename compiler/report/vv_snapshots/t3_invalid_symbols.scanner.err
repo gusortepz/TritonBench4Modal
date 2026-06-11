@@ -1,0 +1,4 @@
+lexical error at line 2: invalid symbol '$'
+lexical error at line 3: invalid symbol '?'
+lexical error at line 4: invalid symbol '!'
+scanner_exit=1

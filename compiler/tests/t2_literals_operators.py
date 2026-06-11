@@ -6,8 +6,7 @@ f3 = 1e6
 f4 = 2.5e-3
 s1 = "double"
 s2 = 'single'
-s3 = """triple
-spanning lines"""
+s3 = "single-line only"
 a = 1 + 2 - 3 * 4 / 5 // 6 % 7 ** 8
 b = (1 < 2) <= (3 > 4) >= (5 == 6) != (7 is not 8) and 9 in x or not y
 c = p & q | r ^ ~s << 2 >> 1

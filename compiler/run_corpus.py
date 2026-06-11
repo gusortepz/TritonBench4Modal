@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the newparser recognizer over a corpus of generated kernel files.
+"""Run the parser recognizer over a corpus of generated kernel files.
 
 Three stages:
   1. full      - every .py file as-is (host code + kernels)
@@ -20,8 +20,8 @@ from datetime import date
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-PARSER = HERE / "newparser"
-WORK = Path("/tmp/newlexparser_eval")
+PARSER = HERE / "parser"
+WORK = Path("/tmp/lexparser_eval")
 
 ERR_RE = re.compile(r"syntax error at line (\d+) near '(.*)'")
 TRIPLE_RE = re.compile(r'("""|\'\'\')(?:.|\n)*?\1')
@@ -173,11 +173,11 @@ def main():
     nodoc_rows, _ = run_stage(sorted(ndir.glob("*.py")))
 
     rep = []
-    rep.append("# Corpus test report - newparser (flex + yacc recognizer)\n")
+    rep.append("# Corpus test report - parser (flex + yacc recognizer)\n")
     rep.append(f"- **Date:** {date.today().isoformat()}")
     rep.append(f"- **Corpus:** `{corpus}` ({len(files)} files, "
                f"LLM-generated Triton programs)")
-    rep.append(f"- **Parser:** `newlexparser/newparser` "
+    rep.append(f"- **Parser:** `lexparser/parser` "
                f"(layout-free grammar, see grammar.md; 'gm' below)\n")
     rep.append("## Results by stage\n")
     rep.append("| Stage | files | ACCEPT | REJECT | accept rate |")
